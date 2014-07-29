@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.ace.androidclassroomextension.R;
@@ -25,12 +26,16 @@ public class CreateTeacher extends Activity {
         TextView nameTeacher = (TextView) findViewById(R.id.nameOfTeacher);
         nameTeacher.append(name);
 
-
-
-
-
     }
 
+    /**
+     * to get the lesson description
+     * @return
+     */
+    private String getLessonDescription(){
+        EditText descriptionET = (EditText) findViewById(R.id.lessonDescription);
+        return String.valueOf(descriptionET.getText());
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
