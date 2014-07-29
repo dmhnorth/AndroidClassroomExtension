@@ -9,22 +9,17 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import java.security.InvalidParameterException;
+
 
 public class MainActivity extends Activity {
 
-    private String name;
     private EditText nameEntry;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        nameEntry = (EditText) findViewById(R.id.nameEntry);
-
-
 
     }
 
@@ -53,21 +48,24 @@ public class MainActivity extends Activity {
         return super.onOptionsItemSelected(item);
     }
 
+    /**
+     * Gets the entered username
+     * @return username
+     */
+    private String getUserName() {
+        nameEntry = (EditText) findViewById(R.id.nameEntry);
+        return String.valueOf(nameEntry.getText());
+    }
+
     public void createTeacher(View view) {
-
-        name = String.valueOf(nameEntry.getText());
-
         Intent createTeacherIntent = new Intent(this, CreateTeacher.class);
-
-        createTeacherIntent.putExtra("name", name);
-
+        createTeacherIntent.putExtra("name", getUserName());
         startActivity(createTeacherIntent);
-
-
-        //TODO
     }
 
     public void createStudent(View view) {
-        //TODO
+        Intent createStudentIntent = new Intent(this, CreateStudent.class);
+        createStudentIntent.putExtra("name", getUserName());
+        startActivity(createStudentIntent);
     }
 }
