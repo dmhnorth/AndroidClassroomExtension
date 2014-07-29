@@ -9,6 +9,9 @@ import android.widget.TextView;
 
 import com.ace.androidclassroomextension.R;
 
+/**
+ * For creating all the assets necessary to instantiate a classroom
+ */
 public class CreateTeacher extends Activity {
 
     @Override
@@ -20,7 +23,10 @@ public class CreateTeacher extends Activity {
         String name = nameData.getStringExtra("name");
 
         TextView nameTeacher = (TextView) findViewById(R.id.nameOfTeacher);
-        nameTeacher.setText("The teacher name is: " + name);
+        nameTeacher.append(name);
+
+
+
 
 
     }
