@@ -2,6 +2,7 @@ package com.ace.androidclassroomextension;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Picture;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -28,6 +29,14 @@ public class CreateTeacher extends Activity {
 
         TextView nameTeacher = (TextView) findViewById(R.id.nameOfTeacher);
         nameTeacher.append(" " + name);
+
+        //TODO assign the stock photo to the user
+
+        //TODO find the user microphone
+
+        //TODO find the user webcam
+
+        //TODO assign all these elements somewhere, either to a class or whatever
 
     }
 
