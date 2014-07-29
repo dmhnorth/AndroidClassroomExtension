@@ -16,6 +16,22 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".CreateStudent"
+            android:label="@string/title_activity_create_student"
+            android:parentActivityName=".MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.ace.androidclassroomextension.MainActivity" />
+        </activity>
+        <activity
+            android:name=".CreateTeacher"
+            android:label="@string/title_activity_create_teacher"
+            android:parentActivityName=".MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.ace.androidclassroomextension.MainActivity" />
+        </activity>
     </application>
 
 </manifest>

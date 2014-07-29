@@ -5,36 +5,31 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
+import android.widget.TextView;
 
+import com.ace.androidclassroomextension.R;
 
-public class MainActivity extends Activity {
-
-    private String name;
-    private EditText nameEntry;
-
-
+public class CreateTeacher extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_create_teacher);
 
-        nameEntry = (EditText) findViewById(R.id.nameEntry);
+        Intent nameData = getIntent();
+        String name = nameData.getStringExtra("name");
 
+        TextView nameTeacher = (TextView) findViewById(R.id.nameOfTeacher);
+        nameTeacher.setText("The teacher name is: " + name);
 
 
     }
 
 
-
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
+        getMenuInflater().inflate(R.menu.create_teacher, menu);
         return true;
     }
 
@@ -46,28 +41,7 @@ public class MainActivity extends Activity {
         int id = item.getItemId();
         if (id == R.id.action_settings) {
             return true;
-        } else if (id == R.id.exitTheApp){
-            finish();
-            return true;
         }
         return super.onOptionsItemSelected(item);
-    }
-
-    public void createTeacher(View view) {
-
-        name = String.valueOf(nameEntry.getText());
-
-        Intent createTeacherIntent = new Intent(this, CreateTeacher.class);
-
-        createTeacherIntent.putExtra("name", name);
-
-        startActivity(createTeacherIntent);
-
-
-        //TODO
-    }
-
-    public void createStudent(View view) {
-        //TODO
     }
 }
