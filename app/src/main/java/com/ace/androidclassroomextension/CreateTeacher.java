@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -15,13 +16,15 @@ import com.ace.androidclassroomextension.R;
  */
 public class CreateTeacher extends Activity {
 
+    private String name;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_teacher);
 
         Intent nameData = getIntent();
-        String name = nameData.getStringExtra("name");
+        name = nameData.getStringExtra("name");
 
         TextView nameTeacher = (TextView) findViewById(R.id.nameOfTeacher);
         nameTeacher.append(" " + name);
@@ -54,5 +57,9 @@ public class CreateTeacher extends Activity {
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    public void selectPhoto(View view) {
+        //TODO Enable the ability to select a photo from the users handset
     }
 }
