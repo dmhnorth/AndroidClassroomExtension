@@ -2,7 +2,9 @@
 <resources>
 
     <string name="app_name">ACE</string>
-    <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string name="student">Student</string>
+    <string name="teacher">Teacher</string>
+    <string name="enterYourName">Enter your name...</string>
 
 </resources>

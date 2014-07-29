@@ -9,6 +9,5 @@
     <item android:id="@+id/exitTheApp"
         android:title="Exit"
         android:orderInCategory="101"
-        android:showAsAction="always"
-        android:onClick="exitTheApp"/>
+        android:showAsAction="always"/>
 </menu>
