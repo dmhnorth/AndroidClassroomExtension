@@ -24,7 +24,7 @@ public class CreateTeacher extends Activity {
         String name = nameData.getStringExtra("name");
 
         TextView nameTeacher = (TextView) findViewById(R.id.nameOfTeacher);
-        nameTeacher.append(name);
+        nameTeacher.append(" " + name);
 
     }
 

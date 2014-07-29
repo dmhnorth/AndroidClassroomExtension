@@ -16,13 +16,13 @@
         android:orientation="vertical"
         android:gravity="left">
 
-    <TextView
-        android:id="@+id/nameOfTeacher"
-        android:text="@string/teacher"
-        android:textStyle="bold"
-        android:textSize="@dimen/text_size_large"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/nameOfTeacher"
+            android:text="@string/teacher"
+            android:textStyle="bold"
+            android:textSize="@dimen/text_size_large"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" />
 
         <ImageView
             android:layout_width="match_parent"
@@ -31,26 +31,72 @@
 
     </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:gravity="left">
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="left">
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/activity_horizontal_margin"
             android:text="@string/lessonDescription"
+            android:textStyle="bold"
             android:textSize="@dimen/text_size_medium"/>
 
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/activity_horizontal_margin"
+            android:layout_marginBottom="@dimen/activity_horizontal_margin"
+            android:textStyle="italic"
+            android:minLines="3"
+            android:maxLines="3"
             android:hint="@string/describeYourLesson"
             android:id="@+id/lessonDescription"/>
 
-        </LinearLayout>
+    </LinearLayout>
+
+    <GridLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="horizontal"
+        android:useDefaultMargins="true">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/text_size_medium"
+            android:text="Send Audio"/>
+
+        <ToggleButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="New ToggleButton"
+            android:id="@+id/toggleTeacherAudio"
+            android:layout_gravity="right" />
+
+    </GridLayout>
+
+    <GridLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="horizontal"
+        android:useDefaultMargins="true">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/text_size_medium"
+            android:text="Send Video"/>
+
+        <ToggleButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="New ToggleButton"
+            android:id="@+id/toggleTeacherVideo"
+            android:layout_gravity="right" />
+
+    </GridLayout>
+
 
 </LinearLayout>
