@@ -3,8 +3,8 @@
 
     <string name="app_name">ACE</string>
     <string name="action_settings">Settings</string>
-    <string name="student">Student: </string>
-    <string name="teacher">Teacher: </string>
+    <string name="student">Student</string>
+    <string name="teacher">Teacher</string>
     <string name="enterYourName">Enter your name...</string>
     <string name="title_activity_create_student">CreateStudent</string>
     <string name="title_activity_create_teacher">CreateTeacher</string>

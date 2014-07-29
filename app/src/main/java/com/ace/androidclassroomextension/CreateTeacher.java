@@ -28,7 +28,7 @@ public class CreateTeacher extends Activity {
         name = nameData.getStringExtra("name");
 
         TextView nameTeacher = (TextView) findViewById(R.id.nameOfTeacher);
-        nameTeacher.append(" " + name);
+        nameTeacher.append(": " + name);
 
         //TODO assign the stock photo to the user
 
