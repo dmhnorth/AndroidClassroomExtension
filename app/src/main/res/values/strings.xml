@@ -11,5 +11,7 @@
     <string name="describeYourLesson">Describe your lesson...</string>
     <string name="lessonDescription">Lesson Description:</string>
     <string name="exit">Exit</string>
+    <string name="send_audio">Send Audio</string>
+    <string name="send_video">Send Video</string>
 
 </resources>

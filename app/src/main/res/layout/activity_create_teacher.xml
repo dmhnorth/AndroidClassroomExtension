@@ -68,12 +68,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="@dimen/text_size_medium"
-            android:text="Send Audio"/>
+            android:text="@string/send_audio"/>
 
         <ToggleButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="New ToggleButton"
             android:id="@+id/toggleTeacherAudio"
             android:layout_gravity="right" />
 
@@ -88,7 +87,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="@dimen/text_size_medium"
-            android:text="Send Video"/>
+            android:text="@string/send_video"/>
 
         <ToggleButton
             android:layout_width="wrap_content"
