@@ -41,8 +41,8 @@ public class CreateTeacher extends Activity {
     }
 
     /**
-     * to get the lesson description
-     * @return
+     * Gets the lesson description.
+     * @return the lesson description
      */
     private String getLessonDescription(){
         EditText descriptionET = (EditText) findViewById(R.id.lessonDescription);
@@ -51,5 +51,10 @@ public class CreateTeacher extends Activity {
 
     public void selectPhoto(View view) {
         //TODO Enable the ability to select a photo from the users handset
+        
+
+
+
+
     }
 }
