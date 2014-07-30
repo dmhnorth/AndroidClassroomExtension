@@ -10,5 +10,6 @@
     <string name="title_activity_create_teacher">CreateTeacher</string>
     <string name="describeYourLesson">Describe your lesson...</string>
     <string name="lessonDescription">Lesson Description:</string>
+    <string name="exit">Exit</string>
 
 </resources>
