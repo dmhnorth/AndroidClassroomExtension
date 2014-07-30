@@ -5,11 +5,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 
 import com.ace.androidclassroomextension.R;
 
 public class CreateStudent extends Activity {
+
+    private String name;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,11 +20,13 @@ public class CreateStudent extends Activity {
         setContentView(R.layout.activity_create_student);
 
         Intent nameData = getIntent();
-        String name = nameData.getStringExtra("name");
+        name = nameData.getStringExtra("name");
 
-        TextView nameTeacher = (TextView) findViewById(R.id.nameOfStudent);
-        nameTeacher.setText("The student name is: " + name);
+        TextView nameStudent = (TextView) findViewById(R.id.nameOfStudent);
+        nameStudent.append(": " + name);
     }
 
-
+    public void selectPhoto(View view) {
+        //TODO Enable the ability to select a photo from the users handset
+    }
 }
