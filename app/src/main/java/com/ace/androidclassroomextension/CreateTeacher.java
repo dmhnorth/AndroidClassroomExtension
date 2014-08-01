@@ -17,6 +17,11 @@ public class CreateTeacher extends Activity {
 
     private String name;
 
+    //Uri address to save the media
+    private Uri userImage;
+
+    ImageView profilePicture;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,13 +33,16 @@ public class CreateTeacher extends Activity {
         TextView nameTeacher = (TextView) findViewById(R.id.nameOfTeacher);
         nameTeacher.append(": " + name);
 
-        //TODO assign the stock photo to the user
+        //TODO assign the saved photo to the user
+        profilePicture = (ImageView) findViewById(R.id.user_photo);
+        profilePicture.setImageURI(userImage);
+
 
         //TODO find the user microphone
 
         //TODO find the user webcam
 
-        //TODO assign all these elements somewhere, either to a class or whatever
+        //TODO assign all these elements to a teacher class
 
     }
 
@@ -53,33 +61,23 @@ public class CreateTeacher extends Activity {
     //request result code for using image afterwards
     private static final int CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE = 100;
 
-    //Uri address to save the media
-    private Uri fileUri;
-
-
-
     public void selectPhoto(View view) {
 
         // Intent to take a picture then return control to the calling application
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
 
-
-        //
+        //Get a unique URI for an image
         OutputMediaFileUriManager outputMediaFileUriManager = new OutputMediaFileUriManager();
 
         // create an Immutable URI reference. to save the image
-        fileUri = outputMediaFileUriManager.getImageUri();
+        userImage = outputMediaFileUriManager.getImageUri();
 
         // set the image file name
-        intent.putExtra(MediaStore.EXTRA_OUTPUT, fileUri);
+        intent.putExtra(MediaStore.EXTRA_OUTPUT, userImage);
 
         // start the image capture Intent
         startActivityForResult(intent, CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE);
     }
-
-
-
-
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -89,10 +87,8 @@ public class CreateTeacher extends Activity {
         if(requestCode == CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE) {
             //check the result was OK
             if(resultCode == RESULT_OK) {
-                //get the ImageView
-                ImageView profilePicture = (ImageView) findViewById(R.id.user_photo);
                 //Set the image in the creator Activity
-                profilePicture.setImageURI(fileUri);
+                profilePicture.setImageURI(userImage);
             }
         }
     }
