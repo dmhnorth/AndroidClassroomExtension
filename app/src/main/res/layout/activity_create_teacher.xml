@@ -30,6 +30,7 @@
             android:layout_height="wrap_content"
             android:src="@drawable/silhouette"
             android:clickable="true"
+            android:id="@+id/user_photo"
             android:onClick="selectPhoto"/>
 
     </LinearLayout>

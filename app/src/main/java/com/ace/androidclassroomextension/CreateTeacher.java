@@ -3,6 +3,7 @@ package com.ace.androidclassroomextension;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Picture;
+import android.media.Image;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -13,6 +14,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -132,6 +134,23 @@ public class CreateTeacher extends Activity {
 
         return mediaFile;
     }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
 
+        //check which result came back
+        if(requestCode == CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE) {
+            //check the result was OK
+            if(resultCode == RESULT_OK) {
+                //do something with the data now
+
+                //grabs the ImageView
+                ImageView profilePicture = (ImageView) findViewById(R.id.user_photo);
+
+                //Set the image in the creator Activity
+                profilePicture.setImageURI(fileUri);
+            }
+        }
+    }
 }
 
