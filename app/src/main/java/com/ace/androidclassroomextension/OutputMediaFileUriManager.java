@@ -9,9 +9,11 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
+ * For management and generation of unique Uri identifiers.
+ *
  * Created by Dave on 01/08/2014.
  */
-public class MediaFileUriManager {
+public class OutputMediaFileUriManager {
 
     //Media format codes
     public static final int MEDIA_FORMAT_IMAGE = 1;
@@ -58,7 +60,20 @@ public class MediaFileUriManager {
         return mediaFile;
     }
 
-    public int getImageUri() {
-        return MEDIA_FORMAT_IMAGE;
+    /**
+     * To get a unique Image Uri
+     * @return image Uri
+     */
+    public Uri getImageUri() {
+        return getOutputMediaFileUri(MEDIA_FORMAT_IMAGE);
     }
+
+    /**
+     * To get a unique Video Uri
+     * @return Video Uri
+     */
+    public Uri getVideoUri() {
+        return getOutputMediaFileUri(MEDIA_FORMAT_VIDEO);
+    }
+
 }

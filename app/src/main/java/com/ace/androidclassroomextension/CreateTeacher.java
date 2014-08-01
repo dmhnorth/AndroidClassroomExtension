@@ -2,27 +2,13 @@ package com.ace.androidclassroomextension;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.graphics.Picture;
-import android.media.Image;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Environment;
-import android.os.storage.StorageManager;
 import android.provider.MediaStore;
-import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import com.ace.androidclassroomextension.R;
-
-import java.io.File;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 /**
  * For creating all the assets necessary to instantiate a classroom
@@ -78,11 +64,11 @@ public class CreateTeacher extends Activity {
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
 
 
-        MediaFileUriManager mediaFileUriManager = new MediaFileUriManager();
+        //
+        OutputMediaFileUriManager outputMediaFileUriManager = new OutputMediaFileUriManager();
 
-        //TODO don't call the choice image explicitly
         // create an Immutable URI reference. to save the image
-        fileUri = mediaFileUriManager.getOutputMediaFileUri(mediaFileUriManager.getImageUri());
+        fileUri = outputMediaFileUriManager.getImageUri();
 
         // set the image file name
         intent.putExtra(MediaStore.EXTRA_OUTPUT, fileUri);
