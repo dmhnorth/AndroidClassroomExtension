@@ -62,9 +62,7 @@ public class CreateTeacher extends Activity {
     }
 
 
-    //Media format codes
-    public static final int MEDIA_FORMAT_IMAGE = 1;
-    public static final int MEDIA_FORMAT_VIDEO = 2;
+
 
     //request result code for using image afterwards
     private static final int CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE = 100;
@@ -76,13 +74,15 @@ public class CreateTeacher extends Activity {
 
     public void selectPhoto(View view) {
 
-        //TODO move as much of image capture system (including above refs) to a new class and eliminate video returns
-
         // Intent to take a picture then return control to the calling application
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
 
+
+        MediaFileUriManager mediaFileUriManager = new MediaFileUriManager();
+
+        //TODO don't call the choice image explicitly
         // create an Immutable URI reference. to save the image
-        fileUri = getOutputMediaFileUri(MEDIA_FORMAT_IMAGE);
+        fileUri = mediaFileUriManager.getOutputMediaFileUri(mediaFileUriManager.getImageUri());
 
         // set the image file name
         intent.putExtra(MediaStore.EXTRA_OUTPUT, fileUri);
@@ -93,47 +93,8 @@ public class CreateTeacher extends Activity {
 
 
 
-    /** Create a file Uri for saving an image or video */
-    private static Uri getOutputMediaFileUri(int type){
-        return Uri.fromFile(getOutputMediaFile(type));
-    }
 
-    /**
-     * Create a timestamped media file on the SD card
-     * @param type
-     * @return the media file created
-     */
-    private static File getOutputMediaFile(int type){
 
-        //TODO Use returned String with details of the internal media storage status.
-        Environment.getExternalStorageState();
-
-        File mediaStorageDir = new File(Environment.getExternalStoragePublicDirectory(
-                Environment.DIRECTORY_PICTURES), "Ace");
-
-        // Create the storage directory if it does not exist
-        if (! mediaStorageDir.exists()){
-            if (! mediaStorageDir.mkdirs()){
-                Log.d("Ace", "failed to create directory");
-                return null;
-            }
-        }
-
-        // Create a media file name using the date and type
-        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
-        File mediaFile;
-        if (type == MEDIA_FORMAT_IMAGE){
-            mediaFile = new File(mediaStorageDir.getPath() + File.separator +
-                    "IMG_"+ timeStamp + ".jpg");
-        } else if(type == MEDIA_FORMAT_VIDEO) {
-            mediaFile = new File(mediaStorageDir.getPath() + File.separator +
-                    "VID_"+ timeStamp + ".mp4");
-        } else {
-            return null;
-        }
-
-        return mediaFile;
-    }
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -142,11 +103,8 @@ public class CreateTeacher extends Activity {
         if(requestCode == CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE) {
             //check the result was OK
             if(resultCode == RESULT_OK) {
-                //do something with the data now
-
-                //grabs the ImageView
+                //get the ImageView
                 ImageView profilePicture = (ImageView) findViewById(R.id.user_photo);
-
                 //Set the image in the creator Activity
                 profilePicture.setImageURI(fileUri);
             }
