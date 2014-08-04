@@ -43,15 +43,17 @@ public class CreateTeacher extends Activity {
         profilePicture = (ImageView) findViewById(R.id.user_photo);
         if(!(userImage == null)) {
             profilePicture.setImageBitmap(userImage);
-            //TODO scaling crashes when image is rotated
-//            scaleProfilePicture();
-        }
+            //TODO scaling crashes when phone is rotated
+//            scaleAndSetProfilePicture();
+
 
         //TODO find the user microphone
 
         //TODO find the user webcam
 
         //TODO assign all these elements to a teacher class
+        }
+
 
     }
 
@@ -65,12 +67,10 @@ public class CreateTeacher extends Activity {
     }
 
 
-
-
-    //request result code for using image afterwards
+    //'Request' result code for using image afterwards
     private static final int CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE = 100;
 
-    public void selectPhoto(View view) {
+    public void takePhoto(View view) {
 
         // Intent to take a picture then return control to the calling application
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
@@ -92,10 +92,9 @@ public class CreateTeacher extends Activity {
     }
 
     /**
-     * Memory management:
-     * For scaling the Profile Bitmap within the Activity
+     * Scales the Profile Bitmap within the Activity to minimise memory usage
      */
-    private void scaleProfilePicture() {
+    private void scaleAndSetProfilePicture() {
         // Get the dimensions of the View
         int targetW = profilePicture.getWidth();
         int targetH = profilePicture.getHeight();
@@ -120,12 +119,11 @@ public class CreateTeacher extends Activity {
     }
 
     /**
-     * For adding the photo to the main Android Gallery for use elsewhere
+     * Adds the photo to the main Android Gallery for use elsewhere
      */
     private void galleryAddPic() {
         Intent mediaScanIntent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
-        Uri contentUri = userImageUri;
-        mediaScanIntent.setData(contentUri);
+        mediaScanIntent.setData(userImageUri);
         this.sendBroadcast(mediaScanIntent);
 
     }
@@ -143,7 +141,7 @@ public class CreateTeacher extends Activity {
                 try {
                     //Set the image in the creator Activity
                     userImage = MediaStore.Images.Media.getBitmap(this.getContentResolver(), userImageUri);
-                    scaleProfilePicture();
+                    scaleAndSetProfilePicture();
 
                     //TODO Write the image file to an OutputStream so it shows in other galleries
 

@@ -26,7 +26,7 @@ public class CreateStudent extends Activity {
         nameStudent.append(": " + name);
     }
 
-    public void selectPhoto(View view) {
+    public void takePhoto(View view) {
         //TODO Enable the ability to select a photo from the users handset
     }
 }

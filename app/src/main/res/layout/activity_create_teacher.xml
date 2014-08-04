@@ -32,7 +32,7 @@
             android:layout_gravity="center"
             android:clickable="true"
             android:id="@+id/user_photo"
-            android:onClick="selectPhoto"/>
+            android:onClick="takePhoto"/>
 
     </LinearLayout>
 
@@ -61,44 +61,23 @@
 
     </LinearLayout>
 
-    <GridLayout
+    <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:orientation="horizontal"
-        android:useDefaultMargins="true">
-        <TextView
+        android:orientation="vertical"
+        android:layout_margin="15dp"
+        android:gravity="center">
+        <Switch
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="@dimen/text_size_medium"
-            android:text="@string/send_audio"/>
+            android:text="@string/send_audio"
+            android:id="@+id/toggleTeacherAudio"/>
 
-        <ToggleButton
+        <Switch
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/toggleTeacherAudio"
-            android:layout_gravity="right" />
-
-    </GridLayout>
-
-    <GridLayout
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:orientation="horizontal"
-        android:useDefaultMargins="true">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="@dimen/text_size_medium"
-            android:text="@string/send_video"/>
-
-        <ToggleButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="New ToggleButton"
-            android:id="@+id/toggleTeacherVideo"
-            android:layout_gravity="right" />
-
-    </GridLayout>
-
+            android:text="@string/send_video"
+            android:id="@+id/toggleTeacherVideo"/>
+    </LinearLayout>
 
 </LinearLayout>
