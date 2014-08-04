@@ -3,6 +3,7 @@ package com.ace.androidclassroomextension;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -42,10 +43,9 @@ public class CreateTeacher extends Activity {
         profilePicture = (ImageView) findViewById(R.id.user_photo);
         if(!(userImage == null)) {
             profilePicture.setImageBitmap(userImage);
+            //TODO scaling crashes when image is rotated
+//            scaleProfilePicture();
         }
-
-
-
 
         //TODO find the user microphone
 
@@ -56,8 +56,8 @@ public class CreateTeacher extends Activity {
     }
 
     /**
-     * Gets the lesson description.
-     * @return the lesson description
+     * Gets the lesson description entered by the user.
+     * @return the lesson description as a String
      */
     private String getLessonDescription(){
         EditText descriptionET = (EditText) findViewById(R.id.lessonDescription);
@@ -87,17 +87,48 @@ public class CreateTeacher extends Activity {
         // start the image capture Intent
         startActivityForResult(intent, CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE);
 
-        //TODO add the photo to the local Android gallery DOESN'T WORK
-        galleryAddPic();
+        //TODO add the photo to the local Android gallery requires OutputStream to be written in OutputMediaFileUriManager
+//        galleryAddPic();
     }
 
+    /**
+     * Memory management:
+     * For scaling the Profile Bitmap within the Activity
+     */
+    private void scaleProfilePicture() {
+        // Get the dimensions of the View
+        int targetW = profilePicture.getWidth();
+        int targetH = profilePicture.getHeight();
+
+        // Get the dimensions of the bitmap
+        BitmapFactory.Options bmOptions = new BitmapFactory.Options();
+        bmOptions.inJustDecodeBounds = true;
+        BitmapFactory.decodeFile(userImageUri.getEncodedPath(), bmOptions);
+        int photoW = bmOptions.outWidth;
+        int photoH = bmOptions.outHeight;
+
+        // Determine how much to scale down the image
+        int scaleFactor = Math.min(photoW/targetW, photoH/targetH);
+
+        // Decode the image file into a Bitmap sized to fill the View
+        bmOptions.inJustDecodeBounds = false;
+        bmOptions.inSampleSize = scaleFactor;
+        bmOptions.inPurgeable = true;
+
+        Bitmap bitmap = BitmapFactory.decodeFile(userImageUri.getEncodedPath(), bmOptions);
+        profilePicture.setImageBitmap(bitmap);
+    }
+
+    /**
+     * For adding the photo to the main Android Gallery for use elsewhere
+     */
     private void galleryAddPic() {
         Intent mediaScanIntent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
-        mediaScanIntent.setData(userImageUri);
+        Uri contentUri = userImageUri;
+        mediaScanIntent.setData(contentUri);
         this.sendBroadcast(mediaScanIntent);
+
     }
-
-
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -112,11 +143,13 @@ public class CreateTeacher extends Activity {
                 try {
                     //Set the image in the creator Activity
                     userImage = MediaStore.Images.Media.getBitmap(this.getContentResolver(), userImageUri);
-                    profilePicture.setImageBitmap(userImage);
+                    scaleProfilePicture();
+
+                    //TODO Write the image file to an OutputStream so it shows in other galleries
+
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
-
             }
         }
     }
