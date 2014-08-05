@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.io.IOException;
 
@@ -152,6 +153,16 @@ public class CreateUser extends Activity {
                     }
             }
         }
+    }
+
+    public void createTeacher(View view) {
+        Toast.makeText(this, "Not yet available", Toast.LENGTH_SHORT).show();
+        //TODO launch a teacher creator
+    }
+
+    public void createStudent(View view) {
+        Toast.makeText(this, "Not yet available", Toast.LENGTH_SHORT).show();
+        //TODO launch a student creator
     }
 }
 

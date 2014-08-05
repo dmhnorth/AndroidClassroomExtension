@@ -26,11 +26,12 @@
             android:textSize="@dimen/text_size_large"/>
 
         <ImageView
-            android:layout_width="200dp"
-            android:layout_height="200dp"
+            android:layout_width="fill_parent"
+            android:layout_height="260dp"
             android:layout_gravity="center"
             android:id="@+id/user_photo"
             android:src="@drawable/silhouette"
+            android:scaleType="centerCrop"
             android:clickable="true"
             android:onClick="takePhoto"/>
 
@@ -42,19 +43,39 @@
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:orientation="vertical"
-        android:layout_margin="15dp"
+        android:layout_marginTop="5dp"
         android:gravity="center">
         <Switch
-            android:layout_width="wrap_content"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:id="@+id/toggleTeacherAudio"
             android:text="@string/send_audio"/>
 
         <Switch
-            android:layout_width="wrap_content"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:id="@+id/toggleTeacherVideo"
             android:text="@string/send_video"/>
     </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:orientation="vertical"
+        android:gravity="center_horizontal">
+
+        <Button
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/teacher"
+            android:onClick="createTeacher"/>
+
+        <Button
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/student"
+            android:onClick="createStudent"/>
+        </LinearLayout>
 
 </LinearLayout>

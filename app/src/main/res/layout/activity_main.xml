@@ -26,8 +26,7 @@
             android:id="@+id/nameEntry"
             android:inputType="textPersonName"
             android:hint="Enter your name..."
-            android:textStyle="italic"
-            android:textAlignment="center"/>
+            android:textStyle="italic"/>
 
         <Button
             android:layout_width="match_parent"
