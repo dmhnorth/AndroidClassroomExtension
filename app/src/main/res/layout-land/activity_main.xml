@@ -29,8 +29,8 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/activity_vertical_margin"
             android:layout_marginRight="@dimen/activity_vertical_margin"
-            android:id="@+id/createTeacher"
-            android:text="@string/teacher"
+            android:id="@+id/createUser"
+            android:text="@string/Start"
             android:onClick="createTeacher"/>
 
         <Button

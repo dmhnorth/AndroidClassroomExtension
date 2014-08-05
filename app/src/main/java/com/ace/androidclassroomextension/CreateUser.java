@@ -1,15 +1,12 @@
 package com.ace.androidclassroomextension;
 
-import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -20,7 +17,7 @@ import java.io.IOException;
 /**
  * For creating all the assets necessary to instantiate a classroom
  */
-public class CreateTeacher extends Activity {
+public class CreateUser extends Activity {
 
     private Teacher teacher;
     private static Uri userImageUri;
@@ -30,7 +27,7 @@ public class CreateTeacher extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_create_teacher);
+        setContentView(R.layout.activity_create_user);
 
         //Retrieve data from previous activity
         Intent intent = getIntent();

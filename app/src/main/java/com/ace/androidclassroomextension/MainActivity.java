@@ -6,11 +6,8 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-
-import java.security.InvalidParameterException;
 
 
 public class MainActivity extends Activity {
@@ -38,7 +35,7 @@ public class MainActivity extends Activity {
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
         if (id == R.id.action_settings) {
-            Toast.makeText(this, "No options yet!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "No settings yet!", Toast.LENGTH_SHORT).show();
             return true;
         } else if (id == R.id.exitTheApp){
             finish();
@@ -61,18 +58,9 @@ public class MainActivity extends Activity {
      * @param view
      */
     public void createTeacher(View view) {
-        Intent createTeacherIntent = new Intent(this, CreateTeacher.class);
+        Intent createTeacherIntent = new Intent(this, CreateUser.class);
         createTeacherIntent.putExtra("name", getUserName());
         startActivity(createTeacherIntent);
     }
 
-    /**
-     * Initiate the option and Activity for creating a Student
-     * @param view
-     */
-    public void createStudent(View view) {
-        Intent createStudentIntent = new Intent(this, CreateStudent.class);
-        createStudentIntent.putExtra("name", getUserName());
-        startActivity(createStudentIntent);
-    }
 }

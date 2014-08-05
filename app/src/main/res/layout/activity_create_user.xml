@@ -8,7 +8,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
-    tools:context="com.ace.androidclassroomextension.CreateTeacher">
+    tools:context="com.ace.androidclassroomextension.CreateUser">
 
     <LinearLayout
         android:layout_width="fill_parent"
@@ -20,8 +20,8 @@
             android:layout_marginBottom="@dimen/activity_horizontal_margin"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/nameOfStudent"
-            android:text="@string/student"
+            android:id="@+id/nameOfTeacher"
+            android:text="@string/Start"
             android:textStyle="bold"
             android:textSize="@dimen/text_size_large"/>
 
@@ -46,31 +46,38 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/activity_horizontal_margin"
-            android:text="INSERT LESSON SPINNER"
-            android:minLines="3"
-            android:maxLines="3"
+            android:text="@string/lessonDescription"
             android:textStyle="bold"
             android:textSize="@dimen/text_size_medium"/>
 
-        <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:orientation="vertical"
-            android:layout_margin="15dp"
-            android:gravity="center">
-            <Switch
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/toggleTeacherAudio"
-                android:text="@string/send_audio"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/lessonDescription"
+            android:textStyle="italic"
+            android:minLines="3"
+            android:maxLines="3"
+            android:hint="@string/describeYourLesson"/>
 
-            <Switch
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/toggleTeacherVideo"
-                android:text="@string/send_video"/>
-        </LinearLayout>
+    </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical"
+        android:layout_margin="15dp"
+        android:gravity="center">
+        <Switch
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/toggleTeacherAudio"
+            android:text="@string/send_audio"/>
+
+        <Switch
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/toggleTeacherVideo"
+            android:text="@string/send_video"/>
     </LinearLayout>
 
 </LinearLayout>
