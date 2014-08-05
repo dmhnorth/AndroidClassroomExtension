@@ -24,9 +24,6 @@ public class MainActivity extends Activity {
 
     }
 
-
-
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -59,12 +56,20 @@ public class MainActivity extends Activity {
         return String.valueOf(nameEntry.getText());
     }
 
+    /**
+     * Initiate the option and Activity for creating a Teacher
+     * @param view
+     */
     public void createTeacher(View view) {
         Intent createTeacherIntent = new Intent(this, CreateTeacher.class);
         createTeacherIntent.putExtra("name", getUserName());
         startActivity(createTeacherIntent);
     }
 
+    /**
+     * Initiate the option and Activity for creating a Student
+     * @param view
+     */
     public void createStudent(View view) {
         Intent createStudentIntent = new Intent(this, CreateStudent.class);
         createStudentIntent.putExtra("name", getUserName());

@@ -1,12 +1,15 @@
 package com.ace.androidclassroomextension;
 
+import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -20,9 +23,6 @@ import java.io.IOException;
 public class CreateTeacher extends Activity {
 
     private String name;
-
-    //TODO find out if a static uri is best practice?
-    // Uri address to save the media
     private static Uri userImageUri;
     private static Bitmap userImage;
 
@@ -33,21 +33,22 @@ public class CreateTeacher extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_teacher);
 
-        Intent nameData = getIntent();
-        name = nameData.getStringExtra("name");
+        //Retrieve data from previous activity
+        Intent intent = getIntent();
+        name = intent.getStringExtra("name");
 
         TextView nameTeacher = (TextView) findViewById(R.id.nameOfTeacher);
         nameTeacher.append(": " + name);
+
 
         //Assign the saved photo to the user if available
         profilePicture = (ImageView) findViewById(R.id.user_photo);
         if(!(userImage == null)) {
             profilePicture.setImageBitmap(userImage);
-            //TODO scaling crashes when phone is rotated
-//            scaleAndSetProfilePicture();
+            scaleAndSetProfilePicture();
 
 
-        
+
         //TODO find the user microphone
 
         //TODO find the user webcam
@@ -71,16 +72,20 @@ public class CreateTeacher extends Activity {
     //'Request' result code for using image afterwards
     private static final int CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE = 100;
 
+    /**
+     * To take a photo using the on-board camera application of a device
+     * @param view
+     */
     public void takePhoto(View view) {
 
         // Intent to take a picture then return control to the calling application
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
 
         //Get a unique URI for an image
-        OutputMediaFileUriManager outputMediaFileUriManager = new OutputMediaFileUriManager();
+        MediaFileAndUriManager mediaFileAndUriManager = new MediaFileAndUriManager();
 
         // create an Immutable URI reference. to save the image
-        userImageUri = outputMediaFileUriManager.getImageUri();
+        userImageUri = mediaFileAndUriManager.getImageUri();
 
         // set the image file name
         intent.putExtra(MediaStore.EXTRA_OUTPUT, userImageUri);
@@ -88,7 +93,7 @@ public class CreateTeacher extends Activity {
         // start the image capture Intent
         startActivityForResult(intent, CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE);
 
-        //TODO add the photo to the local Android gallery requires OutputStream to be written in OutputMediaFileUriManager
+        //TODO add the photo to the local Android gallery requires OutputStream to be written in MediaFileAndUriManager
 //        galleryAddPic();
     }
 
@@ -108,7 +113,9 @@ public class CreateTeacher extends Activity {
         int photoH = bmOptions.outHeight;
 
         // Determine how much to scale down the image
-        int scaleFactor = Math.min(photoW/targetW, photoH/targetH);
+        //TODO Currently hard coding the scale factor due to internal variables not being available outside this method
+        int scaleFactor = 2;
+//        int scaleFactor = Math.min(photoW/targetW, photoH/targetH);
 
         // Decode the image file into a Bitmap sized to fill the View
         bmOptions.inJustDecodeBounds = false;
@@ -119,6 +126,7 @@ public class CreateTeacher extends Activity {
         profilePicture.setImageBitmap(bitmap);
     }
 
+
     /**
      * Adds the photo to the main Android Gallery for use elsewhere
      */
@@ -126,26 +134,22 @@ public class CreateTeacher extends Activity {
         Intent mediaScanIntent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
         mediaScanIntent.setData(userImageUri);
         this.sendBroadcast(mediaScanIntent);
-
+    //TODO Write the image file to an OutputStream so it shows in other galleries
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        //check which result came back
+        //Check result code
         if(requestCode == CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE) {
-            //check the result was OK
+            //check result OK
             if(resultCode == RESULT_OK) {
-
                 //cast the result to a bitmap
                 try {
                     //Set the image in the creator Activity
                     userImage = MediaStore.Images.Media.getBitmap(this.getContentResolver(), userImageUri);
                     scaleAndSetProfilePicture();
-
-                    //TODO Write the image file to an OutputStream so it shows in other galleries
-
                     } catch (IOException e) {
                         e.printStackTrace();
                     }

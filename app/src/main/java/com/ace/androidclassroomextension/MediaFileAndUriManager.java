@@ -14,7 +14,7 @@ import java.util.Date;
  *
  * Created by Dave on 01/08/2014.
  */
-public class OutputMediaFileUriManager {
+public class MediaFileAndUriManager {
 
     //Media format codes
     public static final int MEDIA_FORMAT_IMAGE = 1;
