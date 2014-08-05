@@ -8,10 +8,8 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.io.IOException;
 
@@ -56,14 +54,7 @@ public class CreateUser extends Activity {
 
     }
 
-    /**
-     * Gets the lesson description entered by the user.
-     * @return the lesson description as a String
-     */
-    private String getLessonDescription(){
-        EditText descriptionET = (EditText) findViewById(R.id.lessonDescription);
-        return String.valueOf(descriptionET.getText());
-    }
+
 
 
     //'Request' result code for using image afterwards
@@ -71,7 +62,7 @@ public class CreateUser extends Activity {
 
     /**
      * To take a photo using the on-board camera application of a device
-     * @param view
+     * @param view the current view
      */
     public void takePhoto(View view) {
 
@@ -131,7 +122,7 @@ public class CreateUser extends Activity {
         Intent mediaScanIntent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
         mediaScanIntent.setData(userImageUri);
         this.sendBroadcast(mediaScanIntent);
-    //TODO Write the image file to an OutputStream so it shows in other galleries
+    //TODO Write the image file to an OutputStream so it shows in other galleries could potentially just wipe the userData for the app each load
     }
 
     @Override
@@ -156,13 +147,15 @@ public class CreateUser extends Activity {
     }
 
     public void createTeacher(View view) {
-        Toast.makeText(this, "Not yet available", Toast.LENGTH_SHORT).show();
-        //TODO launch a teacher creator
+        Intent createUserIntent = new Intent(this, CreateTeacher.class);
+        createUserIntent.putExtra("user", user);
+        startActivity(createUserIntent);
     }
 
     public void createStudent(View view) {
-        Toast.makeText(this, "Not yet available", Toast.LENGTH_SHORT).show();
-        //TODO launch a student creator
+        Intent createUserIntent = new Intent(this, CreateStudent.class);
+        createUserIntent.putExtra("user", user);
+        startActivity(createUserIntent);
     }
 }
 

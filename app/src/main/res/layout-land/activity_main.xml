@@ -30,7 +30,7 @@
                 android:layout_gravity="center_horizontal"
                 android:id="@+id/nameEntry"
                 android:inputType="textPersonName"
-                android:hint="Enter your name..."
+                android:hint="@string/enter_your_name_hint"
                 android:textStyle="italic"/>
 
             <Button

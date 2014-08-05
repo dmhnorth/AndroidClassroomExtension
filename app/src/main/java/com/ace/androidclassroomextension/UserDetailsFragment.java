@@ -7,6 +7,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 /**
+ * A fragment for the User details already entered before a user decides
+ * which type of user they're going to be
  * Created by Dave on 05/08/2014.
  */
 public class UserDetailsFragment extends Fragment {
@@ -15,11 +17,13 @@ public class UserDetailsFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        //TODO do I get the user details from here or from somewhere else?
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_user_details, container, false);
-        return view;
+        return inflater.inflate(R.layout.fragment_user_details, container, false);
     }
 }
