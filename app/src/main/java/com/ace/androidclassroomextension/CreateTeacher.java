@@ -22,10 +22,9 @@ import java.io.IOException;
  */
 public class CreateTeacher extends Activity {
 
-    private String name;
+    private Teacher teacher;
     private static Uri userImageUri;
     private static Bitmap userImage;
-
     private ImageView profilePicture;
 
     @Override
@@ -35,26 +34,26 @@ public class CreateTeacher extends Activity {
 
         //Retrieve data from previous activity
         Intent intent = getIntent();
-        name = intent.getStringExtra("name");
+        String name = intent.getStringExtra("name");
+
+        //Set Teacher name using intent data
+        teacher = new Teacher(name);
 
         TextView nameTeacher = (TextView) findViewById(R.id.nameOfTeacher);
-        nameTeacher.append(": " + name);
-
+        nameTeacher.append(": " + teacher.getName());
 
         //Assign the saved photo to the user if available
         profilePicture = (ImageView) findViewById(R.id.user_photo);
-        if(!(userImage == null)) {
+        if(userImage != null) {
             profilePicture.setImageBitmap(userImage);
             scaleAndSetProfilePicture();
-
-
+        }
 
         //TODO find the user microphone
 
         //TODO find the user webcam
 
         //TODO assign all these elements to a teacher class
-        }
 
 
     }
@@ -147,8 +146,9 @@ public class CreateTeacher extends Activity {
             if(resultCode == RESULT_OK) {
                 //cast the result to a bitmap
                 try {
-                    //Set the image in the creator Activity
+                    //Set the image in the Activity and the Teacher
                     userImage = MediaStore.Images.Media.getBitmap(this.getContentResolver(), userImageUri);
+                    teacher.setProfilePicture(userImage);
                     scaleAndSetProfilePicture();
                     } catch (IOException e) {
                         e.printStackTrace();
