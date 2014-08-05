@@ -54,13 +54,13 @@ public class MainActivity extends Activity {
     }
 
     /**
-     * Initiate the option and Activity for creating a Teacher
+     * Initiate the option and Activity for creating a User
      * @param view
      */
-    public void createTeacher(View view) {
-        Intent createTeacherIntent = new Intent(this, CreateUser.class);
-        createTeacherIntent.putExtra("name", getUserName());
-        startActivity(createTeacherIntent);
+    public void createUser(View view) {
+        Intent createUserIntent = new Intent(this, CreateUser.class);
+        createUserIntent.putExtra("name", getUserName());
+        startActivity(createUserIntent);
     }
 
 }

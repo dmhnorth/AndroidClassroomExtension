@@ -5,12 +5,12 @@ import android.graphics.Bitmap;
 /**
  * Created by Dave on 05/08/2014.
  */
-public class Teacher {
+public class User {
 
     private String name;
     private Bitmap profilePicture;
 
-    public Teacher(String name){
+    public User(String name){
         setName(name);
     }
 

@@ -7,8 +7,7 @@
     <string name="teacher">Teacher</string>
     <string name="Start">Start</string>
     <string name="enterYourName">Enter your name...</string>
-    <string name="title_activity_create_student">CreateStudent</string>
-    <string name="title_activity_create_teacher">CreateTeacher</string>
+    <string name="title_activity_create_user">CreateUser</string>
     <string name="describeYourLesson">Describe your lesson...</string>
     <string name="lessonDescription">Lesson Description:</string>
     <string name="exit">Exit</string>

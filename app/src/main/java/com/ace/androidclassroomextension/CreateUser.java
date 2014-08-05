@@ -19,7 +19,7 @@ import java.io.IOException;
  */
 public class CreateUser extends Activity {
 
-    private Teacher teacher;
+    private User user;
     private static Uri userImageUri;
     private static Bitmap userImage;
     private ImageView profilePicture;
@@ -33,11 +33,11 @@ public class CreateUser extends Activity {
         Intent intent = getIntent();
         String name = intent.getStringExtra("name");
 
-        //Set Teacher name using intent data
-        teacher = new Teacher(name);
+        //Set User name using intent data
+        user = new User(name);
 
-        TextView nameTeacher = (TextView) findViewById(R.id.nameOfTeacher);
-        nameTeacher.append(": " + teacher.getName());
+        TextView userName = (TextView) findViewById(R.id.nameOfUser);
+        userName.setText(user.getName());
 
         //Assign the saved photo to the user if available
         profilePicture = (ImageView) findViewById(R.id.user_photo);
@@ -50,7 +50,7 @@ public class CreateUser extends Activity {
 
         //TODO find the user webcam
 
-        //TODO assign all these elements to a teacher class
+        //TODO assign all these elements to a User class
 
 
     }
@@ -143,9 +143,9 @@ public class CreateUser extends Activity {
             if(resultCode == RESULT_OK) {
                 //cast the result to a bitmap
                 try {
-                    //Set the image in the Activity and the Teacher
+                    //Set the image in the Activity and the User
                     userImage = MediaStore.Images.Media.getBitmap(this.getContentResolver(), userImageUri);
-                    teacher.setProfilePicture(userImage);
+                    user.setProfilePicture(userImage);
                     scaleAndSetProfilePicture();
                     } catch (IOException e) {
                         e.printStackTrace();

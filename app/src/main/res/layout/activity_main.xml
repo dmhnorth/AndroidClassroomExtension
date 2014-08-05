@@ -38,7 +38,7 @@
             android:layout_gravity="center_horizontal"
             android:id="@+id/createUser"
             android:text="@string/Start"
-            android:onClick="createTeacher"/>
+            android:onClick="createUser"/>
 
     </LinearLayout>
 
