@@ -26,9 +26,9 @@ public class OutputMediaFileUriManager {
     }
 
     /**
-     * Create a timestamped media file on the SD card
+     * Create a timestamped media File on the SD card
      * @param type code for file type
-     * @return the media file created
+     * @return the media File created
      */
     private static File getOutputMediaFile(int type){
 
@@ -77,5 +77,5 @@ public class OutputMediaFileUriManager {
         return getOutputMediaFileUri(MEDIA_FORMAT_VIDEO);
     }
 
-    
+
 }

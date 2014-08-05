@@ -19,18 +19,18 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/activity_horizontal_margin"
-            android:inputType="textPersonName"
             android:id="@+id/nameEntry"
-            android:hint="Enter your name..."
             android:textStyle="italic"/>
+            android:inputType="textPersonName"
+            android:hint="Enter your name..."
 
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/activity_vertical_margin"
             android:layout_marginRight="@dimen/activity_vertical_margin"
-            android:text="@string/teacher"
             android:id="@+id/createTeacher"
+            android:text="@string/teacher"
             android:onClick="createTeacher"/>
 
         <Button
@@ -39,8 +39,8 @@
             android:layout_marginTop="@dimen/activity_horizontal_margin"
             android:layout_marginLeft="@dimen/activity_vertical_margin"
             android:layout_marginRight="@dimen/activity_vertical_margin"
-            android:text="@string/student"
             android:id="@+id/createStudent"
+            android:text="@string/student"
             android:onClick="createStudent"/>
     </LinearLayout>
 

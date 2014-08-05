@@ -8,6 +8,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import java.security.InvalidParameterException;
 
@@ -40,6 +41,7 @@ public class MainActivity extends Activity {
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
         if (id == R.id.action_settings) {
+            Toast.makeText(this, "No options yet!", Toast.LENGTH_SHORT).show();
             return true;
         } else if (id == R.id.exitTheApp){
             finish();

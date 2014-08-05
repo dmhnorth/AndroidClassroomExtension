@@ -47,6 +47,7 @@ public class CreateTeacher extends Activity {
 //            scaleAndSetProfilePicture();
 
 
+        
         //TODO find the user microphone
 
         //TODO find the user webcam
