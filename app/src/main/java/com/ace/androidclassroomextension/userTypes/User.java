@@ -1,7 +1,8 @@
-package com.ace.androidclassroomextension;
+package com.ace.androidclassroomextension.userTypes;
 
-import android.graphics.Bitmap;
+import android.net.Uri;
 
+import java.net.URI;
 import java.io.Serializable;
 
 /**
@@ -9,10 +10,10 @@ import java.io.Serializable;
  * their user profile picture and name.
  * Created by Dave on 05/08/2014.
  */
-public class User implements Serializable{
+public class User implements Serializable {
 
     private String name;
-    private Bitmap profilePicture;
+    private Uri profilePictureUri;
 
     public User(String name){
         setName(name);
@@ -26,11 +27,13 @@ public class User implements Serializable{
         this.name = name;
     }
 
-    public Bitmap getProfilePicture() {
-        return profilePicture;
+    public Uri getProfilePictureUri() {
+        return profilePictureUri;
     }
 
-    public void setProfilePicture(Bitmap profilePicture) {
-        this.profilePicture = profilePicture;
+    public void setProfilePictureUri(Uri profilePictureUri) {
+        this.profilePictureUri = profilePictureUri;
     }
+
+
 }

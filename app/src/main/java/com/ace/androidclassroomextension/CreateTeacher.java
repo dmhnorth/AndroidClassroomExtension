@@ -6,6 +6,9 @@ import android.os.Bundle;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.ace.androidclassroomextension.userTypes.Teacher;
+import com.ace.androidclassroomextension.userTypes.User;
+
 /**
  * The Teacher creator backend
  * Created by Dave on 05/08/2014.
@@ -22,7 +25,7 @@ public class CreateTeacher extends Activity {
 
         User user = (User) intent.getSerializableExtra("user");
 
-        teacher = new Teacher(user.getName(), user.getProfilePicture());
+        teacher = new Teacher(user.getName(), user.getProfilePictureUri());
 
         TextView userName = (TextView) findViewById(R.id.userName);
         userName.setText(teacher.getName());

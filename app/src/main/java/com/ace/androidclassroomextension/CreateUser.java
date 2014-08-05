@@ -2,8 +2,6 @@ package com.ace.androidclassroomextension;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -11,7 +9,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import java.io.IOException;
+import com.ace.androidclassroomextension.userTypes.User;
 
 /**
  * For creating all the assets necessary to instantiate a classroom
@@ -19,8 +17,7 @@ import java.io.IOException;
 public class CreateUser extends Activity {
 
     private User user;
-    private static Uri userImageUri;
-    private static Bitmap userImage;
+    private Uri userImageUri;
     private ImageView profilePicture;
 
     @Override
@@ -40,22 +37,18 @@ public class CreateUser extends Activity {
 
         //Assign the saved photo to the user if available
         profilePicture = (ImageView) findViewById(R.id.user_photo);
-        if(userImage != null) {
-            profilePicture.setImageBitmap(userImage);
-            scaleAndSetProfilePicture();
+        if(user.getProfilePictureUri() != null) {
+            profilePicture.setImageURI(user.getProfilePictureUri());
         }
 
         //TODO find the user microphone
 
-        //TODO find the user webcam
+        //TODO find the user web cam
 
         //TODO assign all these elements to a User class
 
 
     }
-
-
-
 
     //'Request' result code for using image afterwards
     private static final int CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE = 100;
@@ -69,10 +62,10 @@ public class CreateUser extends Activity {
         // Intent to take a picture then return control to the calling application
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
 
-        //Get a unique URI for an image
+        //Get a unique Uri for an image
         MediaFileAndUriManager mediaFileAndUriManager = new MediaFileAndUriManager();
 
-        // create an Immutable URI reference. to save the image
+        // create an Immutable Uri reference. to save the image
         userImageUri = mediaFileAndUriManager.getImageUri();
 
         // set the image file name
@@ -83,35 +76,6 @@ public class CreateUser extends Activity {
 
         //TODO add the photo to the local Android gallery requires OutputStream to be written in MediaFileAndUriManager
 //        galleryAddPic();
-    }
-
-    /**
-     * Scales the Profile Bitmap within the Activity to minimise memory usage
-     */
-    private void scaleAndSetProfilePicture() {
-        // Get the dimensions of the View
-        int targetW = profilePicture.getWidth();
-        int targetH = profilePicture.getHeight();
-
-        // Get the dimensions of the bitmap
-        BitmapFactory.Options bmOptions = new BitmapFactory.Options();
-        bmOptions.inJustDecodeBounds = true;
-        BitmapFactory.decodeFile(userImageUri.getEncodedPath(), bmOptions);
-        int photoW = bmOptions.outWidth;
-        int photoH = bmOptions.outHeight;
-
-        // Determine how much to scale down the image
-        //TODO Currently hard coding the scale factor due to internal variables not being available outside this method
-        int scaleFactor = 2;
-//        int scaleFactor = Math.min(photoW/targetW, photoH/targetH);
-
-        // Decode the image file into a Bitmap sized to fill the View
-        bmOptions.inJustDecodeBounds = false;
-        bmOptions.inSampleSize = scaleFactor;
-        bmOptions.inPurgeable = true;
-
-        Bitmap bitmap = BitmapFactory.decodeFile(userImageUri.getEncodedPath(), bmOptions);
-        profilePicture.setImageBitmap(bitmap);
     }
 
 
@@ -133,19 +97,15 @@ public class CreateUser extends Activity {
         if(requestCode == CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE) {
             //check result OK
             if(resultCode == RESULT_OK) {
-                //cast the result to a bitmap
-                try {
-                    //Set the image in the Activity and the User
-                    userImage = MediaStore.Images.Media.getBitmap(this.getContentResolver(), userImageUri);
-                    user.setProfilePicture(userImage);
-                    scaleAndSetProfilePicture();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
+                //set the user image and replace in ImageView in activity
+                user.setProfilePictureUri(userImageUri);
+                profilePicture.setImageURI(userImageUri);
+
             }
         }
     }
 
+    //TODO change the Uri within the User formats into a String. Create new method for this.
     public void createTeacher(View view) {
         Intent createUserIntent = new Intent(this, CreateTeacher.class);
         createUserIntent.putExtra("user", user);
