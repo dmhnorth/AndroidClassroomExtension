@@ -1,4 +1,4 @@
-package com.ace.androidclassroomextension;
+package com.ace.androidclassroomextension.creatorActivities;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -9,6 +9,8 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.ace.androidclassroomextension.R;
+import com.ace.androidclassroomextension.utilities.UriFactory;
 import com.ace.androidclassroomextension.userTypes.User;
 
 /**
@@ -63,10 +65,10 @@ public class CreateUser extends Activity {
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
 
         //Get a unique Uri for an image
-        MediaFileAndUriManager mediaFileAndUriManager = new MediaFileAndUriManager();
+        UriFactory uriFactory = new UriFactory();
 
         // create an Immutable Uri reference. to save the image
-        userImageUri = mediaFileAndUriManager.getImageUri();
+        userImageUri = uriFactory.getImageUri();
 
         // set the image file name
         intent.putExtra(MediaStore.EXTRA_OUTPUT, userImageUri);
@@ -74,7 +76,7 @@ public class CreateUser extends Activity {
         // start the image capture Intent
         startActivityForResult(intent, CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE);
 
-        //TODO add the photo to the local Android gallery requires OutputStream to be written in MediaFileAndUriManager
+        //TODO add the photo to the local Android gallery requires OutputStream to be written in UriFactory
 //        galleryAddPic();
     }
 

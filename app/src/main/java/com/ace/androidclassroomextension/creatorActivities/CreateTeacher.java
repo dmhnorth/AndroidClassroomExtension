@@ -1,4 +1,4 @@
-package com.ace.androidclassroomextension;
+package com.ace.androidclassroomextension.creatorActivities;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.ace.androidclassroomextension.R;
 import com.ace.androidclassroomextension.userTypes.Teacher;
 import com.ace.androidclassroomextension.userTypes.User;
 

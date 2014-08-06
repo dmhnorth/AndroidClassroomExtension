@@ -1,4 +1,4 @@
-package com.ace.androidclassroomextension;
+package com.ace.androidclassroomextension.utilities;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -14,7 +14,7 @@ import java.util.Date;
  *
  * Created by Dave on 01/08/2014.
  */
-public class MediaFileAndUriManager {
+public class UriFactory {
 
     //Media format codes
     public static final int MEDIA_FORMAT_IMAGE = 1;

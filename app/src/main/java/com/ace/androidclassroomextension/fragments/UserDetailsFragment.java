@@ -1,10 +1,12 @@
-package com.ace.androidclassroomextension;
+package com.ace.androidclassroomextension.fragments;
 
 import android.app.Fragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.ace.androidclassroomextension.R;
 
 /**
  * A fragment for the User details already entered before a user decides

@@ -21,15 +21,15 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".CreateUser"
+            android:name=".creatorActivities.CreateUser"
             android:label="@string/title_activity_create_user"
             android:parentActivityName=".MainActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.ace.androidclassroomextension.MainActivity" />
         </activity>
-        <activity android:name=".CreateTeacher"/>
-        <activity android:name=".CreateStudent"/>
+        <activity android:name=".creatorActivities.CreateTeacher"/>
+        <activity android:name=".creatorActivities.CreateStudent"/>
     </application>
 
 </manifest>
