@@ -29,6 +29,9 @@ public class CreateTeacher extends Activity {
 
         user = (User) intent.getParcelableExtra("user");
 
+        //Set teacher status
+        user.setIsTeacher(true);
+
         userName = (TextView) findViewById(R.id.userName);
         userName.setText(user.getName());
 

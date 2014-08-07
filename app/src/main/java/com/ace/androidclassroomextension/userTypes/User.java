@@ -19,9 +19,18 @@ public class User implements Parcelable {
 
     private String name;
     private Uri profilePictureUri;
+    private Boolean isTeacher;
+    private Boolean allowAudio;
+    private Boolean allowVideo;
 
+    /**
+     * standard constructor
+     * @param name
+     */
     public User(String name) {
         setName(name);
+        setAllowAudio(false);
+        setAllowVideo(false);
     }
 
     /**
@@ -89,4 +98,28 @@ public class User implements Parcelable {
             return new User[size];
         }
     };
+
+    public Boolean getIsTeacher() {
+        return isTeacher;
+    }
+
+    public void setIsTeacher(Boolean isTeacher) {
+        this.isTeacher = isTeacher;
+    }
+
+    public Boolean getAllowAudio() {
+        return allowAudio;
+    }
+
+    public void setAllowAudio(Boolean allowAudio) {
+        this.allowAudio = allowAudio;
+    }
+
+    public Boolean getAllowVideo() {
+        return allowVideo;
+    }
+
+    public void setAllowVideo(Boolean allowVideo) {
+        this.allowVideo = allowVideo;
+    }
 }
