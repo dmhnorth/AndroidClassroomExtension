@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.ace.androidclassroomextension.R;
@@ -24,12 +25,14 @@ public class CreateTeacher extends Activity {
 
         Intent intent = getIntent();
 
-        User user = (User) intent.getSerializableExtra("user");
+        User user = (User) intent.getParcelableExtra("user");
 
         teacher = new Teacher(user.getName(), user.getProfilePictureUri());
 
         TextView userName = (TextView) findViewById(R.id.userName);
         userName.setText(teacher.getName());
+
+
 
 
     }
