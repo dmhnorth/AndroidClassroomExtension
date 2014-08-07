@@ -8,8 +8,8 @@ import java.net.URI;
 import java.io.Serializable;
 
 /**
- * The Super class of Teacher and Student, used initially when the user is creating
- * their user profile picture and name.
+ * The User class. Contains all persistent data unique to the device for both
+ * Student and Teacher mode.
  *
  * Parcelable code adapted from http://shri.blog.kraya.co.uk/2010/04/26/android-parcel-data-to-pass-between-activities-using-parcelable-classes/
  *

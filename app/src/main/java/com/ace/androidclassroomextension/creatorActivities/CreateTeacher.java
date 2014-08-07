@@ -8,7 +8,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.ace.androidclassroomextension.R;
-import com.ace.androidclassroomextension.userTypes.Teacher;
 import com.ace.androidclassroomextension.userTypes.User;
 
 /**
@@ -16,7 +15,6 @@ import com.ace.androidclassroomextension.userTypes.User;
  * Created by Dave on 05/08/2014.
  */
 public class CreateTeacher extends Activity {
-    private Teacher teacher;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,13 +25,11 @@ public class CreateTeacher extends Activity {
 
         User user = (User) intent.getParcelableExtra("user");
 
-        teacher = new Teacher(user.getName(), user.getProfilePictureUri());
-
         TextView userName = (TextView) findViewById(R.id.userName);
-        userName.setText(teacher.getName());
+        userName.setText(user.getName());
 
         ImageView profilePicture = (ImageView) findViewById(R.id.user_details_photo);
-        profilePicture.setImageURI(teacher.getProfilePictureUri());
+        profilePicture.setImageURI(user.getProfilePictureUri());
 
 
     }
