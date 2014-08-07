@@ -19,9 +19,9 @@ public class User implements Parcelable {
 
     private String name;
     private Uri profilePictureUri;
-    private Boolean isTeacher;
-    private Boolean allowAudio;
-    private Boolean allowVideo;
+    private boolean isTeacher;
+    private boolean allowAudio;
+    private boolean allowVideo;
 
     /**
      * standard constructor
@@ -67,6 +67,13 @@ public class User implements Parcelable {
     private void readFromParcel(Parcel in) {
         name = in.readString();
         profilePictureUri = in.readParcelable(Uri.class.getClassLoader());
+
+        //TODO Test these are being returned effectively
+        boolean[] options = in.createBooleanArray();
+        isTeacher = options[0];
+        allowAudio = options[1];
+        allowVideo = options [2];
+
     }
 
     /*
@@ -86,6 +93,9 @@ public class User implements Parcelable {
     public void writeToParcel(Parcel write, int flags) {
         write.writeString(name);
         write.writeParcelable(profilePictureUri, flags);
+
+        boolean[] options = {isTeacher, allowAudio, allowVideo};
+        write.writeBooleanArray(options);
     }
 
     /*
