@@ -16,6 +16,10 @@ import com.ace.androidclassroomextension.userTypes.User;
  */
 public class CreateTeacher extends Activity {
 
+    private TextView userName;
+    private ImageView profilePicture;
+    private User user;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,15 +27,13 @@ public class CreateTeacher extends Activity {
 
         Intent intent = getIntent();
 
-        User user = (User) intent.getParcelableExtra("user");
+        user = (User) intent.getParcelableExtra("user");
 
-        TextView userName = (TextView) findViewById(R.id.userName);
+        userName = (TextView) findViewById(R.id.userName);
         userName.setText(user.getName());
 
-        ImageView profilePicture = (ImageView) findViewById(R.id.user_details_photo);
+        profilePicture = (ImageView) findViewById(R.id.user_details_photo);
         profilePicture.setImageURI(user.getProfilePictureUri());
-
-
     }
 
     /**

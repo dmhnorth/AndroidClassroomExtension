@@ -19,9 +19,6 @@ public class UserDetailsFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        //TODO do I get the user details from here or from somewhere else?
-
     }
 
     @Override
