@@ -32,7 +32,8 @@ public class CreateTeacher extends Activity {
         TextView userName = (TextView) findViewById(R.id.userName);
         userName.setText(teacher.getName());
 
-
+        ImageView profilePicture = (ImageView) findViewById(R.id.user_details_photo);
+        profilePicture.setImageURI(teacher.getProfilePictureUri());
 
 
     }
