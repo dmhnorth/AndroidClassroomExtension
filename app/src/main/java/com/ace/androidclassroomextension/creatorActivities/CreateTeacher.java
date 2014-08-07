@@ -27,10 +27,11 @@ public class CreateTeacher extends Activity {
 
         Intent intent = getIntent();
 
-        user = (User) intent.getParcelableExtra("user");
+        user = intent.getParcelableExtra("user");
 
         //Set teacher status
         user.setIsTeacher(true);
+//        Log.i("current Once in Teacher Creator", String.valueOf(user.getIsTeacher()));
 
         userName = (TextView) findViewById(R.id.userName);
         userName.setText(user.getName());

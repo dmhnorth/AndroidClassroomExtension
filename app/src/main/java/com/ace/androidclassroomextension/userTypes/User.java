@@ -4,9 +4,6 @@ import android.net.Uri;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import java.net.URI;
-import java.io.Serializable;
-
 /**
  * The User class. Contains all persistent data unique to the device for both
  * Student and Teacher mode.
@@ -25,12 +22,10 @@ public class User implements Parcelable {
 
     /**
      * standard constructor
-     * @param name
+     * @param name Chosen name
      */
     public User(String name) {
         setName(name);
-        setAllowAudio(false);
-        setAllowVideo(false);
     }
 
     /**
@@ -68,11 +63,12 @@ public class User implements Parcelable {
         name = in.readString();
         profilePictureUri = in.readParcelable(Uri.class.getClassLoader());
 
-        //TODO Test these are being returned effectively
+        //TODO Test these are being returned effectively THEY ARE ACCORDING TO LOG
         boolean[] options = in.createBooleanArray();
         isTeacher = options[0];
         allowAudio = options[1];
         allowVideo = options [2];
+//        Log.i("readParcel up options: ", Arrays.toString(options));
 
     }
 
@@ -96,6 +92,7 @@ public class User implements Parcelable {
 
         boolean[] options = {isTeacher, allowAudio, allowVideo};
         write.writeBooleanArray(options);
+//        Log.i("current isTeacher", String.valueOf(isTeacher));
     }
 
     /*
