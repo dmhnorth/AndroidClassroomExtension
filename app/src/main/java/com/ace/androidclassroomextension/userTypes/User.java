@@ -8,7 +8,8 @@ import android.os.Parcelable;
  * The User class. Contains all persistent data unique to the device for both
  * Student and Teacher mode.
  *
- * Parcelable code adapted from http://shri.blog.kraya.co.uk/2010/04/26/android-parcel-data-to-pass-between-activities-using-parcelable-classes/
+ * Parcelable code adapted from
+ * http://shri.blog.kraya.co.uk/2010/04/26/android-parcel-data-to-pass-between-activities-using-parcelable-classes/
  *
  * Created by Dave on 05/08/2014.
  */

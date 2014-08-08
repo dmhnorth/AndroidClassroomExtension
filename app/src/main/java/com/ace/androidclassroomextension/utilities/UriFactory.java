@@ -11,6 +11,7 @@ import java.util.Date;
 
 /**
  * For management and generation of unique Uri identifiers.
+ * Adapted from code found at http://developer.android.com/guide/topics/media/camera.html
  *
  * Created by Dave on 01/08/2014.
  */
