@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -36,6 +37,12 @@ public class CreateStudent extends Activity {
         user.setIsTeacher(false);
         userType = (TextView) findViewById(R.id.isTeacher);
         userType.setText("Student");
+
+        //Set checkboxes
+        CheckBox audio = (CheckBox) findViewById(R.id.checkBoxAudio);
+        audio.setChecked(user.getAllowAudio());
+        CheckBox video = (CheckBox) findViewById(R.id.checkBoxVideo);
+        video.setChecked(user.getAllowVideo());
 
         Log.i("Student Creator||isTeacher|audio|video|: ", Arrays.toString(new Boolean[]{user.getIsTeacher(), user.getAllowAudio(), user.getAllowVideo()}));
 
