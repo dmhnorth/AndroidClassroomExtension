@@ -19,7 +19,7 @@ import java.util.Arrays;
 public class CreateStudent extends Activity {
 
     private User user;
-    private TextView userName;
+    private TextView userType, userName;
     private ImageView profilePicture;
 
     @Override
@@ -34,6 +34,8 @@ public class CreateStudent extends Activity {
 
         //Set teacher status
         user.setIsTeacher(false);
+        userType = (TextView) findViewById(R.id.isTeacher);
+        userType.setText("Student");
 
         Log.i("Student Creator||isTeacher|audio|video|: ", Arrays.toString(new Boolean[]{user.getIsTeacher(), user.getAllowAudio(), user.getAllowVideo()}));
 

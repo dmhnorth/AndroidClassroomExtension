@@ -19,7 +19,7 @@ import java.util.Arrays;
  */
 public class CreateTeacher extends Activity {
 
-    private TextView userName;
+    private TextView userType, userName;
     private ImageView profilePicture;
     private User user;
 
@@ -32,8 +32,11 @@ public class CreateTeacher extends Activity {
 
         user = intent.getParcelableExtra("user");
 
-        //Set teacher status
+        //Set teacher status and update view
         user.setIsTeacher(true);
+        userType = (TextView) findViewById(R.id.isTeacher);
+        userType.setText("Teacher");
+
 
         Log.i("Teacher Creator||isTeacher|audio|video|: ", Arrays.toString(new Boolean[]{user.getIsTeacher(), user.getAllowAudio(), user.getAllowVideo()}));
 

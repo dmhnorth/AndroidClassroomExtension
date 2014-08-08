@@ -5,16 +5,28 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:id="@+id/isTeacher"
+        android:text="@string/user_type"
+        android:textStyle="bold"
+        android:textSize="@dimen/text_size_large"/>
 
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:gravity="center"
         android:id="@+id/userName"
-        android:text="The user name goes here"/>
+        android:text="@string/enterYourName"
+        android:textSize="@dimen/text_size_large"/>
 
     <ImageView
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="fill_parent"
+        android:layout_height="260dp"
+        android:layout_gravity="center"
+        android:scaleType="centerCrop"
         android:src="@drawable/silhouette"
         android:id="@+id/user_details_photo"/>
 
