@@ -7,7 +7,9 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.ace.androidclassroomextension.R;
 import com.ace.androidclassroomextension.utilities.UriFactory;
@@ -109,7 +111,6 @@ public class CreateUser extends Activity {
         }
     }
 
-    //TODO change the Uri within the User formats into a String. Create new method for this.
     public void createTeacher(View view) {
         Intent createUserIntent = new Intent(this, CreateTeacher.class);
         createUserIntent.putExtra("user", user);
@@ -120,6 +121,36 @@ public class CreateUser extends Activity {
         Intent createUserIntent = new Intent(this, CreateStudent.class);
         createUserIntent.putExtra("user", user);
         startActivity(createUserIntent);
+    }
+
+    public void sendAudioToggle(View view) {
+        boolean on = ((Switch) view).isChecked();
+
+        if (on) {
+
+            user.setAllowAudio(true);
+            //TODO find the audio stream
+            Toast.makeText(this, "Audio is now on", Toast.LENGTH_SHORT).show();
+        } else {
+            user.setAllowAudio(false);
+            //TODO clear the audio stream
+            Toast.makeText(this, "Audio is now off", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    public void sendVideoToggle(View view) {
+        boolean on = ((Switch) view).isChecked();
+
+        if (on) {
+
+            user.setAllowVideo(true);
+            //TODO find the video stream
+            Toast.makeText(this, "Video is now on", Toast.LENGTH_SHORT).show();
+        } else {
+            user.setAllowVideo(false);
+            //TODO clear the video stream
+            Toast.makeText(this, "Video is now off", Toast.LENGTH_SHORT).show();
+        }
     }
 }
 

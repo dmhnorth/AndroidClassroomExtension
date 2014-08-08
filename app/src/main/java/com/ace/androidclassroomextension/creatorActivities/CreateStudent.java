@@ -3,11 +3,14 @@ package com.ace.androidclassroomextension.creatorActivities;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.ace.androidclassroomextension.R;
 import com.ace.androidclassroomextension.userTypes.User;
+
+import java.util.Arrays;
 
 /**
  * The Student creator activity backend
@@ -31,6 +34,8 @@ public class CreateStudent extends Activity {
 
         //Set teacher status
         user.setIsTeacher(false);
+
+        Log.i("Student Creator||isTeacher|audio|video|: ", Arrays.toString(new Boolean[]{user.getIsTeacher(), user.getAllowAudio(), user.getAllowVideo()}));
 
         userName = (TextView) findViewById(R.id.userName);
         userName.setText(user.getName());

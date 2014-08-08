@@ -49,13 +49,15 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:id="@+id/toggleTeacherAudio"
-            android:text="@string/send_audio"/>
+            android:text="@string/send_audio"
+            android:onClick="sendAudioToggle"/>
 
         <Switch
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:id="@+id/toggleTeacherVideo"
-            android:text="@string/send_video"/>
+            android:text="@string/send_video"
+            android:onClick="sendVideoToggle"/>
     </LinearLayout>
 
     <LinearLayout

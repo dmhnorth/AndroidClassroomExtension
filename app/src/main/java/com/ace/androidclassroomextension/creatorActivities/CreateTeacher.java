@@ -3,12 +3,15 @@ package com.ace.androidclassroomextension.creatorActivities;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.ace.androidclassroomextension.R;
 import com.ace.androidclassroomextension.userTypes.User;
+
+import java.util.Arrays;
 
 /**
  * The Teacher creator backend
@@ -31,7 +34,8 @@ public class CreateTeacher extends Activity {
 
         //Set teacher status
         user.setIsTeacher(true);
-//        Log.i("current Once in Teacher Creator", String.valueOf(user.getIsTeacher()));
+
+        Log.i("Teacher Creator||isTeacher|audio|video|: ", Arrays.toString(new Boolean[]{user.getIsTeacher(), user.getAllowAudio(), user.getAllowVideo()}));
 
         userName = (TextView) findViewById(R.id.userName);
         userName.setText(user.getName());
