@@ -28,7 +28,7 @@ public class CreateStudent extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_student);
 
-        //TODO repeated code, is there a way around this?
+        //TODO repeated code, is there a way around this? can this be put in the fragment backend?
         Intent intent = getIntent();
 
         user = (User) intent.getParcelableExtra("user");

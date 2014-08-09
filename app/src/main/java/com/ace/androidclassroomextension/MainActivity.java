@@ -3,6 +3,7 @@ package com.ace.androidclassroomextension;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -60,9 +61,16 @@ public class MainActivity extends Activity {
      * @param view
      */
     public void createUser(View view) {
-        Intent createUserIntent = new Intent(this, CreateUser.class);
-        createUserIntent.putExtra("name", getUserName());
-        startActivity(createUserIntent);
-    }
 
+        //Validate name entry
+        Log.i("current name: ", getUserName());
+
+        if (!(getUserName().equals(""))){
+            Intent createUserIntent = new Intent(this, CreateUser.class);
+            createUserIntent.putExtra("name", getUserName());
+            startActivity(createUserIntent);
+        } else {
+            Toast.makeText(this, "Enter a name!", Toast.LENGTH_SHORT).show();
+        }
+    }
 }
