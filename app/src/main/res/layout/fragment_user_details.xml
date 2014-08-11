@@ -30,18 +30,25 @@
         android:src="@drawable/silhouette"
         android:id="@+id/user_details_photo"/>
 
-    <CheckBox
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/checkBoxAudio"
-        android:text="Audio Stream"
-        android:clickable="false"/>
+        android:orientation="horizontal"
+        android:gravity="center"
+     >
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/checkBoxAudio"
+            android:text="Audio Stream"
+            android:clickable="false"/>
 
-    <CheckBox
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Video Stream"
-        android:id="@+id/checkBoxVideo"
-        android:clickable="false"/>
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Video Stream"
+            android:id="@+id/checkBoxVideo"
+            android:clickable="false"/>
+    </LinearLayout>
 
 </LinearLayout>

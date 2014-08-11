@@ -12,4 +12,17 @@
         android:layout="@layout/fragment_user_details"
         tools:layout="@layout/fragment_user_details" />
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/choose_a_lesson"
+        android:textStyle="bold"
+        android:textSize="@dimen/text_size_medium"/>
+
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/lesson_chooser"
+        android:layout_gravity="center_horizontal" />
+
 </LinearLayout>

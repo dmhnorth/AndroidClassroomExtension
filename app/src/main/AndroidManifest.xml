@@ -2,9 +2,12 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.ace.androidclassroomextension" >
 
-    <uses-permission
-        android:name="android.permission.WRITE_EXTERNAL_STORAGE">
-    </uses-permission>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+
+    <uses-permission android:name="android.permission.INTERNET"/>
+
+    Possibly not needed
+    <uses-permission android:name="android.permission.USE_SIP"/>
 
     <application
         android:allowBackup="true"
