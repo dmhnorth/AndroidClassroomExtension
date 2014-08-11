@@ -11,11 +11,13 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.ace.androidclassroomextension.creatorActivities.CreateUser;
+import com.ace.androidclassroomextension.userTypes.User;
 
 
 public class MainActivity extends Activity {
 
     private EditText nameEntry;
+    private User user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,7 +60,7 @@ public class MainActivity extends Activity {
 
     /**
      * Initiate the option and Activity for creating a User
-     * @param view
+     * @param view current view
      */
     public void createUser(View view) {
 
@@ -67,10 +69,19 @@ public class MainActivity extends Activity {
 
         if (!(getUserName().equals(""))){
             Intent createUserIntent = new Intent(this, CreateUser.class);
-            createUserIntent.putExtra("name", getUserName());
+
+            user = new User(getUserName());
+            createUserIntent.putExtra("user", user);
+
             startActivity(createUserIntent);
         } else {
             Toast.makeText(this, "Enter a name!", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    @Override
+    protected void onDestroy() {
+        //TODO implement this so the user is saved, may have to lose 'new' within createUser
+
     }
 }

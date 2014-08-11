@@ -33,10 +33,9 @@ public class CreateUser extends Activity {
 
         //Retrieve data from previous activity
         Intent intent = getIntent();
-        String name = intent.getStringExtra("name");
 
-        //Set User name using intent data
-        user = new User(name);
+        //Set User using intent data
+        user = intent.getParcelableExtra("user");
 
         TextView userName = (TextView) findViewById(R.id.nameOfUser);
         userName.setText(user.getName());
