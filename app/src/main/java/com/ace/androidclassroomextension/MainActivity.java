@@ -70,7 +70,10 @@ public class MainActivity extends Activity {
         if (!(getUserName().equals(""))){
             Intent createUserIntent = new Intent(this, CreateUser.class);
 
-            user = new User(getUserName());
+            if (user == null){
+                user = new User(getUserName());
+            }
+
             createUserIntent.putExtra("user", user);
 
             startActivity(createUserIntent);
@@ -81,6 +84,7 @@ public class MainActivity extends Activity {
 
     @Override
     protected void onDestroy() {
+        super.onDestroy();
         //TODO implement this so the user is saved, may have to lose 'new' within createUser
 
     }
