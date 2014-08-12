@@ -65,11 +65,12 @@ public class MainActivity extends Activity {
     public void createUser(View view) {
 
         //Validate name entry
-        Log.i("current name: ", getUserName());
+        Log.d("current name: ", getUserName());
 
         if (!(getUserName().equals(""))){
             Intent createUserIntent = new Intent(this, CreateUser.class);
 
+            //Initialise the user if it hasn't been done
             if (user == null){
                 user = new User(getUserName());
             }
