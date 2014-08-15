@@ -151,5 +151,6 @@ public class CreateUser extends Activity {
             Toast.makeText(this, "Video is now off", Toast.LENGTH_SHORT).show();
         }
     }
+
 }
 

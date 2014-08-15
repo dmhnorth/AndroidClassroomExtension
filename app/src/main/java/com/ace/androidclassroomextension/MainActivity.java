@@ -26,37 +26,10 @@ public class MainActivity extends Activity {
     private EditText nameEntry;
     private User user;
 
-    private String PERSISTENCE_TEST = "Didn't work yet";
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-/**
-        //Load the persistent user data
-        FileInputStream fin = null;
-        try {
-            fin = openFileInput(USER_FILE);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-        if (fin != null) {
-            try {
-                PERSISTENCE_TEST = String.valueOf(fin.read());
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-        if (fin != null) {
-            try {
-                fin.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
- **/
-        Log.d("Persistence: ", PERSISTENCE_TEST);
-
     }
 
     @Override
@@ -74,11 +47,6 @@ public class MainActivity extends Activity {
         int id = item.getItemId();
         if (id == R.id.action_settings) {
             Toast.makeText(this, "No settings yet!", Toast.LENGTH_SHORT).show();
-
-            //TODO delete this test
-            PERSISTENCE_TEST = "TEST PRESS WORKED";
-            Log.d("Persistence: ", PERSISTENCE_TEST);
-
             return true;
         } else if (id == R.id.exitTheApp) {
             finish();
@@ -88,9 +56,9 @@ public class MainActivity extends Activity {
     }
 
     /**
-     * Gets the entered username
+     * Gets the user entered username
      *
-     * @return username
+     * @return username entered by the user
      */
     private String getUserName() {
         nameEntry = (EditText) findViewById(R.id.nameEntry);
@@ -113,6 +81,8 @@ public class MainActivity extends Activity {
             //Initialise the user if it hasn't been done
             if (user == null) {
                 user = new User(getUserName());
+            } else {
+                user.setName(getUserName());
             }
 
             createUserIntent.putExtra("user", user);
@@ -123,23 +93,24 @@ public class MainActivity extends Activity {
         }
     }
 
+    //TODO Save the persistent user data
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+//        outState.putParcelable("user", user);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+//        user = savedInstanceState.getParcelable("user");
+    }
+
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        //TODO implement this so the user is saved, may have to lose 'new' within createUser
+        //TODO Save the persistent user data
 
-        //Save the persistent user data
-        try {
-
-            FileOutputStream fos = openFileOutput(PERSISTENCE_TEST, Context.MODE_PRIVATE);
-            fos.write(PERSISTENCE_TEST.getBytes());
-            fos.close();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        Log.i("onDestroy:","was called and persistance");
     }
 }

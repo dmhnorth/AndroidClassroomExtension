@@ -31,7 +31,7 @@ public class CreateStudent extends Activity {
         //TODO repeated code, is there a way around this? can this be put in the fragment backend?
         Intent intent = getIntent();
 
-        user = (User) intent.getParcelableExtra("user");
+        user = intent.getParcelableExtra("user");
 
         //Set teacher status
         user.setIsTeacher(false);

@@ -4,6 +4,8 @@ import android.net.Uri;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import junit.framework.Assert;
+
 /**
  * The User class. Contains all persistent data unique to the device for both
  * Student and Teacher mode.
@@ -38,7 +40,7 @@ public class User implements Parcelable {
     }
 
 
-    public String getName() {
+    public String getName() throws NullPointerException {
         return name;
     }
 
