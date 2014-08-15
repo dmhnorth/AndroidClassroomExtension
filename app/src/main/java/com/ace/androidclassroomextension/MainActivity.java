@@ -3,6 +3,7 @@ package com.ace.androidclassroomextension;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -13,12 +14,6 @@ import android.widget.Toast;
 
 import com.ace.androidclassroomextension.creatorActivities.CreateUser;
 import com.ace.androidclassroomextension.userTypes.User;
-
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectOutputStream;
 
 
 public class MainActivity extends Activity {
@@ -60,7 +55,7 @@ public class MainActivity extends Activity {
      *
      * @return username entered by the user
      */
-    private String getUserName() {
+    private String getUserInputName() {
         nameEntry = (EditText) findViewById(R.id.nameEntry);
         return String.valueOf(nameEntry.getText());
     }
@@ -73,16 +68,16 @@ public class MainActivity extends Activity {
     public void createUser(View view) {
 
         //Validate name entry
-        Log.d("current name: ", getUserName());
+        Log.d("current name: ", getUserInputName());
 
-        if (!(getUserName().equals(""))) {
+        if (!(getUserInputName().equals(""))) {
             Intent createUserIntent = new Intent(this, CreateUser.class);
 
             //Initialise the user if it hasn't been done
             if (user == null) {
-                user = new User(getUserName());
+                user = new User(getUserInputName());
             } else {
-                user.setName(getUserName());
+                user.setName(getUserInputName());
             }
 
             createUserIntent.putExtra("user", user);
@@ -113,4 +108,5 @@ public class MainActivity extends Activity {
         //TODO Save the persistent user data
 
     }
+
 }
