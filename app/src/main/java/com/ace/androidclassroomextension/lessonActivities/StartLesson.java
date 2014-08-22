@@ -45,8 +45,5 @@ public class StartLesson extends Activity {
         profilePicture = (ImageView) findViewById(R.id.user_details_photo);
         profilePicture.setImageURI(user.getProfilePictureUri());
 
-
-
-
     }
 }
