@@ -30,8 +30,8 @@ public class demoLibrary {
     }
 
     public Lesson getDemoLesson() {
-        Lesson lesson = null;
-
+        User user = new User("Demo Teacher");
+        Lesson lesson = new Lesson(user, "Demo Lesson", "This is a description of the lesson.");
         return lesson;
     }
 

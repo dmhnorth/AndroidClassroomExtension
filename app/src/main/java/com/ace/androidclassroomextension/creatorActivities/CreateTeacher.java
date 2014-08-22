@@ -12,6 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.ace.androidclassroomextension.R;
+import com.ace.androidclassroomextension.lessonActivities.StartLesson;
 import com.ace.androidclassroomextension.models.User;
 
 import java.util.Arrays;
@@ -57,21 +58,39 @@ public class CreateTeacher extends Activity {
     }
 
     /**
+     * Gets the lesson name entered by the user.
+     * @return the lesson name
+     */
+    private String getLessonName(){
+        EditText lessonNameET = (EditText) findViewById(R.id.lesson_name);
+        return String.valueOf(lessonNameET.getText());
+    }
+
+    /**
      * Gets the lesson description entered by the user.
-     * @return the lesson description as a String
+     * @return the lesson description
      */
     private String getLessonDescription(){
         EditText descriptionET = (EditText) findViewById(R.id.lessonDescription);
         return String.valueOf(descriptionET.getText());
     }
 
+    /**
+     * For creating the lesson once the user has entered all the details required
+     * @param view
+     */
     public void confirmLessonCreation(View view) {
-        if(getLessonDescription().isEmpty()){
-            Toast.makeText(this, "Enter a Lesson description", Toast.LENGTH_SHORT).show();
+        if(getLessonDescription().isEmpty() || getLessonName().isEmpty()){
+            Toast.makeText(this, "Enter a Lesson description and name!", Toast.LENGTH_SHORT).show();
         } else {
-            user.setLessonDescription(getLessonDescription());
             Toast.makeText(this, "Creating Lesson", Toast.LENGTH_SHORT).show();
-            //TODO start the lesson activity
+
+            //Pass all the details into a new intent for lesson creating
+            Intent startLessonIntent = new Intent(this, StartLesson.class);
+            startLessonIntent.putExtra("user", user);
+            startLessonIntent.putExtra("lessonName", getLessonName());
+            startLessonIntent.putExtra("lessonDescription", getLessonDescription());
+            startActivity(startLessonIntent);
         }
     }
 }

@@ -37,6 +37,7 @@
         </activity>
         <activity android:name=".creatorActivities.CreateTeacher"/>
         <activity android:name=".creatorActivities.CreateStudent"/>
+        <activity android:name=".lessonActivities.StartLesson"/>
     </application>
 
 </manifest>

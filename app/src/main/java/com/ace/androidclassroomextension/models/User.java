@@ -20,7 +20,6 @@ public class User implements Parcelable {
     private boolean isTeacher;
     private boolean allowAudio;
     private boolean allowVideo;
-    private String lessonDescription;
 
     /**
      * standard constructor
@@ -131,11 +130,4 @@ public class User implements Parcelable {
         this.allowVideo = allowVideo;
     }
 
-    public void setLessonDescription(String lessonDescription) {
-        this.lessonDescription = lessonDescription;
-    }
-
-    public String getLessonDescription() {
-        return lessonDescription;
-    }
 }

@@ -18,5 +18,7 @@
     <string name="choose_a_lesson">Choose a Lesson: </string>
     <string name="refresh_lesson_list">Refresh Lesson List</string>
     <string name="create_lesson">Create Lesson</string>
+    <string name="enter_lesson_name">Enter Lesson name...</string>
+    <string name="lesson_name">Lesson Name:</string>
 
 </resources>

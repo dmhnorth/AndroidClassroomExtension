@@ -21,22 +21,35 @@
         android:layout_marginRight="@dimen/activity_vertical_margin"
         android:gravity="left">
 
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center">
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/activity_horizontal_margin"
-            android:text="@string/lessonDescription"
+            android:text="@string/lesson_name"
             android:textStyle="bold"
             android:textSize="@dimen/text_size_medium"/>
+        <EditText
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/lesson_name"
+            android:textStyle="italic"
+            android:textSize="@dimen/text_size_medium"
+            android:minLines="1"
+            android:maxLines="1"
+            android:hint="@string/enter_lesson_name"/>
+        </LinearLayout>
 
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/activity_horizontal_margin"
             android:id="@+id/lessonDescription"
             android:textStyle="italic"
             android:minLines="1"
-            android:maxLines="2"
+            android:maxLines="1"
             android:hint="@string/describeYourLesson"/>
         <Button
             android:layout_width="wrap_content"
