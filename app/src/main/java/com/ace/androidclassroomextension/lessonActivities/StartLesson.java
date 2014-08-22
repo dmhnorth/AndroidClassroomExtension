@@ -35,6 +35,9 @@ public class StartLesson extends Activity {
         //Create the lesson
         lesson = new Lesson(user, lessonName, lessonDescription);
 
+        //Upload the lesson to the server list of lessons in progress
+        //TODO Upload the lesson to the server list of lessons in progress
+
         //Update the view with teacher details
         userName = (TextView) findViewById(R.id.userName);
         userName.setText(user.getName());
