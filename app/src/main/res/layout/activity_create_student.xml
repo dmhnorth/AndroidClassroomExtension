@@ -25,4 +25,22 @@
         android:id="@+id/lesson_chooser"
         android:layout_gravity="center_horizontal" />
 
+    <GridLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center">
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="@string/refresh_lesson_list"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/Start"/>
+
+    </GridLayout>
+
 </LinearLayout>

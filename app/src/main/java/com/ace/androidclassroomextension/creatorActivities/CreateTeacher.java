@@ -4,10 +4,12 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.ace.androidclassroomextension.R;
 import com.ace.androidclassroomextension.models.User;
@@ -61,5 +63,15 @@ public class CreateTeacher extends Activity {
     private String getLessonDescription(){
         EditText descriptionET = (EditText) findViewById(R.id.lessonDescription);
         return String.valueOf(descriptionET.getText());
+    }
+
+    public void confirmLessonCreation(View view) {
+        if(getLessonDescription().isEmpty()){
+            Toast.makeText(this, "Enter a Lesson description", Toast.LENGTH_SHORT).show();
+        } else {
+            user.setLessonDescription(getLessonDescription());
+            Toast.makeText(this, "Creating Lesson", Toast.LENGTH_SHORT).show();
+            //TODO start the lesson activity
+        }
     }
 }

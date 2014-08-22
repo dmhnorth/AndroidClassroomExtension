@@ -16,5 +16,7 @@
     <string name="enter_your_name_hint">Enter your name...</string>
     <string name="user_type">UserType</string>
     <string name="choose_a_lesson">Choose a Lesson: </string>
+    <string name="refresh_lesson_list">Refresh Lesson List</string>
+    <string name="create_lesson">Create Lesson</string>
 
 </resources>
