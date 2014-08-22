@@ -1,19 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+    android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="160dp"
+        android:src="@drawable/silhouette"
+        android:id="@+id/user_details_photo"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
     <TextView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:id="@+id/isTeacher"
-        android:text="@string/user_type"
+        android:text="@string/teacher"
         android:textStyle="bold"
         android:textSize="@dimen/text_size_large"/>
-
     <TextView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
@@ -21,11 +29,7 @@
         android:id="@+id/userName"
         android:text="@string/enterYourName"
         android:textSize="@dimen/text_size_large"/>
+    </LinearLayout>
 
-    <ImageView
-        android:layout_width="fill_parent"
-        android:layout_height="160dp"
-        android:src="@drawable/silhouette"
-        android:id="@+id/user_details_photo"/>
 
 </LinearLayout>

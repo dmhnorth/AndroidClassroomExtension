@@ -43,5 +43,7 @@ public class StartLesson extends Activity {
         profilePicture.setImageURI(user.getProfilePictureUri());
 
 
+
+
     }
 }
