@@ -1,10 +1,8 @@
-package com.ace.androidclassroomextension.userTypes;
+package com.ace.androidclassroomextension.models;
 
 import android.net.Uri;
 import android.os.Parcel;
 import android.os.Parcelable;
-
-import junit.framework.Assert;
 
 /**
  * The User class. Contains all persistent data unique to the device for both
@@ -66,7 +64,6 @@ public class User implements Parcelable {
         name = in.readString();
         profilePictureUri = in.readParcelable(Uri.class.getClassLoader());
 
-        //TODO Test these are being returned effectively THEY ARE ACCORDING TO LOG
         boolean[] options = in.createBooleanArray();
         isTeacher = options[0];
         allowAudio = options[1];

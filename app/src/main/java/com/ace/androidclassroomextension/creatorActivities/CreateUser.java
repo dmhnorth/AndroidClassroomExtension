@@ -13,7 +13,7 @@ import android.widget.Toast;
 
 import com.ace.androidclassroomextension.R;
 import com.ace.androidclassroomextension.utilities.UriFactory;
-import com.ace.androidclassroomextension.userTypes.User;
+import com.ace.androidclassroomextension.models.User;
 
 /**
  * For creating all the assets necessary to instantiate a classroom
@@ -45,21 +45,13 @@ public class CreateUser extends Activity {
         if(user.getProfilePictureUri() != null) {
             profilePicture.setImageURI(user.getProfilePictureUri());
         }
-
-        //TODO find the user microphone
-
-        //TODO find the user web cam
-
-        //TODO assign all these elements to a User class
-
-
     }
 
     //'Request' result code for using image afterwards
     private static final int CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE = 100;
 
     /**
-     * To take a photo using the on-board camera application of a device
+     * Take a photo using the on-board camera application of a device
      * @param view the current view
      */
     public void takePhoto(View view) {
@@ -128,7 +120,7 @@ public class CreateUser extends Activity {
         if (on) {
 
             user.setAllowAudio(true);
-            //TODO find the audio stream
+            //TODO find the audio stream stream to the user
             Toast.makeText(this, "Audio is now on", Toast.LENGTH_SHORT).show();
         } else {
             user.setAllowAudio(false);
@@ -143,7 +135,7 @@ public class CreateUser extends Activity {
         if (on) {
 
             user.setAllowVideo(true);
-            //TODO find the video stream
+            //TODO find and assign the video stream to the user
             Toast.makeText(this, "Video is now on", Toast.LENGTH_SHORT).show();
         } else {
             user.setAllowVideo(false);

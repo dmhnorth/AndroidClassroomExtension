@@ -1,9 +1,7 @@
 package com.ace.androidclassroomextension;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -13,7 +11,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.ace.androidclassroomextension.creatorActivities.CreateUser;
-import com.ace.androidclassroomextension.userTypes.User;
+import com.ace.androidclassroomextension.models.User;
 
 
 public class MainActivity extends Activity {

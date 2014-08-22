@@ -10,7 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.ace.androidclassroomextension.R;
-import com.ace.androidclassroomextension.userTypes.User;
+import com.ace.androidclassroomextension.models.User;
 
 import java.util.Arrays;
 
