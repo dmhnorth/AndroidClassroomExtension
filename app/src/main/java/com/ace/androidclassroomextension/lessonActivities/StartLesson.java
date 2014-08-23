@@ -24,9 +24,11 @@ public class StartLesson extends Activity {
 
     private User user;
     private Lesson lesson;
-    private TextView userName;
-    private ImageView profilePicture;
     private Lesson lessonForView;
+
+    private TextView userName, lessonDescriptionTV;
+    private ImageView profilePicture;
+
 
     private DemoLibrary demoLibrary = new DemoLibrary();
 
@@ -63,9 +65,16 @@ public class StartLesson extends Activity {
         profilePicture = (ImageView) findViewById(R.id.user_details_photo);
         profilePicture.setImageURI(lessonForView.getTeacher().getProfilePictureUri());
 
-
+        lessonDescriptionTV = (TextView) findViewById(R.id.lessonDescription);
+        lessonDescriptionTV.setText(lessonForView.getLessonDescription());
 
         //Populate the ListView
+        updateStudentListView();
+
+
+    }
+
+    private void updateStudentListView() {
         final ListAdapter studentListAdapter = new StudentListAdapter(this, lessonForView.getStudents());
 
         ListView studentListView = (ListView) findViewById(R.id.studentListView);
@@ -78,8 +87,7 @@ public class StartLesson extends Activity {
 
                 User student = (User) adapterView.getItemAtPosition(position);
                 String studentPicked = "Picked " + student.getName()
-                        + "Student info fragment to appear here";
-
+                        + ": Student info fragment to appear here";
                 Toast.makeText(StartLesson.this, studentPicked, Toast.LENGTH_SHORT).show();
             }
         });
