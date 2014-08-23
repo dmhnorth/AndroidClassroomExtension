@@ -6,34 +6,43 @@
     android:layout_height="match_parent">
 
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="160dp"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
         android:src="@drawable/silhouette"
+        android:layout_gravity="left"
         android:id="@+id/user_details_photo"/>
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical">
-    <TextView
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="@string/teacher"
-        android:textStyle="bold"
-        android:textSize="@dimen/text_size_large"/>
-    <TextView
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:id="@+id/userName"
-        android:text="@string/enterYourName"
-        android:textSize="@dimen/text_size_large"/>
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/teacher"
+            android:textStyle="bold"
+            android:textSize="@dimen/text_size_large"/>
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:id="@+id/userName"
+            android:text="@string/enterYourName"
+            android:textSize="@dimen/text_size_large"/>
         <TextView
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:gravity="left"
-            android:id="@+id/lessonDescription"
+            android:id="@+id/teacher_lesson_name"
+            android:text="@string/lesson_name"
+            android:textSize="@dimen/text_size_medium"
+            android:textStyle="italic"/>
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="left"
+            android:id="@+id/teacher_lesson_description"
             android:text="@string/lessonDescription"
             android:textSize="@dimen/text_size_medium"
             android:textStyle="italic"/>

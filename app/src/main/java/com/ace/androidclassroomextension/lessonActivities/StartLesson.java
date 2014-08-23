@@ -26,7 +26,7 @@ public class StartLesson extends Activity {
     private Lesson lesson;
     private Lesson lessonForView;
 
-    private TextView userName, lessonDescriptionTV;
+    private TextView userName, lessonNameTV, lessonDescriptionTV;
     private ImageView profilePicture;
 
 
@@ -65,7 +65,10 @@ public class StartLesson extends Activity {
         profilePicture = (ImageView) findViewById(R.id.user_details_photo);
         profilePicture.setImageURI(lessonForView.getTeacher().getProfilePictureUri());
 
-        lessonDescriptionTV = (TextView) findViewById(R.id.lessonDescription);
+        lessonNameTV = (TextView) findViewById(R.id.teacher_lesson_name);
+        lessonNameTV.setText(lessonForView.getLessonDescription());
+
+        lessonDescriptionTV = (TextView) findViewById(R.id.teacher_lesson_description);
         lessonDescriptionTV.setText(lessonForView.getLessonDescription());
 
         //Populate the ListView
