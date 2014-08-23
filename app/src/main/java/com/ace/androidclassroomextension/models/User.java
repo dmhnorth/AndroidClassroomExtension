@@ -20,12 +20,14 @@ public class User implements Parcelable {
     private boolean isTeacher;
     private boolean allowAudio;
     private boolean allowVideo;
+    private boolean handUp;
 
     /**
      * standard constructor
      * @param name Chosen name
      */
     public User(String name) {
+        setHandUp(false);
         setName(name);
     }
 
@@ -130,4 +132,11 @@ public class User implements Parcelable {
         this.allowVideo = allowVideo;
     }
 
+    public boolean isHandUp() {
+        return handUp;
+    }
+
+    public void setHandUp(boolean handUp) {
+        this.handUp = handUp;
+    }
 }

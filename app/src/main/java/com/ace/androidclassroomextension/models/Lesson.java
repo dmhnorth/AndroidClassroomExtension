@@ -1,7 +1,5 @@
 package com.ace.androidclassroomextension.models;
 
-import android.widget.Toast;
-
 import java.util.ArrayList;
 
 /**
@@ -19,6 +17,7 @@ public class Lesson {
         setTeacher(user);
         setLessonName(lessonName);
         setLessonDescription(lessonDescription);
+        students = null;
     }
 
     public void setTeacher(User teacher) throws IllegalArgumentException {
@@ -43,7 +42,7 @@ public class Lesson {
      * @param student to add
      */
     public void addStudent(User student) {
-        if (students.isEmpty()) {
+        if (students == null) {
             students = new ArrayList<User>();
             students.add(student);
         } else {
@@ -66,4 +65,10 @@ public class Lesson {
     public String getLessonDescription() {
         return lessonDescription;
     }
+
+    public ArrayList<User> getStudents() {
+        return students;
+    }
+
 }
+
