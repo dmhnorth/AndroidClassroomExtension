@@ -19,29 +19,26 @@
         <TextView
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
             android:text="@string/teacher"
             android:textStyle="bold"
             android:textSize="@dimen/text_size_large"/>
         <TextView
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
             android:id="@+id/userName"
             android:text="@string/enterYourName"
             android:textSize="@dimen/text_size_large"/>
         <TextView
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:gravity="left"
+            android:layout_marginTop="10dp"
             android:id="@+id/teacher_lesson_name"
             android:text="@string/lesson_name"
-            android:textSize="@dimen/text_size_medium"
-            android:textStyle="italic"/>
+            android:textStyle="bold"
+            android:textSize="@dimen/text_size_medium"/>
         <TextView
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:gravity="left"
             android:id="@+id/teacher_lesson_description"
             android:text="@string/lessonDescription"
             android:textSize="@dimen/text_size_medium"

@@ -18,6 +18,10 @@ import com.ace.androidclassroomextension.serverDemoUtilities.DemoLibrary;
 
 
 /**
+ *
+ * This class creates the lesson on the server and then updates the view using the
+ * new lesson that has been uploaded to the server.
+ *
  * Created by Dave on 22/08/2014.
  */
 public class StartLesson extends Activity {
@@ -54,7 +58,7 @@ public class StartLesson extends Activity {
         //TODO replace demo library retrieve lesson from the server as JSONObject
 
             //DEMO LIBRARY lesson using teacher
-            lessonForView = demoLibrary.getDemoLesson(lesson.getTeacher());
+            lessonForView = demoLibrary.getDemoLesson(lesson.getTeacher(), lessonName, lessonDescription);
 
 
 
@@ -66,7 +70,7 @@ public class StartLesson extends Activity {
         profilePicture.setImageURI(lessonForView.getTeacher().getProfilePictureUri());
 
         lessonNameTV = (TextView) findViewById(R.id.teacher_lesson_name);
-        lessonNameTV.setText(lessonForView.getLessonDescription());
+        lessonNameTV.setText(lessonForView.getLessonName());
 
         lessonDescriptionTV = (TextView) findViewById(R.id.teacher_lesson_description);
         lessonDescriptionTV.setText(lessonForView.getLessonDescription());
