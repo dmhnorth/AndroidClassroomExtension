@@ -38,6 +38,7 @@
             android:id="@+id/lesson_name"
             android:textStyle="italic"
             android:textSize="@dimen/text_size_medium"
+            android:inputType="textPersonName"
             android:minLines="1"
             android:maxLines="1"
             android:hint="@string/enter_lesson_name"/>

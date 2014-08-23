@@ -3,10 +3,13 @@ package com.ace.androidclassroomextension.lessonActivities;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.ace.androidclassroomextension.R;
 import com.ace.androidclassroomextension.models.Lesson;
@@ -43,12 +46,12 @@ public class StartLesson extends Activity {
         //Create the lesson for upload
         lesson = new Lesson(user, lessonName, lessonDescription);
         //Upload the lesson to the server list of lessons in progress
-        //TODO Upload the lesson to the server list of lessons in progress
+        //TODO Upload the lesson to the server lesson list as JSONObject
 
 
-        //TODO retrieve lesson from the server if haven't already using JSON
+        //TODO replace demo library retrieve lesson from the server as JSONObject
 
-            //DEMO LIBRARY
+            //DEMO LIBRARY lesson using teacher
             lessonForView = demoLibrary.getDemoLesson(lesson.getTeacher());
 
 
@@ -69,6 +72,17 @@ public class StartLesson extends Activity {
 
         studentListView.setAdapter(studentListAdapter);
 
+        studentListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+
+                User student = (User) adapterView.getItemAtPosition(position);
+                String studentPicked = "Picked " + student.getName()
+                        + "Student info fragment to appear here";
+
+                Toast.makeText(StartLesson.this, studentPicked, Toast.LENGTH_SHORT).show();
+            }
+        });
 
     }
 }
