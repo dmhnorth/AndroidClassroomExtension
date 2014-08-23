@@ -63,7 +63,7 @@ public class StartLesson extends Activity {
 
 
         //Populate the ListView
-        final ListAdapter studentListAdapter = new StudentListAdapter(this, (User[]) lessonForView.getStudents().toArray());
+        final ListAdapter studentListAdapter = new StudentListAdapter(this, lessonForView.getStudents());
 
         ListView studentListView = (ListView) findViewById(R.id.studentListView);
 
