@@ -85,21 +85,15 @@ public class CreateTeacher extends Activity {
             Toast.makeText(this, "Enter a Lesson description and name!", Toast.LENGTH_SHORT).show();
         } else {
             Toast.makeText(this, "Creating Lesson", Toast.LENGTH_SHORT).show();
-
-            //Pass all the details into a new intent for lesson creating
             Intent startLessonIntent = new Intent(this, StartLesson.class);
 
             //Create the lesson for upload
             Lesson lesson = new Lesson(user, getLessonName(), getLessonDescription());
-            //Upload the lesson to the server list of lessons in progress
-            //TODO Upload the lesson to the server lesson list as JSONObject
-
+            //Pass details to intent
             startLessonIntent.putExtra("user", user);
-//            startLessonIntent.putExtra("lesson" lesson);
-
-
             startLessonIntent.putExtra("lessonName", getLessonName());
             startLessonIntent.putExtra("lessonDescription", getLessonDescription());
+
             startActivity(startLessonIntent);
         }
     }

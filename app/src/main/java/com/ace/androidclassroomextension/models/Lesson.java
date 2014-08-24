@@ -1,5 +1,8 @@
 package com.ace.androidclassroomextension.models;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.util.ArrayList;
 
 /**
@@ -69,6 +72,5 @@ public class Lesson {
     public ArrayList<User> getStudents() {
         return students;
     }
-
 }
 
