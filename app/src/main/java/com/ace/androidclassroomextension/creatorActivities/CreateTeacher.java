@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import com.ace.androidclassroomextension.R;
 import com.ace.androidclassroomextension.lessonActivities.StartLesson;
+import com.ace.androidclassroomextension.models.Lesson;
 import com.ace.androidclassroomextension.models.User;
 
 import java.util.Arrays;
@@ -87,7 +88,16 @@ public class CreateTeacher extends Activity {
 
             //Pass all the details into a new intent for lesson creating
             Intent startLessonIntent = new Intent(this, StartLesson.class);
+
+            //Create the lesson for upload
+            Lesson lesson = new Lesson(user, getLessonName(), getLessonDescription());
+            //Upload the lesson to the server list of lessons in progress
+            //TODO Upload the lesson to the server lesson list as JSONObject
+
             startLessonIntent.putExtra("user", user);
+//            startLessonIntent.putExtra("lesson" lesson);
+
+
             startLessonIntent.putExtra("lessonName", getLessonName());
             startLessonIntent.putExtra("lessonDescription", getLessonDescription());
             startActivity(startLessonIntent);

@@ -42,11 +42,11 @@ public class StartLesson extends Activity {
         setContentView(R.layout.activity_start_lesson);
 
 
-        //Gather the details about the user and create a lesson
+        //Gather the details about the user and lesson
         Intent intent = getIntent();
         user = intent.getParcelableExtra("user");
-        String lessonName = intent.getStringExtra("lessonName");
-        String lessonDescription = intent.getStringExtra("lessonDescription");
+//        String lessonName = intent.getStringExtra("lessonName");
+//        String lessonDescription = intent.getStringExtra("lessonDescription");
 
 
         //Create the lesson for upload
@@ -55,14 +55,14 @@ public class StartLesson extends Activity {
         //TODO Upload the lesson to the server lesson list as JSONObject
 
 
-        //TODO replace demo library retrieve lesson from the server as JSONObject
+        //TODO replace demo library retrieve lesson from the server as JSONObject and cast to Lesson
+            //DEMO LIBRARY lesson with user, can determine if Teacher or student
+//            lessonForView = demoLibrary.getDemoLesson(lesson.getTeacher(), lessonName, lessonDescription);
+            lessonForView = demoLibrary.getDemoLesson(user, lessonName, lessonDescription);
 
-            //DEMO LIBRARY lesson using teacher
-            lessonForView = demoLibrary.getDemoLesson(lesson.getTeacher(), lessonName, lessonDescription);
 
 
-
-        //Update the View details
+        //Update the View only using lessonForView Object
         userName = (TextView) findViewById(R.id.userName);
         userName.setText(lessonForView.getTeacher().getName());
 
