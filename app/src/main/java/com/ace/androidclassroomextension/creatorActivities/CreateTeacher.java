@@ -81,6 +81,7 @@ public class CreateTeacher extends Activity {
      * @param view
      */
     public void confirmLessonCreation(View view) {
+        //Check user has entered required details
         if(getLessonDescription().isEmpty() || getLessonName().isEmpty()){
             Toast.makeText(this, "Enter a Lesson description and name!", Toast.LENGTH_SHORT).show();
         } else {

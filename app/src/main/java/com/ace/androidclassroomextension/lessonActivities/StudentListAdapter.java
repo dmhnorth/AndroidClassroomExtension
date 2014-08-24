@@ -36,15 +36,19 @@ public class StudentListAdapter extends ArrayAdapter{
         TextView studentNameView = (TextView) studentRowView.findViewById(R.id.studentName);
         studentNameView.setText(student.getName());
 
+        //TODO add the other sections of the custom student row and
         TextView textSent = (TextView) studentRowView.findViewById(R.id.textSent);
-        textSent.setText("Unused:" + student.getName());
+        textSent.setText("Currently Unused TextArea");
 
-
-        //TODO add the other sections of the custom student row
         ImageView studentImage = (ImageView) studentRowView.findViewById(R.id.studentImage);
 //        studentImage.setImageResource(R.drawable.silhouette);
 
         ImageView handUp = (ImageView) studentRowView.findViewById(R.id.handUp);
+        if(student.isHandUp()){
+            //set the colour to red
+        } else{
+            //set the colour to green
+        }
 //        handUp.setImageResource(R.drawable.bordertemplate);
         return studentRowView;
     }
