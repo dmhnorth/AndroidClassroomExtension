@@ -1,6 +1,7 @@
 package com.ace.androidclassroomextension.lessonActivities;
 
 import android.app.Activity;
+import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -12,6 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.ace.androidclassroomextension.R;
+import com.ace.androidclassroomextension.fragments.UserDetailsPopupFragment;
 import com.ace.androidclassroomextension.models.Lesson;
 import com.ace.androidclassroomextension.models.User;
 import com.ace.androidclassroomextension.serverDemoUtilities.DemoLibrary;
@@ -91,6 +93,15 @@ public class StartLesson extends Activity {
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
 
                 User student = (User) adapterView.getItemAtPosition(position);
+
+                /**
+                //TODO replace this placeholder code with userdetails fragment popup
+                Intent userDetailsIntent = new Intent(StartLesson.this, UserDetailsPopupFragment.class);
+                userDetailsIntent.putExtra("student", student);
+                Fragment userDetails = new Fragment();
+                userDetails.startActivity(userDetailsIntent);
+                */
+
                 String studentPicked = "Picked " + student.getName()
                         + ": Student info fragment to appear here";
                 Toast.makeText(StartLesson.this, studentPicked, Toast.LENGTH_SHORT).show();

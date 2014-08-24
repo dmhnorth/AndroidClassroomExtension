@@ -14,6 +14,8 @@ import com.ace.androidclassroomextension.models.User;
 import java.util.ArrayList;
 
 /**
+ * Custom Adapter for the Student list fragment
+ *
  * Created by Dave on 24/07/2014.
  */
 public class StudentListAdapter extends ArrayAdapter{
@@ -38,7 +40,7 @@ public class StudentListAdapter extends ArrayAdapter{
 
         //TODO add the other sections of the custom student row and
         TextView textSent = (TextView) studentRowView.findViewById(R.id.textSent);
-        textSent.setText("Currently Unused TextArea");
+        textSent.setText("Currently unused TextView");
 
         ImageView studentImage = (ImageView) studentRowView.findViewById(R.id.studentImage);
 //        studentImage.setImageResource(R.drawable.silhouette);
@@ -49,7 +51,6 @@ public class StudentListAdapter extends ArrayAdapter{
         } else{
             //set the colour to green
         }
-//        handUp.setImageResource(R.drawable.bordertemplate);
         return studentRowView;
     }
 }
