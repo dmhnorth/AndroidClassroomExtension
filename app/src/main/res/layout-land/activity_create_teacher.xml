@@ -2,12 +2,14 @@
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical" android:layout_width="match_parent"
+    android:orientation="horizontal" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <fragment
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="fill_parent"
+        android:layout_weight="1"
+        android:layout_margin="@dimen/activity_vertical_margin"
         android:id="@+id/user_details_fragment"
         class="com.ace.androidclassroomextension.fragments.UserDetailsFragment"
         android:layout="@layout/fragment_user_details"
@@ -16,9 +18,9 @@
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
+        android:layout_weight="1"
         android:orientation="vertical"
-        android:layout_marginLeft="@dimen/activity_vertical_margin"
-        android:layout_marginRight="@dimen/activity_vertical_margin"
+        android:layout_margin="@dimen/activity_vertical_margin"
         android:gravity="left">
 
         <LinearLayout
@@ -26,41 +28,41 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_gravity="center">
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="@dimen/activity_vertical_margin"
-            android:text="@string/lesson_name"
-            android:gravity="left"
-            android:textStyle="bold"
-            android:textSize="@dimen/text_size_medium"/>
-        <EditText
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/lesson_name"
-            android:textStyle="italic"
-            android:textSize="@dimen/text_size_medium"
-            android:inputType="textPersonName"
-            android:minLines="1"
-            android:maxLines="1"
-            android:hint="@string/enter_lesson_name"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/lesson_name"
+                android:gravity="left"
+                android:textStyle="bold"
+                android:textSize="@dimen/text_size_medium"/>
+            <EditText
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/lesson_name"
+                android:textStyle="italic"
+                android:textSize="@dimen/text_size_medium"
+                android:inputType="textPersonName"
+                android:minLines="1"
+                android:maxLines="1"
+                android:hint="@string/enter_lesson_name"/>
         </LinearLayout>
 
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/activity_horizontal_margin"
             android:layout_marginBottom="@dimen/activity_horizontal_margin"
             android:id="@+id/lessonDescription"
             android:textStyle="italic"
             android:inputType="textCapSentences"
-            android:minLines="1"
-            android:maxLines="1"
+            android:minLines="3"
+            android:maxLines="3"
             android:hint="@string/describeYourLesson"/>
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/create_lesson"
-            android:layout_gravity="center"
+            android:layout_gravity="center|bottom"
             android:onClick="confirmLessonCreation"/>
     </LinearLayout>
 
