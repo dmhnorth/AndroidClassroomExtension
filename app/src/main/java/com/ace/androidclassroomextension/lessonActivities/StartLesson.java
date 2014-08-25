@@ -98,18 +98,10 @@ public class StartLesson extends Activity {
 
                 User student = (User) adapterView.getItemAtPosition(position);
 
-
-                //TODO replace this placeholder code with userdetails fragment popup
-
+                //Generate popup
                 Intent userDetailsIntent = new Intent(StartLesson.this, UserDetailsPopupActivity.class);
                 userDetailsIntent.putExtra("user", student);
                 startActivity(userDetailsIntent);
-
-
-
-                String studentPicked = "Picked " + student.getName()
-                        + ": Student info fragment to appear here";
-                Toast.makeText(StartLesson.this, studentPicked, Toast.LENGTH_SHORT).show();
             }
         });
 
