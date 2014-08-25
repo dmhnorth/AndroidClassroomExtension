@@ -4,11 +4,13 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.ace.androidclassroomextension.R;
+import com.ace.androidclassroomextension.lessonActivities.StartLesson;
 import com.ace.androidclassroomextension.models.User;
 
 import java.util.Arrays;
@@ -51,5 +53,18 @@ public class CreateStudent extends Activity {
 
         profilePicture = (ImageView) findViewById(R.id.user_details_photo);
         profilePicture.setImageURI(user.getProfilePictureUri());
+    }
+
+
+    public void joinLesson(View view) {
+
+        Intent startLessonIntent = new Intent(this, StartLesson.class);
+
+        startLessonIntent.putExtra("user", user);
+
+        //TODO put the lesson choice from the spinner in. probably an ID system
+
+        startActivity(startLessonIntent);
+
     }
 }

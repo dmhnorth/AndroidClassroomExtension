@@ -52,10 +52,12 @@ public class StartLesson extends Activity {
         String lessonName = intent.getStringExtra("lessonName");
         String lessonDescription = intent.getStringExtra("lessonDescription");
 
-        //Create the lesson for upload
+        //Create the lesson for upload if a teacher
+        if(user.getIsTeacher()){
         lesson = new Lesson(user, lessonName, lessonDescription);
         //Upload the lesson to the server list of lessons in progress
         //TODO Upload the lesson to the server lesson list as JSONObject
+        }
 
 
         //TODO replace demo library retrieve lesson from the server as JSONObject and cast for LessonForView
