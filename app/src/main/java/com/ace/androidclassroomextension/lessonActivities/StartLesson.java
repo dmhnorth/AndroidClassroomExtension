@@ -1,9 +1,6 @@
 package com.ace.androidclassroomextension.lessonActivities;
 
 import android.app.Activity;
-import android.app.Fragment;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -12,13 +9,10 @@ import android.widget.ImageView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.ace.androidclassroomextension.R;
-import com.ace.androidclassroomextension.fragments.UserDetailsPopupFragment;
 import com.ace.androidclassroomextension.models.Lesson;
 import com.ace.androidclassroomextension.models.User;
-import com.ace.androidclassroomextension.serverDemoUtilities.DemoLibrary;
 
 
 /**
@@ -38,7 +32,7 @@ public class StartLesson extends Activity {
     private ImageView profilePicture;
 
 
-    private DemoLibrary demoLibrary = new DemoLibrary();
+    private com.ace.androidclassroomextension.serverDemoUtilities.demoLibrary demoLibrary = new com.ace.androidclassroomextension.serverDemoUtilities.demoLibrary();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
