@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.ace.androidclassroomextension.R;
@@ -36,12 +37,9 @@ public class UserDetailsPopupActivity extends Activity {
         TextView userName = (TextView) findViewById(R.id.userName);
         userName.setText(user.getName());
 
-
-
-
-
-        //TODO set all the details in the view
-
+        ImageView imageView = (ImageView) findViewById(R.id.studentImage);
+        //TODO figure out why this is coming up null, possible error in parcel techniques in class
+//        imageView.setImageURI(user.getProfilePictureUri());
     }
 
     /**
