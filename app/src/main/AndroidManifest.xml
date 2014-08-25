@@ -38,6 +38,7 @@
         <activity android:name=".creatorActivities.CreateTeacher"/>
         <activity android:name=".creatorActivities.CreateStudent"/>
         <activity android:name=".lessonActivities.StartLesson"/>
+        <activity android:name=".lessonActivities.UserDetailsPopupActivity"/>
     </application>
 
 </manifest>

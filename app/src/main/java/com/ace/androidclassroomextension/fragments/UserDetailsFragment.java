@@ -15,7 +15,6 @@ import com.ace.androidclassroomextension.R;
  */
 public class UserDetailsFragment extends Fragment {
 
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

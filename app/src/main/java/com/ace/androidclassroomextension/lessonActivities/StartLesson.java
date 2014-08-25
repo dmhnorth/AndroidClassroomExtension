@@ -2,6 +2,8 @@ package com.ace.androidclassroomextension.lessonActivities;
 
 import android.app.Activity;
 import android.app.Fragment;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -56,7 +58,7 @@ public class StartLesson extends Activity {
         //TODO Upload the lesson to the server lesson list as JSONObject
 
 
-        //TODO replace demo library retrieve lesson from the server as JSONObject and cast to Lesson
+        //TODO replace demo library retrieve lesson from the server as JSONObject and cast for LessonForView
             //DEMO LIBRARY lesson with user, can determine if Teacher or student
             lessonForView = demoLibrary.getDemoLesson(user, lessonName, lessonDescription);
 
@@ -94,13 +96,14 @@ public class StartLesson extends Activity {
 
                 User student = (User) adapterView.getItemAtPosition(position);
 
-                /**
+
                 //TODO replace this placeholder code with userdetails fragment popup
-                Intent userDetailsIntent = new Intent(StartLesson.this, UserDetailsPopupFragment.class);
-                userDetailsIntent.putExtra("student", student);
-                Fragment userDetails = new Fragment();
-                userDetails.startActivity(userDetailsIntent);
-                */
+
+                Intent userDetailsIntent = new Intent(StartLesson.this, UserDetailsPopupActivity.class);
+                userDetailsIntent.putExtra("user", student);
+                startActivity(userDetailsIntent);
+
+
 
                 String studentPicked = "Picked " + student.getName()
                         + ": Student info fragment to appear here";
