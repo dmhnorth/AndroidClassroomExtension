@@ -23,7 +23,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/lesson_chooser"
-        android:layout_gravity="center_horizontal" />
+        android:layout_gravity="center_horizontal"/>
 
     <GridLayout
         android:layout_width="wrap_content"
@@ -35,7 +35,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="@string/refresh_lesson_list"/>
+        android:text="@string/refresh_lesson_list"
+        android:onClick="refreshLessonSpinner"/>
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

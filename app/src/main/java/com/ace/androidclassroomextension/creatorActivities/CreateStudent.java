@@ -5,14 +5,19 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.ace.androidclassroomextension.R;
 import com.ace.androidclassroomextension.lessonActivities.StartLesson;
+import com.ace.androidclassroomextension.models.Lesson;
 import com.ace.androidclassroomextension.models.User;
 
+import java.lang.reflect.Array;
 import java.util.Arrays;
 
 /**
@@ -66,5 +71,12 @@ public class CreateStudent extends Activity {
 
         startActivity(startLessonIntent);
 
+    }
+
+
+
+    public void refreshLessonSpinner(View view) {
+        Toast.makeText(this, "Not yet implemented", Toast.LENGTH_SHORT).show();
+        //TODO
     }
 }

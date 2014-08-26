@@ -21,5 +21,7 @@
     <string name="enter_lesson_name">Lesson name...</string>
     <string name="lesson_name">Lesson Name:</string>
     <string name="students_in_this_lesson">Students In This Lesson:</string>
+    <string name="video_stream">Video Stream</string>
+    <string name="audio_stream">Audio Stream</string>
 
 </resources>
