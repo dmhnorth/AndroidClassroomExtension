@@ -1,7 +1,6 @@
 package com.ace.androidclassroomextension.models;
 
-import android.os.Parcel;
-import android.os.Parcelable;
+import android.util.Log;
 
 import java.util.ArrayList;
 
@@ -15,13 +14,19 @@ public class Lesson {
     private ArrayList<User> students;
     private String lessonName;
     private String lessonDescription;
-    private boolean lessonID;
+    private double lessonId;
+    private static int dateId = 0;
 
     public Lesson(User user, String lessonName, String lessonDescription) {
         setTeacher(user);
         setLessonName(lessonName);
         setLessonDescription(lessonDescription);
         students = null;
+
+        //TODO very basic ID generation, extract this to a method
+        dateId++;
+        setLessonId(Math.random()+ dateId);
+        Log.i("lesson Created with id: ", String.valueOf(getLessonId()));
     }
 
     public void setTeacher(User teacher) throws IllegalArgumentException {
@@ -74,16 +79,12 @@ public class Lesson {
         return students;
     }
 
-    public boolean getLessonID() {
-        return lessonID;
+    public double getLessonId() {
+        return lessonId;
     }
 
-    public boolean isLessonID() {
-        return lessonID;
-    }
-
-    public void setLessonID(boolean lessonID) {
-        this.lessonID = lessonID;
+    public void setLessonId(double lessonId) {
+        this.lessonId = lessonId;
     }
 }
 

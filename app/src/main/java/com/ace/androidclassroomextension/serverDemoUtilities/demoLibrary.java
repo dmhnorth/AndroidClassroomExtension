@@ -23,10 +23,12 @@ public class demoLibrary {
     private Lesson lesson1, lesson2, lesson3, lesson4;
 
     public demoLibrary(){
-        generateDemoTeachers();
-        generateDemoStudents();
-        generateDemoLessons();
 
+        if(demoLessonList == null||demoStudentList == null ) {
+            generateDemoTeachers();
+            generateDemoStudents();
+            generateDemoLessons();
+        }
         setDemoStudentList(generateDemoStudentList());
         setDemoLessonList(generateDemoLessonList());
     }
@@ -124,5 +126,10 @@ public class demoLibrary {
 
     public void setDemoLessonList(Lesson[] demoLessonList) {
         this.demoLessonList = demoLessonList;
+    }
+
+    public Lesson getDemoLessonWithId(double chosenLessonId) {
+        //TODO enable the ability to get a lesson via an ID number
+        return null;
     }
 }

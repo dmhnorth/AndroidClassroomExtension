@@ -9,10 +9,13 @@ import android.widget.ImageView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.ace.androidclassroomextension.R;
 import com.ace.androidclassroomextension.models.Lesson;
 import com.ace.androidclassroomextension.models.User;
+
+import java.security.InvalidParameterException;
 
 
 /**
@@ -25,6 +28,7 @@ import com.ace.androidclassroomextension.models.User;
 public class StartLesson extends Activity {
 
     private User user;
+    private double chosenLessonId;
     private Lesson lesson;
     private Lesson lessonForView;
 
@@ -46,17 +50,32 @@ public class StartLesson extends Activity {
         String lessonName = intent.getStringExtra("lessonName");
         String lessonDescription = intent.getStringExtra("lessonDescription");
 
+
+
         //Create the lesson for upload if a teacher
         if(user.getIsTeacher()){
         lesson = new Lesson(user, lessonName, lessonDescription);
+
         //Upload the lesson to the server list of lessons in progress
         //TODO Upload the lesson to the server lesson list as JSONObject
+
+        } else {
+        //TODO insert a try for this
+        chosenLessonId = Double.parseDouble(getIntent().getExtras().get("lessonId").toString());
+
         }
+
 
 
         //TODO replace demo library retrieve lesson from the server as JSONObject and cast for LessonForView
             //DEMO LIBRARY lesson with user, can determine if Teacher or student
+        if(lessonForView == null){
             lessonForView = demoLibrary.createDemoLessonViaUserType(user, lessonName, lessonDescription);
+        }
+        //TODO replace getting lesson for view with searching for the lesson via it's id
+//            lessonForView = demoLibrary.getDemoLessonWithId(chosenLessonId);
+
+
 
 
 
@@ -75,6 +94,9 @@ public class StartLesson extends Activity {
 
         //Populate the ListView
         updateStudentListView();
+
+        //Show the lesson ID
+        Toast.makeText(this, "Lesson ID: "+ lessonForView.getLessonId(), Toast.LENGTH_SHORT).show();
 
 
     }

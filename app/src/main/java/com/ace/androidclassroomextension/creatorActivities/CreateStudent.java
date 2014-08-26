@@ -6,12 +6,10 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.ace.androidclassroomextension.R;
 import com.ace.androidclassroomextension.lessonActivities.StartLesson;
@@ -19,7 +17,6 @@ import com.ace.androidclassroomextension.models.Lesson;
 import com.ace.androidclassroomextension.models.User;
 import com.ace.androidclassroomextension.serverDemoUtilities.demoLibrary;
 
-import java.lang.reflect.Array;
 import java.util.Arrays;
 
 /**
@@ -31,6 +28,8 @@ public class CreateStudent extends Activity {
     private User user;
     private TextView userType, userName;
     private ImageView profilePicture;
+
+    private double chosenLessonId;
 
     Intent startLessonIntent;
 
@@ -70,6 +69,7 @@ public class CreateStudent extends Activity {
         startLessonIntent = new Intent(this, StartLesson.class);
 
         startLessonIntent.putExtra("user", user);
+        startLessonIntent.putExtra("lessonId", chosenLessonId);
 
         //TODO put the lesson choice from the spinner in. probably an ID system
 
@@ -100,9 +100,8 @@ public class CreateStudent extends Activity {
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
 
                 Lesson lesson = (Lesson) adapterView.getItemAtPosition(position);
-
                 //Place the lesson id for the chosen lesson in the Intent
-                startLessonIntent.putExtra("lessonID", lesson.getLessonID());
+                chosenLessonId  = lesson.getLessonId();
             }
         });
     }
