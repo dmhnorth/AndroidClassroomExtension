@@ -15,6 +15,7 @@ public class Lesson {
     private ArrayList<User> students;
     private String lessonName;
     private String lessonDescription;
+    private boolean lessonID;
 
     public Lesson(User user, String lessonName, String lessonDescription) {
         setTeacher(user);
@@ -71,6 +72,18 @@ public class Lesson {
 
     public ArrayList<User> getStudents() {
         return students;
+    }
+
+    public boolean getLessonID() {
+        return lessonID;
+    }
+
+    public boolean isLessonID() {
+        return lessonID;
+    }
+
+    public void setLessonID(boolean lessonID) {
+        this.lessonID = lessonID;
     }
 }
 

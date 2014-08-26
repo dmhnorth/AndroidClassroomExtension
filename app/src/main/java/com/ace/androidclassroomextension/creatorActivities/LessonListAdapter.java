@@ -18,7 +18,7 @@ import java.util.ArrayList;
  *
  * Created by Dave on 26/08/2014.
  */
-public class LessonListAdapter extends ArrayAdapter<Lesson> {
+public class LessonListAdapter extends ArrayAdapter {
 
     public LessonListAdapter(Context context, Lesson[] lessons) {
         super(context, R.layout.lesson_row, lessons);

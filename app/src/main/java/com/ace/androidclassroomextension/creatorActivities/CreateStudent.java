@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.ImageView;
@@ -16,6 +17,7 @@ import com.ace.androidclassroomextension.R;
 import com.ace.androidclassroomextension.lessonActivities.StartLesson;
 import com.ace.androidclassroomextension.models.Lesson;
 import com.ace.androidclassroomextension.models.User;
+import com.ace.androidclassroomextension.serverDemoUtilities.demoLibrary;
 
 import java.lang.reflect.Array;
 import java.util.Arrays;
@@ -29,6 +31,8 @@ public class CreateStudent extends Activity {
     private User user;
     private TextView userType, userName;
     private ImageView profilePicture;
+
+    Intent startLessonIntent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,7 +67,7 @@ public class CreateStudent extends Activity {
 
     public void joinLesson(View view) {
 
-        Intent startLessonIntent = new Intent(this, StartLesson.class);
+        startLessonIntent = new Intent(this, StartLesson.class);
 
         startLessonIntent.putExtra("user", user);
 
@@ -80,17 +84,26 @@ public class CreateStudent extends Activity {
 
         //Get the available lessons
         //TODO get the demo lessons here
-        Lesson[] lessons = null;
+
+        demoLibrary demoLibrary = new demoLibrary();
+
+        Lesson[] lessons = demoLibrary.getDemoLessonList();
 
         Spinner lessonSpinner = (Spinner) findViewById(R.id.lesson_chooser);
 
         lessonSpinner.setAdapter(new LessonListAdapter(this, lessons));
 
-        
+        //TODO make something happen when a lesson is selected
 
+        lessonSpinner.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
 
+                Lesson lesson = (Lesson) adapterView.getItemAtPosition(position);
 
-        Toast.makeText(this, "Not yet implemented", Toast.LENGTH_SHORT).show();
-        //TODO
+                //Place the lesson id for the chosen lesson in the Intent
+                startLessonIntent.putExtra("lessonID", lesson.getLessonID());
+            }
+        });
     }
 }
