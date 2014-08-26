@@ -56,7 +56,7 @@ public class StartLesson extends Activity {
 
         //TODO replace demo library retrieve lesson from the server as JSONObject and cast for LessonForView
             //DEMO LIBRARY lesson with user, can determine if Teacher or student
-            lessonForView = demoLibrary.getDemoLesson(user, lessonName, lessonDescription);
+            lessonForView = demoLibrary.createDemoLessonViaUserType(user, lessonName, lessonDescription);
 
 
 

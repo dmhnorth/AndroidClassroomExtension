@@ -21,8 +21,6 @@
             android:id="@+id/studentImage"
             android:src="@drawable/silhouette"
             />
-
-
     </LinearLayout>
 
     <LinearLayout

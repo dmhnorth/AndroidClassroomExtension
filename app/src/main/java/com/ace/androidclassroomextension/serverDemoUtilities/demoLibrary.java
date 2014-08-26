@@ -5,9 +5,7 @@ import android.util.Log;
 import com.ace.androidclassroomextension.models.Lesson;
 import com.ace.androidclassroomextension.models.User;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Arrays;
 
 /**
  * A library of methods and data structures for demonstrating the Ace Client in
@@ -16,61 +14,112 @@ import java.util.Arrays;
  * Created by Dave on 22/08/2014.
  */
 public class demoLibrary {
-    private ArrayList<User> demoStudentList;
-    private User demoTeacher;
+
+    private User[] demoStudentList;
+    private Lesson[] demoLessonList;
+
+    private User demoTeacher1, demoTeacher2, demoTeacher3;
+    private User student1, student2, student3, student4, student5, student6, student7, student8;
+    private Lesson lesson1, lesson2, lesson3, lesson4;
 
     public demoLibrary(){
-        generateTeacher();
+        generateDemoTeachers();
+        setDemoStudentList(generateDemoStudentList());
+        setDemoLessonList(generateDemoLessonList());
     }
 
-    private void generateTeacher() {
-        demoTeacher = new User("Mr.Teach");
-        demoTeacher.setIsTeacher(true);
-    }
-
-    public User[] generateDemoStudentList() {
+    /**
+     * Generates some demo Teachers
+     */
+    private void generateDemoTeachers() {
         //TODO set images for these examples
-        User student1 = new User("Andy Ant");
-        User student2 = new User("Barry Bear");
-        User student3 = new User("Chris Cat");
-        User student4 = new User("Dave Dolphin");
-        User student5 = new User("Ed Eagle");
-        User student6 = new User("Fred Fox");
-        User student7 = new User("Gary Gorilla");
-        User student8 = new User("Harry Hermit Crab");
+        demoTeacher1 = new User("Mr A.Teach");
+        demoTeacher2 = new User("Mr B.Teach");
+        demoTeacher3 = new User("Mr C.Teach");
+        demoTeacher1.setIsTeacher(true);
+        demoTeacher2.setIsTeacher(true);
+        demoTeacher3.setIsTeacher(true);
+    }
 
+    /**
+     * Generates some demo Students
+     */
+    private void generateDemoStudents(){
+        //TODO set images for these examples
+        student1 = new User("Andy Ant");
+        student2 = new User("Barry Bear");
+        student3 = new User("Chris Cat");
+        student4 = new User("Dave Dolphin");
+        student5 = new User("Ed Eagle");
+        student6 = new User("Fred Fox");
+        student7 = new User("Gary Gorilla");
+        student8 = new User("Harry Hermit Crab");
+    }
+
+    /**
+     * generates a demo student array
+     */
+    private User[] generateDemoStudentList() {
         return new User[]{student1, student2, student3, student4,
                 student5, student6, student7, student8,};
     }
 
     /**
-     * For generating a demo lesson with a given user as the teacher
-     * @param user that is going to be a teacher for the demo lesson
-     * @return full demo lesson with user entered as teacher
+     * generates demo lessons
      */
-    public Lesson getDemoLesson(User user, String lessonName, String lessonDescription) {
+    private void generateDemoLessons() {
+        lesson1 = new Lesson(demoTeacher1, "Algebra Demo", "A demo lesson about Algebra");
+        lesson2 = new Lesson(demoTeacher1, "Balloons Demo", "A demo lesson about Balloons");
+        lesson3 = new Lesson(demoTeacher1, "Calligraphy Demo", "A demo lesson about Calligraphy");
+        lesson4 = new Lesson(demoTeacher1, "Drawing Demo", "A demo lesson about Drawing");
+    }
 
-        Lesson lesson;
+    /**
+     * generates a demo lesson array
+     */
+    private Lesson[] generateDemoLessonList() {
+        return new Lesson[]{lesson1, lesson2, lesson3, lesson4};
+    }
+
+    /**
+     * For creating a demo lesson with a given user as the teacher
+     * @param user that is going to be a teacher or a student for a demo lesson
+     * @return full demo lesson with user entered as teacher or student
+     */
+    public Lesson createDemoLessonViaUserType(User user, String lessonName, String lessonDescription) {
+
+        Lesson result;
 
         if(user.getIsTeacher()) {
-            lesson = new Lesson(user, lessonName, lessonDescription);
+            result = new Lesson(user, lessonName, lessonDescription);
         } else {
-            lesson = new Lesson(demoTeacher, "A demo lesson", "A description of this lesson");
-            lesson.addStudent(user);
+            result = lesson1;
+            result.addStudent(user);
         }
-
 
         User[] generatedList = generateDemoStudentList();
         //populate the lesson with students
         for (User x: generatedList) {
-            lesson.addStudent(x);
+            result.addStudent(x);
         }
-        Log.i("Demo Lesson created: ", "Teacher:" + lesson.getTeacher().getName() + " Description: " + lesson.getLessonDescription()
-                + " Students:" + lesson.getStudents().toString());
-        return lesson;
+        return result;
     }
 
-    public void setDemoStudentList(ArrayList<User> demoStudentList) {
+
+    //Setters and Getters
+    public User[] getDemoStudentList() {
+        return demoStudentList;
+    }
+
+    public void setDemoStudentList(User[] demoStudentList) {
         this.demoStudentList = demoStudentList;
+    }
+
+    public Lesson[] getDemoLessonList() {
+        return demoLessonList;
+    }
+
+    public void setDemoLessonList(Lesson[] demoLessonList) {
+        this.demoLessonList = demoLessonList;
     }
 }
