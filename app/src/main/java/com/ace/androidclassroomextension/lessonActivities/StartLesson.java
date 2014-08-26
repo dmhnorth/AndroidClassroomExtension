@@ -15,8 +15,6 @@ import com.ace.androidclassroomextension.R;
 import com.ace.androidclassroomextension.models.Lesson;
 import com.ace.androidclassroomextension.models.User;
 
-import java.security.InvalidParameterException;
-
 
 /**
  *
@@ -32,10 +30,11 @@ public class StartLesson extends Activity {
     private Lesson lesson;
     private Lesson lessonForView;
 
+
     private TextView userName, lessonNameTV, lessonDescriptionTV;
     private ImageView profilePicture;
 
-
+    //TODO turn into a singleton
     private com.ace.androidclassroomextension.serverDemoUtilities.demoLibrary demoLibrary = new com.ace.androidclassroomextension.serverDemoUtilities.demoLibrary();
 
     @Override

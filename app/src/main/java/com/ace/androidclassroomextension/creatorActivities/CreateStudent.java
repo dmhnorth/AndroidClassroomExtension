@@ -101,7 +101,7 @@ public class CreateStudent extends Activity {
 
                 Lesson lesson = (Lesson) adapterView.getItemAtPosition(position);
                 //Place the lesson id for the chosen lesson in the Intent
-                chosenLessonId  = lesson.getLessonId();
+                chosenLessonId = lesson.getLessonId();
             }
         });
     }
