@@ -34,7 +34,7 @@ public class StartLesson extends Activity {
     private TextView userName, lessonNameTV, lessonDescriptionTV;
     private ImageView profilePicture;
 
-    //TODO turn into a singleton
+    //TODO turn into a singleton and fixed file name
     private com.ace.androidclassroomextension.serverDemoUtilities.demoLibrary demoLibrary = new com.ace.androidclassroomextension.serverDemoUtilities.demoLibrary();
 
     @Override

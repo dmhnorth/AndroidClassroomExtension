@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.Spinner;
@@ -83,26 +84,22 @@ public class CreateStudent extends Activity {
 
 
         //Get the available lessons
-        //TODO get the demo lessons here
-
         demoLibrary demoLibrary = new demoLibrary();
 
         Lesson[] lessons = demoLibrary.getDemoLessonList();
 
         Spinner lessonSpinner = (Spinner) findViewById(R.id.lesson_chooser);
 
-        lessonSpinner.setAdapter(new LessonListAdapter(this, lessons));
+        LessonListAdapter adapter = new LessonListAdapter(this, lessons);
+
+        lessonSpinner.setAdapter(adapter);
 
         //TODO make something happen when a lesson is selected
-
-        lessonSpinner.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
-
+/**
                 Lesson lesson = (Lesson) adapterView.getItemAtPosition(position);
                 //Place the lesson id for the chosen lesson in the Intent
                 chosenLessonId = lesson.getLessonId();
-            }
-        });
+   */
+
     }
 }

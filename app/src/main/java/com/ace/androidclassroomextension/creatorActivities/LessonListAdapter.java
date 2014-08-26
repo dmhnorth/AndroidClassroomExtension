@@ -9,9 +9,6 @@ import android.widget.TextView;
 
 import com.ace.androidclassroomextension.R;
 import com.ace.androidclassroomextension.models.Lesson;
-import com.ace.androidclassroomextension.models.User;
-
-import java.util.ArrayList;
 
 /**
  * Custom ArrayAdapter class for inflating lesson information from a lesson list
