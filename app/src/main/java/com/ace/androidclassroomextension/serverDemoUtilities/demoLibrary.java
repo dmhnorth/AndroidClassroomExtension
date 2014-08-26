@@ -26,7 +26,7 @@ public class demoLibrary {
         generateDemoTeachers();
         generateDemoStudents();
         generateDemoLessons();
-        
+
         setDemoStudentList(generateDemoStudentList());
         setDemoLessonList(generateDemoLessonList());
     }
@@ -100,7 +100,7 @@ public class demoLibrary {
             result.addStudent(user);
         }
 
-        User[] generatedList = generateDemoStudentList();
+        User[] generatedList = getDemoStudentList();
         //populate the lesson with students
         for (User x: generatedList) {
             result.addStudent(x);

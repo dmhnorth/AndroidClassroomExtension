@@ -4,11 +4,17 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+<LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:layout_gravity="center">
 
     <TextView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
+        android:layout_marginRight="@dimen/activity_vertical_margin"
         android:id="@+id/isTeacher"
         android:text="@string/user_type"
         android:textStyle="bold"
@@ -21,10 +27,12 @@
         android:id="@+id/userName"
         android:text="@string/enterYourName"
         android:textSize="@dimen/text_size_large"/>
+</LinearLayout>
 
     <ImageView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:maxHeight="200dp"
         android:layout_weight="1"
         android:layout_gravity="center"
         android:scaleType="centerCrop"
