@@ -76,6 +76,20 @@ public class CreateStudent extends Activity {
 
 
     public void refreshLessonSpinner(View view) {
+
+
+        //Get the available lessons
+        //TODO get the demo lessons here
+        Lesson[] lessons = null;
+
+        Spinner lessonSpinner = (Spinner) findViewById(R.id.lesson_chooser);
+
+        lessonSpinner.setAdapter(new LessonListAdapter(this, lessons));
+
+        
+
+
+
         Toast.makeText(this, "Not yet implemented", Toast.LENGTH_SHORT).show();
         //TODO
     }
