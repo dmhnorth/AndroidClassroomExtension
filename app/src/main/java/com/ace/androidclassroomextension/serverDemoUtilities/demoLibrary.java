@@ -24,6 +24,9 @@ public class demoLibrary {
 
     public demoLibrary(){
         generateDemoTeachers();
+        generateDemoStudents();
+        generateDemoLessons();
+        
         setDemoStudentList(generateDemoStudentList());
         setDemoLessonList(generateDemoLessonList());
     }

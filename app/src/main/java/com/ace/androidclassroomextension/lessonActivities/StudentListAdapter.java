@@ -33,7 +33,6 @@ public class StudentListAdapter extends ArrayAdapter{
 
         User student = (User) getItem(position);
 
-
         //Set the studentName section of the view
         TextView studentNameView = (TextView) studentRowView.findViewById(R.id.studentName);
         studentNameView.setText(student.getName());
