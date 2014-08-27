@@ -6,6 +6,8 @@ import com.ace.androidclassroomextension.models.Lesson;
 import com.ace.androidclassroomextension.models.User;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * A library of methods and data structures for demonstrating the Ace Client in
@@ -15,8 +17,8 @@ import java.util.ArrayList;
  */
 public class demoLibrary {
 
-    private User[] demoStudentList;
-    private Lesson[] demoLessonList;
+    private List<User> demoStudentList;
+    private List<Lesson> demoLessonList;
 
     private User demoTeacher1, demoTeacher2, demoTeacher3;
     private User student1, student2, student3, student4, student5, student6, student7, student8;
@@ -64,9 +66,9 @@ public class demoLibrary {
     /**
      * generates a demo student array
      */
-    private User[] generateDemoStudentList() {
-        return new User[]{student1, student2, student3, student4,
-                student5, student6, student7, student8,};
+    private List<User> generateDemoStudentList() {
+        return Arrays.asList(student1, student2, student3, student4,
+                student5, student6, student7, student8);
     }
 
     /**
@@ -82,8 +84,8 @@ public class demoLibrary {
     /**
      * generates a demo lesson array
      */
-    private Lesson[] generateDemoLessonList() {
-        return new Lesson[]{lesson1, lesson2, lesson3, lesson4};
+    private List<Lesson> generateDemoLessonList() {
+        return Arrays.asList(lesson1, lesson2, lesson3, lesson4);
     }
 
     /**
@@ -102,7 +104,7 @@ public class demoLibrary {
             result.addStudent(user);
         }
 
-        User[] generatedList = getDemoStudentList();
+        List<User> generatedList = getDemoStudentList();
         //populate the lesson with students
         for (User x: generatedList) {
             result.addStudent(x);
@@ -112,19 +114,19 @@ public class demoLibrary {
 
 
     //Setters and Getters
-    public User[] getDemoStudentList() {
+    public List<User> getDemoStudentList() {
         return demoStudentList;
     }
 
-    public void setDemoStudentList(User[] demoStudentList) {
+    public void setDemoStudentList(List<User> demoStudentList) {
         this.demoStudentList = demoStudentList;
     }
 
-    public Lesson[] getDemoLessonList() {
+    public List<Lesson> getDemoLessonList() {
         return demoLessonList;
     }
 
-    public void setDemoLessonList(Lesson[] demoLessonList) {
+    public void setDemoLessonList(List<Lesson> demoLessonList) {
         this.demoLessonList = demoLessonList;
     }
 

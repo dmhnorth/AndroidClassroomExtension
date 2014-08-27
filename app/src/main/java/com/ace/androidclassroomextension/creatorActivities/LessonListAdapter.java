@@ -10,14 +10,16 @@ import android.widget.TextView;
 import com.ace.androidclassroomextension.R;
 import com.ace.androidclassroomextension.models.Lesson;
 
+import java.util.ArrayList;
+
 /**
  * Custom ArrayAdapter class for inflating lesson information from a lesson list
  *
  * Created by Dave on 26/08/2014.
  */
-public class LessonListAdapter extends ArrayAdapter {
+public class LessonListAdapter extends ArrayAdapter<Lesson> {
 
-    public LessonListAdapter(Context context, Lesson[] lessons) {
+    public LessonListAdapter(Context context, ArrayList<Lesson> lessons) {
         super(context, R.layout.lesson_row, lessons);
     }
 

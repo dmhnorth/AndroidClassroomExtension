@@ -19,6 +19,7 @@ import com.ace.androidclassroomextension.models.User;
 import com.ace.androidclassroomextension.serverDemoUtilities.demoLibrary;
 
 import java.util.Arrays;
+import java.util.List;
 
 /**
  * The Student creator activity backend
@@ -86,13 +87,13 @@ public class CreateStudent extends Activity {
         //Get the available lessons
         demoLibrary demoLibrary = new demoLibrary();
 
-        Lesson[] lessons = demoLibrary.getDemoLessonList();
+        List<Lesson> lessons = demoLibrary.getDemoLessonList();
 
         Spinner lessonSpinner = (Spinner) findViewById(R.id.lesson_chooser);
 
-        LessonListAdapter adapter = new LessonListAdapter(this, lessons);
+//        LessonListAdapter adapter = new LessonListAdapter(this, lessons);
 
-        lessonSpinner.setAdapter(adapter);
+//        lessonSpinner.setAdapter(adapter);
 
         //TODO make something happen when a lesson is selected
 /**

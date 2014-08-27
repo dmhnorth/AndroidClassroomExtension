@@ -18,7 +18,7 @@ import java.util.ArrayList;
  *
  * Created by Dave on 24/07/2014.
  */
-public class StudentListAdapter extends ArrayAdapter{
+public class StudentListAdapter extends ArrayAdapter<User> {
 
     public StudentListAdapter(Context context, ArrayList<User> students) {
         super(context, R.layout.student_row, students);
