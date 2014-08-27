@@ -11,6 +11,7 @@ import com.ace.androidclassroomextension.R;
 import com.ace.androidclassroomextension.models.Lesson;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Custom ArrayAdapter class for inflating lesson information from a lesson list
@@ -19,7 +20,7 @@ import java.util.ArrayList;
  */
 public class LessonListAdapter extends ArrayAdapter<Lesson> {
 
-    public LessonListAdapter(Context context, ArrayList<Lesson> lessons) {
+    public LessonListAdapter(Context context, List<Lesson> lessons) {
         super(context, R.layout.lesson_row, lessons);
     }
 

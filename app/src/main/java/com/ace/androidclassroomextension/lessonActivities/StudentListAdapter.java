@@ -12,6 +12,7 @@ import com.ace.androidclassroomextension.R;
 import com.ace.androidclassroomextension.models.User;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Custom Adapter for the Student list fragment
@@ -20,7 +21,7 @@ import java.util.ArrayList;
  */
 public class StudentListAdapter extends ArrayAdapter<User> {
 
-    public StudentListAdapter(Context context, ArrayList<User> students) {
+    public StudentListAdapter(Context context, List<User> students) {
         super(context, R.layout.student_row, students);
     }
 

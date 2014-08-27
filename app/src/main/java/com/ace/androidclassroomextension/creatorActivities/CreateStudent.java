@@ -89,18 +89,30 @@ public class CreateStudent extends Activity {
 
         List<Lesson> lessons = demoLibrary.getDemoLessonList();
 
+        //Find the lesson spinner
         Spinner lessonSpinner = (Spinner) findViewById(R.id.lesson_chooser);
 
-//        LessonListAdapter adapter = new LessonListAdapter(this, lessons);
+        //Create the custom ArrayAdapter
+        LessonListAdapter adapter = new LessonListAdapter(this, lessons);
 
-//        lessonSpinner.setAdapter(adapter);
+        //Specify the layout to use when the list of choices appears
+        adapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
 
-        //TODO make something happen when a lesson is selected
+        //Apply the adapter to the spinner
+        lessonSpinner.setAdapter(adapter);
+
+
 /**
+        //TODO make something happen when a lesson is selected
+        lessonSpinner.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
                 Lesson lesson = (Lesson) adapterView.getItemAtPosition(position);
                 //Place the lesson id for the chosen lesson in the Intent
                 chosenLessonId = lesson.getLessonId();
-   */
 
+            }
+        });
+ */
     }
 }
