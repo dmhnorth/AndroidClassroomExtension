@@ -49,24 +49,10 @@ public class DemoLibrary implements DAO {
         if(user.getIsTeacher()) {
             result = new Lesson(user, lessonName, lessonDescription);
         }
-        populateLessonWithDemoStudents(result);
+        DemoData.populateLessonWithDemoStudents(result);
+
         return result;
     }
-
-    /**
-     * Demo method for populating a lesson with some students
-     * @param result lesson full of students
-     */
-    private void populateLessonWithDemoStudents(Lesson result) {
-        List<User> generatedList = getStudentList();
-        //populate the lesson with students
-        for (User x: generatedList) {
-            result.addStudent(x);
-        }
-
-    }
-
-
 
     public Lesson getDemoLessonViaId(int chosenLessonId) {
 

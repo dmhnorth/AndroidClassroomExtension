@@ -30,9 +30,17 @@ public class DemoData {
 
         //Generate Lessons
         Lesson lesson1 = new Lesson(demoTeacher1, "Algebra Demo", "A demo lesson about Algebra");
+        populateLessonWithDemoStudents(lesson1);
+
         Lesson lesson2 = new Lesson(demoTeacher2, "Balloons Demo", "A demo lesson about Balloons");
+        populateLessonWithDemoStudents(lesson2);
+
         Lesson lesson3 = new Lesson(demoTeacher3, "Calligraphy Demo", "A demo lesson about Calligraphy");
+        populateLessonWithDemoStudents(lesson3);
+
         Lesson lesson4 = new Lesson(demoTeacher4, "Drawing Demo", "A demo lesson about Drawing");
+        populateLessonWithDemoStudents(lesson4);
+
         return new ArrayList<Lesson>(Arrays.asList(lesson1, lesson2, lesson3, lesson4));
     }
 
@@ -54,6 +62,18 @@ public class DemoData {
 
 
     }
+
+        /**
+         * Demo method for populating a lesson with some students
+         * @param result lesson full of students
+         */
+    public static void populateLessonWithDemoStudents(Lesson result) {
+            List<User> generatedList = getStudentList();
+            //populate the lesson with students
+            for (User x: generatedList) {
+                result.addStudent(x);
+            }
     }
+}
 
 
