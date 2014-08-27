@@ -7,7 +7,6 @@ import com.ace.androidclassroomextension.models.Lesson;
 import com.ace.androidclassroomextension.models.User;
 import com.ace.androidclassroomextension.utilities.DemoData;
 
-import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -50,7 +49,6 @@ public class DemoLibrary implements DAO {
             result = new Lesson(user, lessonName, lessonDescription);
         }
         DemoData.populateLessonWithDemoStudents(result);
-
         return result;
     }
 
@@ -65,8 +63,8 @@ public class DemoLibrary implements DAO {
         return null;
     }
 
-    public int createNewLessonOnServer(User user, String lessonName, String lessonDescription) {
-        Lesson lesson = new Lesson(user, lessonName, lessonDescription);
+    public int createNewLessonOnServer(User teacher, String lessonName, String lessonDescription) {
+        Lesson lesson = new Lesson(teacher, lessonName, lessonDescription);
         lessonList.add(lesson);
         return lesson.getLessonId();
     }

@@ -83,13 +83,11 @@ public class CreateTeacher extends Activity {
     public void confirmLessonCreation(View view) {
         //Check user has entered required details
         if(getLessonDescription().isEmpty() || getLessonName().isEmpty()){
-            Toast.makeText(this, "Enter a Lesson description and name!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Enter a Lesson description and name", Toast.LENGTH_SHORT).show();
         } else {
-            Toast.makeText(this, "Creating Lesson", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Lesson Details OK!", Toast.LENGTH_SHORT).show();
             Intent startLessonIntent = new Intent(this, StartLesson.class);
 
-            //Create the lesson for upload
-            Lesson lesson = new Lesson(user, getLessonName(), getLessonDescription());
             //Pass details to intent
             startLessonIntent.putExtra("user", user);
             startLessonIntent.putExtra("lessonName", getLessonName());
