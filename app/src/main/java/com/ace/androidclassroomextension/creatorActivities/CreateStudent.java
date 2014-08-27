@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.Spinner;
@@ -16,7 +15,7 @@ import com.ace.androidclassroomextension.R;
 import com.ace.androidclassroomextension.lessonActivities.StartLesson;
 import com.ace.androidclassroomextension.models.Lesson;
 import com.ace.androidclassroomextension.models.User;
-import com.ace.androidclassroomextension.serverDemoUtilities.demoLibrary;
+import com.ace.androidclassroomextension.serverDemoUtilities.DemoLibrary;
 
 import java.util.Arrays;
 import java.util.List;
@@ -31,7 +30,7 @@ public class CreateStudent extends Activity {
     private TextView userType, userName;
     private ImageView profilePicture;
 
-    private double chosenLessonId;
+    private int chosenLessonId;
 
     Intent startLessonIntent;
 
@@ -73,8 +72,6 @@ public class CreateStudent extends Activity {
         startLessonIntent.putExtra("user", user);
         startLessonIntent.putExtra("lessonId", chosenLessonId);
 
-        //TODO put the lesson choice from the spinner in. probably an ID system
-
         startActivity(startLessonIntent);
 
     }
@@ -85,9 +82,9 @@ public class CreateStudent extends Activity {
 
 
         //Get the available lessons
-        demoLibrary demoLibrary = new demoLibrary();
+        DemoLibrary demoLibrary = new DemoLibrary();
 
-        List<Lesson> lessons = demoLibrary.getDemoLessonList();
+        List<Lesson> lessons = demoLibrary.getLessonList();
 
         //Find the lesson spinner
         Spinner lessonSpinner = (Spinner) findViewById(R.id.lesson_chooser);
@@ -102,17 +99,23 @@ public class CreateStudent extends Activity {
         lessonSpinner.setAdapter(adapter);
 
 
-/**
+
         //TODO make something happen when a lesson is selected
-        lessonSpinner.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        lessonSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
+            public void onItemSelected(AdapterView<?> adapterView, View view, int position, long id) {
                 Lesson lesson = (Lesson) adapterView.getItemAtPosition(position);
                 //Place the lesson id for the chosen lesson in the Intent
                 chosenLessonId = lesson.getLessonId();
-
             }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                //TODO do something if nothing is selected
+            };
         });
- */
     }
 }
+
+
+

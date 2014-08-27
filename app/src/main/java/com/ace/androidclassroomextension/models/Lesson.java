@@ -3,6 +3,7 @@ package com.ace.androidclassroomextension.models;
 import android.util.Log;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 /**
  * The Lesson class, contains all the information about a lesson
@@ -14,18 +15,19 @@ public class Lesson {
     private ArrayList<User> students;
     private String lessonName;
     private String lessonDescription;
-    private double lessonId;
+    private int lessonId;
     private static int dateId = 0;
 
-    public Lesson(User user, String lessonName, String lessonDescription) {
-        setTeacher(user);
+    public Lesson(User teacher, String lessonName, String lessonDescription) {
+        setTeacher(teacher);
         setLessonName(lessonName);
         setLessonDescription(lessonDescription);
         students = null;
 
-        //TODO very basic ID generation, extract this to a method
+        //TODO very basic ID generation, extract this to a method, Add the time to this
         dateId++;
-        setLessonId(Math.random()+ dateId);
+        Random r = new Random();
+        setLessonId(Math.abs(r.nextInt()) + dateId);
         Log.i("lesson Created with id: ", String.valueOf(getLessonId()));
     }
 
@@ -79,11 +81,11 @@ public class Lesson {
         return students;
     }
 
-    public double getLessonId() {
+    public int getLessonId() {
         return lessonId;
     }
 
-    public void setLessonId(double lessonId) {
+    public void setLessonId(int lessonId) {
         this.lessonId = lessonId;
     }
 }

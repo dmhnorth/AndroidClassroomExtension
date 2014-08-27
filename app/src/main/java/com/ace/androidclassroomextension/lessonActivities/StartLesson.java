@@ -3,6 +3,7 @@ package com.ace.androidclassroomextension.lessonActivities;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ImageView;
@@ -14,6 +15,7 @@ import android.widget.Toast;
 import com.ace.androidclassroomextension.R;
 import com.ace.androidclassroomextension.models.Lesson;
 import com.ace.androidclassroomextension.models.User;
+import com.ace.androidclassroomextension.serverDemoUtilities.DemoLibrary;
 
 
 /**
@@ -26,7 +28,7 @@ import com.ace.androidclassroomextension.models.User;
 public class StartLesson extends Activity {
 
     private User user;
-    private double chosenLessonId;
+    private int lessonForViewId;
     private Lesson lesson;
     private Lesson lessonForView;
 
@@ -35,7 +37,7 @@ public class StartLesson extends Activity {
     private ImageView profilePicture;
 
     //TODO turn into a singleton and fixed file name
-    private com.ace.androidclassroomextension.serverDemoUtilities.demoLibrary demoLibrary = new com.ace.androidclassroomextension.serverDemoUtilities.demoLibrary();
+    private DemoLibrary demoLibrary = new DemoLibrary();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,28 +53,29 @@ public class StartLesson extends Activity {
 
 
 
-        //Create the lesson for upload if a teacher
+        //Create the lesson on the server if a teacher
         if(user.getIsTeacher()){
-        lesson = new Lesson(user, lessonName, lessonDescription);
-
-        //Upload the lesson to the server list of lessons in progress
-        //TODO Upload the lesson to the server lesson list as JSONObject
-
+            lessonForViewId = demoLibrary.createNewLessonOnServer(user, lessonName, lessonDescription);
         } else {
-        //TODO insert a try for this
-        chosenLessonId = Double.parseDouble(getIntent().getExtras().get("lessonId").toString());
 
+            try {
+                //Get the Id of the lesson a student wants and add the student to the lesson
+        lessonForViewId = Integer.parseInt(getIntent().getExtras().get("lessonId").toString());
+                //Add the student to the lesson
+                demoLibrary.getDemoLessonViaId(lessonForViewId).addStudent(user);
+            } catch (Exception e){
+                e.printStackTrace();
+            }
         }
 
 
 
         //TODO replace demo library retrieve lesson from the server as JSONObject and cast for LessonForView
-            //DEMO LIBRARY lesson with user, can determine if Teacher or student
+            //Retrieve the lesson for the View
         if(lessonForView == null){
-            lessonForView = demoLibrary.createDemoLessonViaUserType(user, lessonName, lessonDescription);
+            lessonForView = demoLibrary.getDemoLessonViaId(lessonForViewId);
+            Log.i("LessonForView: ", String.valueOf(lessonForView.getLessonId()));
         }
-        //TODO replace getting lesson for view with searching for the lesson via it's id
-//            lessonForView = demoLibrary.getDemoLessonWithId(chosenLessonId);
 
 
 
