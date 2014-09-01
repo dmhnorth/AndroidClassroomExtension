@@ -10,8 +10,10 @@ import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.ace.androidclassroomextension.R;
+import com.ace.androidclassroomextension.dataAccessObject.AceDAO;
 import com.ace.androidclassroomextension.lessonActivities.StartLesson;
 import com.ace.androidclassroomextension.models.Lesson;
 import com.ace.androidclassroomextension.models.User;
@@ -66,13 +68,17 @@ public class CreateStudent extends Activity {
 
     public void joinLesson(View view) {
 
-        startLessonIntent = new Intent(this, StartLesson.class);
+        if(chosenLessonId == 0){
+            Toast.makeText(this, "Select a lesson", Toast.LENGTH_SHORT).show();
+        } else {
 
-        startLessonIntent.putExtra("user", user);
-        startLessonIntent.putExtra("lessonId", chosenLessonId);
+            startLessonIntent = new Intent(this, StartLesson.class);
 
-        startActivity(startLessonIntent);
+            startLessonIntent.putExtra("user", user);
+            startLessonIntent.putExtra("lessonId", chosenLessonId);
 
+            startActivity(startLessonIntent);
+        }
     }
 
 
@@ -80,10 +86,12 @@ public class CreateStudent extends Activity {
     public void refreshLessonSpinner(View view) {
 
 
-        //Get the available lessons
-        DemoAceDAO demoAceDAO = new DemoAceDAO();
 
-        List<Lesson> lessons = demoAceDAO.getLessonsAsList();
+        //Get the available lessons
+        AceDAO aceDAO = DemoAceDAO.getInstance();
+        Log.i("DAO size", String.valueOf(aceDAO.getSize()));
+
+        List<Lesson> lessons = aceDAO.getLessonsAsList();
 
         //Find the lesson spinner
         Spinner lessonSpinner = (Spinner) findViewById(R.id.lesson_chooser);
@@ -106,12 +114,14 @@ public class CreateStudent extends Activity {
 
                 //Place the lesson id for the chosen lesson in the Intent
                 chosenLessonId = lesson.getLessonId();
+                Log.i("Chosen Lesson", String.valueOf(lesson.getLessonId()));
 
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
-                //TODO do something if nothing is selected
+                chosenLessonId = Integer.parseInt(null);
+                Log.i("Chosen No Lesson so id is", String.valueOf(chosenLessonId));
             };
         });
     }

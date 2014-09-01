@@ -23,4 +23,9 @@ public interface AceDAO {
      */
     void addLessonToDAO(Lesson lesson);
 
+    /**
+     * For finding out how many lessons the AceDAO is
+     * @return the amount of lessons on AceDAO
+     */
+    int getSize();
 }

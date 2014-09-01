@@ -22,11 +22,21 @@ public class DemoAceDAO implements AceDAO {
 
     private List<User> studentList = DemoData.getDemoStudentList();
     private Map<Integer, Lesson> lessonMap = new HashMap<Integer, Lesson>();
+    private static DemoAceDAO instance;
 
-    public DemoAceDAO(){
+    private DemoAceDAO(){
 
         for(Map.Entry<Integer, Lesson> x: DemoData.getDemoLessonList().entrySet()){
             addLessonToDAO(x.getValue());
+        }
+    }
+
+    public static DemoAceDAO getInstance() {
+        if (!(instance == null)){
+        return instance;
+        } else {
+            instance = new DemoAceDAO();
+            return instance;
         }
     }
 
@@ -73,5 +83,10 @@ public class DemoAceDAO implements AceDAO {
     @Override
     public void addLessonToDAO(Lesson lesson){
         createNewLessonOnDAO(lesson.getTeacher(), lesson.getLessonName(), lesson.getLessonDescription());
+    }
+
+    @Override
+    public int getSize() {
+        return getLessonsAsList().size();
     }
 }

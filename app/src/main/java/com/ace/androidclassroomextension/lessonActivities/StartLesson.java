@@ -29,14 +29,13 @@ public class StartLesson extends Activity {
 
     private User user;
     private int lessonForViewId;
-    private Lesson lesson;
     private Lesson lessonForView;
 
 
     private TextView userName, lessonNameTV, lessonDescriptionTV;
     private ImageView profilePicture;
 
-    private DemoAceDAO aceDAO = new DemoAceDAO();
+    private DemoAceDAO aceDAO = DemoAceDAO.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +48,7 @@ public class StartLesson extends Activity {
         user = intent.getParcelableExtra("user");
         String lessonName = intent.getStringExtra("lessonName");
         String lessonDescription = intent.getStringExtra("lessonDescription");
+        int studentLessonId = intent.getIntExtra("lessonId", 0);
 
 
 
@@ -56,16 +56,11 @@ public class StartLesson extends Activity {
         if(user.getIsTeacher()){
             lessonForViewId = aceDAO.createNewLessonOnDAO(user, lessonName, lessonDescription);
         } else {
-
-            try {
-                //Get the Id of the lesson a student wants and add the student to the lesson
-        lessonForViewId = getIntent().getIntExtra("lessonId", 0);
-                //Add the student to the lesson
-                aceDAO.getLessonViaId(lessonForViewId).addStudent(user);
-            } catch (Exception e){
-                e.printStackTrace();
-            }
+        //Retrieve the lesson if a student
+            lessonForViewId = studentLessonId;
         }
+
+
 
 
 
