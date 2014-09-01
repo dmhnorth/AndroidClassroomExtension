@@ -15,7 +15,7 @@ import android.widget.Toast;
 import com.ace.androidclassroomextension.R;
 import com.ace.androidclassroomextension.models.Lesson;
 import com.ace.androidclassroomextension.models.User;
-import com.ace.androidclassroomextension.serverDemoUtilities.DemoLibrary;
+import com.ace.androidclassroomextension.serverDemoUtilities.DemoAceDAO;
 
 
 /**
@@ -36,8 +36,7 @@ public class StartLesson extends Activity {
     private TextView userName, lessonNameTV, lessonDescriptionTV;
     private ImageView profilePicture;
 
-    //TODO turn into a singleton and fixed file name
-    private DemoLibrary demoLibrary = new DemoLibrary();
+    private DemoAceDAO aceDAO = new DemoAceDAO();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,14 +54,14 @@ public class StartLesson extends Activity {
 
         //Create the lesson on the server if a teacher
         if(user.getIsTeacher()){
-            lessonForViewId = demoLibrary.createNewLessonOnServer(user, lessonName, lessonDescription);
+            lessonForViewId = aceDAO.createNewLessonOnDAO(user, lessonName, lessonDescription);
         } else {
 
             try {
                 //Get the Id of the lesson a student wants and add the student to the lesson
         lessonForViewId = Integer.parseInt(getIntent().getExtras().get("lessonId").toString());
                 //Add the student to the lesson
-                demoLibrary.getDemoLessonViaId(lessonForViewId).addStudent(user);
+                aceDAO.getLessonViaId(lessonForViewId).addStudent(user);
             } catch (Exception e){
                 e.printStackTrace();
             }
@@ -70,16 +69,12 @@ public class StartLesson extends Activity {
 
 
 
-        //TODO replace demo library retrieve lesson from the server as JSONObject and cast for LessonForView
-            //Retrieve the lesson for the View
+
+        //Retrieve the lesson for the View
         if(lessonForView == null){
-            lessonForView = demoLibrary.getDemoLessonViaId(lessonForViewId);
+            lessonForView = aceDAO.getLessonViaId(lessonForViewId);
             Log.i("LessonForView: ", String.valueOf(lessonForView.getLessonId()));
         }
-
-
-
-
 
         //Update the View only using lessonForView Object
         userName = (TextView) findViewById(R.id.userName);
@@ -99,8 +94,6 @@ public class StartLesson extends Activity {
 
         //Show the lesson ID
         Toast.makeText(this, "Lesson ID: "+ lessonForView.getLessonId(), Toast.LENGTH_SHORT).show();
-
-
     }
 
     private void updateStudentListView() {
@@ -110,6 +103,7 @@ public class StartLesson extends Activity {
 
         studentListView.setAdapter(studentListAdapter);
 
+        //For when a User is picked within the list
         studentListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {

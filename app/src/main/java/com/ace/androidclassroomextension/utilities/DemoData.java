@@ -10,11 +10,13 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
+ * A set of demonstration Lesson and Student Data
+ *
  * Created by Dave on 27/08/2014.
  */
 public class DemoData {
 
-    public static List<Lesson> getLessonList() {
+    public static List<Lesson> getDemoLessonList() {
 
         Log.i("LessonList: ", "Lesson list generated");
 
@@ -45,7 +47,7 @@ public class DemoData {
     }
 
 
-    public static List<User> getStudentList() {
+    public static List<User> getDemoStudentList() {
 
         Log.i("LessonList: ", "Lesson list generated");
         //Generate Students
@@ -68,7 +70,7 @@ public class DemoData {
          * @param result lesson full of students
          */
     public static void populateLessonWithDemoStudents(Lesson result) {
-            List<User> generatedList = getStudentList();
+            List<User> generatedList = getDemoStudentList();
             //populate the lesson with students
             for (User x: generatedList) {
                 result.addStudent(x);

@@ -15,7 +15,7 @@ import com.ace.androidclassroomextension.R;
 import com.ace.androidclassroomextension.lessonActivities.StartLesson;
 import com.ace.androidclassroomextension.models.Lesson;
 import com.ace.androidclassroomextension.models.User;
-import com.ace.androidclassroomextension.serverDemoUtilities.DemoLibrary;
+import com.ace.androidclassroomextension.serverDemoUtilities.DemoAceDAO;
 
 import java.util.Arrays;
 import java.util.List;
@@ -82,9 +82,9 @@ public class CreateStudent extends Activity {
 
 
         //Get the available lessons
-        DemoLibrary demoLibrary = new DemoLibrary();
+        DemoAceDAO demoAceDAO = new DemoAceDAO();
 
-        List<Lesson> lessons = demoLibrary.getLessonList();
+        List<Lesson> lessons = demoAceDAO.getLessonList();
 
         //Find the lesson spinner
         Spinner lessonSpinner = (Spinner) findViewById(R.id.lesson_chooser);
