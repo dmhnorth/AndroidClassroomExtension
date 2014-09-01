@@ -106,6 +106,7 @@ public class CreateStudent extends Activity {
 
                 //Place the lesson id for the chosen lesson in the Intent
                 chosenLessonId = lesson.getLessonId();
+
             }
 
             @Override

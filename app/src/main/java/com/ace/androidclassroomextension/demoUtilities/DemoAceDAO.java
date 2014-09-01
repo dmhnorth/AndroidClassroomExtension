@@ -21,7 +21,7 @@ import java.util.NoSuchElementException;
 public class DemoAceDAO implements AceDAO {
 
     private List<User> studentList = DemoData.getDemoStudentList();
-    private Map<Integer, Lesson> lessons = new HashMap<Integer, Lesson>();
+    private Map<Integer, Lesson> lessonMap = new HashMap<Integer, Lesson>();
 
     public DemoAceDAO(){
 
@@ -34,7 +34,7 @@ public class DemoAceDAO implements AceDAO {
     @Override
     public List<Lesson> getLessonsAsList() {
         ArrayList<Lesson> result = new ArrayList<Lesson>();
-        for(Map.Entry<Integer, Lesson> x: lessons.entrySet()){
+        for(Map.Entry<Integer, Lesson> x: lessonMap.entrySet()){
             result.add(x.getValue());
         }
         return result;
@@ -46,12 +46,12 @@ public class DemoAceDAO implements AceDAO {
 
         Log.i("Attempting to getLessonViaId", String.valueOf(id));
 
-        if (lessons.get(id) == null) {
+        if (lessonMap.get(id) == null) {
         Log.i("Lesson doesn't exist in DAO with ID", String.valueOf(id));
             throw new NoSuchElementException();
         } else {
         Log.i("Successfully retrieved Lesson", String.valueOf(id));
-            return lessons.get(id);
+            return lessonMap.get(id);
         }
     }
 
@@ -64,7 +64,7 @@ public class DemoAceDAO implements AceDAO {
         //Add Demo students for this new lesson
         DemoData.populateLessonWithDemoStudents(lesson);
 
-        lessons.put(lesson.getLessonId(), lesson);
+        lessonMap.put(lesson.getLessonId(), lesson);
         Log.i("createdNewLessonOnDAO", String.valueOf(getLessonViaId(lesson.getLessonId()).getLessonId()));
 
         return lesson.getLessonId();

@@ -88,5 +88,10 @@ public class Lesson {
     public void setLessonId(int lessonId) {
         this.lessonId = lessonId;
     }
+
+    @Override
+    public String toString(){
+        return getLessonName();
+    }
 }
 
