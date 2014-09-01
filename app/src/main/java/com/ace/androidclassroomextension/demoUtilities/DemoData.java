@@ -2,6 +2,7 @@ package com.ace.androidclassroomextension.demoUtilities;
 
 import android.util.Log;
 
+import com.ace.androidclassroomextension.dataAccessObject.AceDAO;
 import com.ace.androidclassroomextension.models.Lesson;
 import com.ace.androidclassroomextension.models.User;
 
@@ -20,7 +21,7 @@ public class DemoData {
 
     public static Map<Integer, Lesson> getDemoLessonList() {
 
-        Log.i("LessonList: ", "Lesson list generated");
+        Log.i("getDemoLessonList()", "Lesson list generated");
 
         //Generate Teachers
         User demoTeacher1 = new User("Mr A.Teach");
@@ -58,7 +59,7 @@ public class DemoData {
 
     public static List<User> getDemoStudentList() {
 
-        Log.i("LessonList: ", "Lesson list generated");
+        Log.i("getDemoStudentList()", "DemoStudentlist generated");
         //Generate Students
         User student1 = new User("Andy Ant");
         User student2 = new User("Barry Bear");

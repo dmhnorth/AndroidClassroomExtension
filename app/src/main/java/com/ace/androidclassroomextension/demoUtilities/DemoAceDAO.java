@@ -7,6 +7,7 @@ import com.ace.androidclassroomextension.models.Lesson;
 import com.ace.androidclassroomextension.models.User;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.NoSuchElementException;
@@ -20,11 +21,19 @@ import java.util.NoSuchElementException;
 public class DemoAceDAO implements AceDAO {
 
     private List<User> studentList = DemoData.getDemoStudentList();
-    private Map<Integer, Lesson> lessonList = DemoData.getDemoLessonList();
+    private Map<Integer, Lesson> lessons = new HashMap<Integer, Lesson>();
 
-    public List<Lesson> getLessonList() {
+    public DemoAceDAO(){
+
+        for(Map.Entry<Integer, Lesson> x: DemoData.getDemoLessonList().entrySet()){
+            addLessonToDAO(x.getValue());
+        }
+    }
+
+
+    public List<Lesson> getLessonsAsList() {
         ArrayList<Lesson> result = new ArrayList<Lesson>();
-        for(Map.Entry<Integer, Lesson> x: lessonList.entrySet()){
+        for(Map.Entry<Integer, Lesson> x: lessons.entrySet()){
             result.add(x.getValue());
         }
         return result;
@@ -48,16 +57,14 @@ public class DemoAceDAO implements AceDAO {
 
     public Lesson getLessonViaId(int chosenLessonId) throws NoSuchElementException {
 
-        //TODO Does not work, maybe change the lessons to be a map
-
         Log.i("Attempting to getLessonViaId", String.valueOf(chosenLessonId));
 
-        if (lessonList.get(chosenLessonId) == null) {
+        if (lessons.get(chosenLessonId) == null) {
         Log.i("Lesson doesn't exist in DAO with ID", String.valueOf(chosenLessonId));
             throw new NoSuchElementException();
         } else {
-        Log.i("Successfully retrieved Lesson", String.valueOf(lessonList.get(chosenLessonId).getLessonId()));
-            return lessonList.get(chosenLessonId);
+        Log.i("Successfully retrieved Lesson", String.valueOf(chosenLessonId));
+            return lessons.get(chosenLessonId);
         }
     }
 
@@ -69,7 +76,18 @@ public class DemoAceDAO implements AceDAO {
         //Add Demo students for this new lesson
         DemoData.populateLessonWithDemoStudents(lesson);
 
-        lessonList.put(lesson.getLessonId(), lesson);
+        lessons.put(lesson.getLessonId(), lesson);
+        Log.i("createdNewLessonOnDAO", String.valueOf(getLessonViaId(lesson.getLessonId()).getLessonId()));
+
         return lesson.getLessonId();
+    }
+
+    /**
+     * for adding a lesson to the DAO via alternative means
+     * (eg. Moving lessons from server to server)
+     * @param lesson The Lesson you want to add to the AceDAO
+     */
+    public void addLessonToDAO(Lesson lesson){
+        createNewLessonOnDAO(lesson.getTeacher(), lesson.getLessonName(), lesson.getLessonDescription());
     }
 }

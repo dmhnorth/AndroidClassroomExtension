@@ -83,7 +83,7 @@ public class CreateStudent extends Activity {
         //Get the available lessons
         DemoAceDAO demoAceDAO = new DemoAceDAO();
 
-        List<Lesson> lessons = demoAceDAO.getLessonList();
+        List<Lesson> lessons = demoAceDAO.getLessonsAsList();
 
         //Find the lesson spinner
         Spinner lessonSpinner = (Spinner) findViewById(R.id.lesson_chooser);
