@@ -15,7 +15,7 @@ import com.ace.androidclassroomextension.R;
 import com.ace.androidclassroomextension.lessonActivities.StartLesson;
 import com.ace.androidclassroomextension.models.Lesson;
 import com.ace.androidclassroomextension.models.User;
-import com.ace.androidclassroomextension.serverDemoUtilities.DemoAceDAO;
+import com.ace.androidclassroomextension.demoUtilities.DemoAceDAO;
 
 import java.util.Arrays;
 import java.util.List;
@@ -39,7 +39,6 @@ public class CreateStudent extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_student);
 
-        //TODO repeated code, is there a way around this? can this be put in the fragment backend?
         Intent intent = getIntent();
 
         user = intent.getParcelableExtra("user");
@@ -99,12 +98,12 @@ public class CreateStudent extends Activity {
         lessonSpinner.setAdapter(adapter);
 
 
-
         //TODO make something happen when a lesson is selected
         lessonSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int position, long id) {
                 Lesson lesson = (Lesson) adapterView.getItemAtPosition(position);
+
                 //Place the lesson id for the chosen lesson in the Intent
                 chosenLessonId = lesson.getLessonId();
             }

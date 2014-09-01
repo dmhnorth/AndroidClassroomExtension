@@ -1,4 +1,4 @@
-package com.ace.androidclassroomextension.utilities;
+package com.ace.androidclassroomextension.demoUtilities;
 
 import android.util.Log;
 
@@ -7,7 +7,9 @@ import com.ace.androidclassroomextension.models.User;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * A set of demonstration Lesson and Student Data
@@ -16,7 +18,7 @@ import java.util.List;
  */
 public class DemoData {
 
-    public static List<Lesson> getDemoLessonList() {
+    public static Map<Integer, Lesson> getDemoLessonList() {
 
         Log.i("LessonList: ", "Lesson list generated");
 
@@ -43,7 +45,14 @@ public class DemoData {
         Lesson lesson4 = new Lesson(demoTeacher4, "Drawing Demo", "A demo lesson about Drawing");
         populateLessonWithDemoStudents(lesson4);
 
-        return new ArrayList<Lesson>(Arrays.asList(lesson1, lesson2, lesson3, lesson4));
+        Map<Integer, Lesson> result = new HashMap<Integer, Lesson>();
+        result.put(lesson1.getLessonId(),lesson1);
+        result.put(lesson2.getLessonId(),lesson2);
+        result.put(lesson3.getLessonId(),lesson3);
+        result.put(lesson4.getLessonId(),lesson4);
+
+        return result;
+
     }
 
 

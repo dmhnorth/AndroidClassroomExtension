@@ -15,7 +15,7 @@ import android.widget.Toast;
 import com.ace.androidclassroomextension.R;
 import com.ace.androidclassroomextension.models.Lesson;
 import com.ace.androidclassroomextension.models.User;
-import com.ace.androidclassroomextension.serverDemoUtilities.DemoAceDAO;
+import com.ace.androidclassroomextension.demoUtilities.DemoAceDAO;
 
 
 /**
@@ -59,7 +59,7 @@ public class StartLesson extends Activity {
 
             try {
                 //Get the Id of the lesson a student wants and add the student to the lesson
-        lessonForViewId = Integer.parseInt(getIntent().getExtras().get("lessonId").toString());
+        lessonForViewId = getIntent().getIntExtra("lessonId", 0);
                 //Add the student to the lesson
                 aceDAO.getLessonViaId(lessonForViewId).addStudent(user);
             } catch (Exception e){
@@ -75,6 +75,8 @@ public class StartLesson extends Activity {
             lessonForView = aceDAO.getLessonViaId(lessonForViewId);
             Log.i("LessonForView: ", String.valueOf(lessonForView.getLessonId()));
         }
+
+
 
         //Update the View only using lessonForView Object
         userName = (TextView) findViewById(R.id.userName);
@@ -97,6 +99,7 @@ public class StartLesson extends Activity {
     }
 
     private void updateStudentListView() {
+
         final ListAdapter studentListAdapter = new StudentListAdapter(this, lessonForView.getStudents());
 
         ListView studentListView = (ListView) findViewById(R.id.studentListView);
@@ -116,6 +119,5 @@ public class StartLesson extends Activity {
                 startActivity(userDetailsIntent);
             }
         });
-
     }
 }
