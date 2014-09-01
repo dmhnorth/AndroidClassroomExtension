@@ -31,6 +31,7 @@ public class DemoAceDAO implements AceDAO {
     }
 
 
+    @Override
     public List<Lesson> getLessonsAsList() {
         ArrayList<Lesson> result = new ArrayList<Lesson>();
         for(Map.Entry<Integer, Lesson> x: lessons.entrySet()){
@@ -39,37 +40,24 @@ public class DemoAceDAO implements AceDAO {
         return result;
     }
 
-    /**
-     * Creates a lesson with a given user as the teacher
-     *
-     * @param user that is going to be a teacher or a student for a demo lesson
-     * @return full demo lesson with user entered as teacher or student
-     */
-    public Lesson createLessonViaUserType(User user, String lessonName, String lessonDescription) {
 
-        Lesson result = null;
-        if (user.getIsTeacher()) {
-            result = new Lesson(user, lessonName, lessonDescription);
-        }
-        DemoData.populateLessonWithDemoStudents(result);
-        return result;
-    }
+    @Override
+    public Lesson getLessonViaId(int id) throws NoSuchElementException {
 
-    public Lesson getLessonViaId(int chosenLessonId) throws NoSuchElementException {
+        Log.i("Attempting to getLessonViaId", String.valueOf(id));
 
-        Log.i("Attempting to getLessonViaId", String.valueOf(chosenLessonId));
-
-        if (lessons.get(chosenLessonId) == null) {
-        Log.i("Lesson doesn't exist in DAO with ID", String.valueOf(chosenLessonId));
+        if (lessons.get(id) == null) {
+        Log.i("Lesson doesn't exist in DAO with ID", String.valueOf(id));
             throw new NoSuchElementException();
         } else {
-        Log.i("Successfully retrieved Lesson", String.valueOf(chosenLessonId));
-            return lessons.get(chosenLessonId);
+        Log.i("Successfully retrieved Lesson", String.valueOf(id));
+            return lessons.get(id);
         }
     }
 
 
 
+    @Override
     public int createNewLessonOnDAO(User teacher, String lessonName, String lessonDescription) {
         Lesson lesson = new Lesson(teacher, lessonName, lessonDescription);
 
@@ -82,11 +70,7 @@ public class DemoAceDAO implements AceDAO {
         return lesson.getLessonId();
     }
 
-    /**
-     * for adding a lesson to the DAO via alternative means
-     * (eg. Moving lessons from server to server)
-     * @param lesson The Lesson you want to add to the AceDAO
-     */
+    @Override
     public void addLessonToDAO(Lesson lesson){
         createNewLessonOnDAO(lesson.getTeacher(), lesson.getLessonName(), lesson.getLessonDescription());
     }
