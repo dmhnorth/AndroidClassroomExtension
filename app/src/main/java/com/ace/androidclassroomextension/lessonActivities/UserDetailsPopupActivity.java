@@ -29,13 +29,16 @@ public class UserDetailsPopupActivity extends Activity {
         //Update the view
         TextView isTeacher = (TextView) findViewById(R.id.isTeacher);
         if(user.getIsTeacher()) {
-            isTeacher.setText("Teacher");
+            isTeacher.setText(getString(R.string.teacher));
         } else {
-            isTeacher.setText("Student");
+            isTeacher.setText(getString(R.string.student));
         }
 
         TextView userName = (TextView) findViewById(R.id.userName);
         userName.setText(user.getName());
+
+        TextView question = (TextView) findViewById(R.id.question);
+        question.setText(user.getCurrentQuestion());
 
         ImageView imageView = (ImageView) findViewById(R.id.studentImage);
         //TODO these are null because they are currently not initiated

@@ -51,7 +51,6 @@ public class StartLesson extends Activity {
         int studentLessonId = intent.getIntExtra("lessonId", 0);
 
 
-
         //Create the lesson on the server if a teacher
         if(user.getIsTeacher()){
             lessonForViewId = aceDAO.createNewLessonOnDAO(user, lessonName, lessonDescription);
@@ -61,17 +60,11 @@ public class StartLesson extends Activity {
         }
 
 
-
-
-
-
         //Retrieve the lesson for the View
         if(lessonForView == null){
             lessonForView = aceDAO.getLessonViaId(lessonForViewId);
             Log.i("LessonForView: ", String.valueOf(lessonForView.getLessonId()));
         }
-
-
 
         //Update the View only using lessonForView Object
         userName = (TextView) findViewById(R.id.userName);
