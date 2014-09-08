@@ -28,5 +28,9 @@
     <string name="data_saved">Data Saved: </string>
     <string name="data_loaded">Data Loaded: </string>
     <string name="no_stored_data">No Stored Data</string>
+    <string name="audio_on">Audio on</string>
+    <string name="audio_off">Audio off</string>
+    <string name="video_on">Video on</string>
+    <string name="video_off">Video off</string>
 
 </resources>

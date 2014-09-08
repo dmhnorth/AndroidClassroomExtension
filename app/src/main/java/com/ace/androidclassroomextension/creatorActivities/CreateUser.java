@@ -70,19 +70,6 @@ public class CreateUser extends Activity {
 
         // start the image capture Intent
         startActivityForResult(intent, CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE);
-
-        //TODO add the photo to the local Android gallery requires OutputStream to be written in UriFactory
-//        galleryAddPic();
-    }
-
-
-    /**
-     * Adds the photo to the main Android Gallery for use elsewhere
-     */
-    private void galleryAddPic() {
-        Intent mediaScanIntent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
-        mediaScanIntent.setData(userImageUri);
-        this.sendBroadcast(mediaScanIntent);
     }
 
     @Override
@@ -117,14 +104,11 @@ public class CreateUser extends Activity {
         boolean on = ((Switch) view).isChecked();
 
         if (on) {
-
             user.setAllowAudio(true);
-            //TODO find the audio stream stream to the user
-            Toast.makeText(this, "Audio is now on", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.audio_on), Toast.LENGTH_SHORT).show();
         } else {
             user.setAllowAudio(false);
-            //TODO clear the audio stream
-            Toast.makeText(this, "Audio is now off", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.audio_off), Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -132,14 +116,11 @@ public class CreateUser extends Activity {
         boolean on = ((Switch) view).isChecked();
 
         if (on) {
-
             user.setAllowVideo(true);
-            //TODO find and assign the video stream to the user
-            Toast.makeText(this, "Video is now on", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.video_on), Toast.LENGTH_SHORT).show();
         } else {
             user.setAllowVideo(false);
-            //TODO clear the video stream
-            Toast.makeText(this, "Video is now off", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.video_off), Toast.LENGTH_SHORT).show();
         }
     }
 
