@@ -20,6 +20,7 @@ public class MainActivity extends Activity {
 
     private EditText nameEntry;
     private User user;
+    private DataManager dataManager;
 
     //Persistence Variables
     private SharedPreferences mPrefs;
@@ -32,12 +33,11 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //Creating a shared preference file
-        mPrefs = getSharedPreferences(PrefFile, MODE_PRIVATE);
-//        mPrefs = getPreferences(MODE_PRIVATE);
+        dataManager = new DataManager(this);
+        user = dataManager.loadUserData();
 
-        loadUserData();
         updateView();
+
     }
 
     /**
@@ -64,7 +64,10 @@ public class MainActivity extends Activity {
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
         if (id == R.id.action_settings) {
-            saveUserData(user);
+
+            initialiseUserWithName();
+            dataManager.saveUserData(user);
+
             return true;
         } else if (id == R.id.exitTheApp) {
             finish();
@@ -108,7 +111,7 @@ public class MainActivity extends Activity {
     }
 
     /**
-     * Initialises the User object in memory
+     * Initialises the User object in memory using the user input
      */
     private void initialiseUserWithName() {
         if (user == null) {
@@ -118,45 +121,10 @@ public class MainActivity extends Activity {
         }
     }
 
-
-    //Data Persistence Methods
-
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        saveUserData(user);
+        dataManager.saveUserData(user);
     }
 
-    /**
-     * Saves the user data
-     * @param user that was previously used on the system
-     */
-    private void saveUserData(User user) {
-        initialiseUserWithName();
-
-        SharedPreferences.Editor prefsEditor = mPrefs.edit();
-        Gson gson = new Gson();
-        String json = gson.toJson(user);
-
-        prefsEditor.putString(userData, json);
-        prefsEditor.apply();
-        Toast.makeText(this, getString(R.string.data_saved) + user.getName(), Toast.LENGTH_SHORT).show();
-
-        prefsEditor.commit();
-    }
-
-    /**
-     * Loads the user data and assigns the user
-     */
-    private void loadUserData() {
-        Gson gson = new Gson();
-        String json = mPrefs.getString(userData, "");
-        user = gson.fromJson(json, User.class);
-
-        if(user == null){
-            Toast.makeText(this, getString(R.string.no_stored_data), Toast.LENGTH_SHORT).show();
-        } else {
-            Toast.makeText(this, getString(R.string.data_loaded) + user.getName(), Toast.LENGTH_SHORT).show();
-        }
-    }
 }
