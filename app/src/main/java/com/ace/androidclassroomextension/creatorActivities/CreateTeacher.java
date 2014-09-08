@@ -24,8 +24,6 @@ import java.util.Arrays;
  */
 public class CreateTeacher extends Activity {
 
-    private TextView userType, userName;
-    private ImageView profilePicture;
     private User user;
 
     @Override
@@ -39,7 +37,7 @@ public class CreateTeacher extends Activity {
 
         //Set teacher status and update view
         user.setIsTeacher(true);
-        userType = (TextView) findViewById(R.id.isTeacher);
+        TextView userType = (TextView) findViewById(R.id.isTeacher);
         userType.setText("Teacher");
 
         //Set checkboxes
@@ -51,10 +49,10 @@ public class CreateTeacher extends Activity {
 
         Log.i("Teacher Creator||isTeacher|audio|video|: ", Arrays.toString(new Boolean[]{user.getIsTeacher(), user.getAllowAudio(), user.getAllowVideo()}));
 
-        userName = (TextView) findViewById(R.id.userName);
+        TextView userName = (TextView) findViewById(R.id.userName);
         userName.setText(user.getName());
 
-        profilePicture = (ImageView) findViewById(R.id.user_details_photo);
+        ImageView profilePicture = (ImageView) findViewById(R.id.user_details_photo);
         profilePicture.setImageURI(user.getProfilePictureUri());
     }
 
@@ -83,9 +81,8 @@ public class CreateTeacher extends Activity {
     public void confirmLessonCreation(View view) {
         //Check user has entered required details
         if(getLessonDescription().isEmpty() || getLessonName().isEmpty()){
-            Toast.makeText(this, "Enter a Lesson description and name", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.enter_lesson_details), Toast.LENGTH_SHORT).show();
         } else {
-            Toast.makeText(this, "Lesson Details OK!", Toast.LENGTH_SHORT).show();
             Intent startLessonIntent = new Intent(this, StartLesson.class);
 
             //Pass details to intent
