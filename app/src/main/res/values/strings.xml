@@ -23,5 +23,6 @@
     <string name="students_in_this_lesson">Students In This Lesson:</string>
     <string name="video_stream">Video Stream</string>
     <string name="audio_stream">Audio Stream</string>
+    <string name="save_user_data">Save User Data</string>
 
 </resources>

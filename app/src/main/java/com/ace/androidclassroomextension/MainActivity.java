@@ -20,9 +20,11 @@ public class MainActivity extends Activity {
 
     private EditText nameEntry;
     private User user;
-    public final String userData = "userData";
 
+    //Persistence Variables
     private SharedPreferences mPrefs;
+    public final String userData = "userData";
+    private static final String PrefFile = "PrefFile";
 
 
     @Override
@@ -31,6 +33,7 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
 
         //Creating a shared preference file
+//        mPrefs = getSharedPreferences(PrefFile, MODE_PRIVATE);
         mPrefs = getPreferences(MODE_PRIVATE);
 
         loadUserData();
@@ -56,7 +59,8 @@ public class MainActivity extends Activity {
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
         if (id == R.id.action_settings) {
-            Toast.makeText(this, "No settings yet!", Toast.LENGTH_SHORT).show();
+            saveUserData(user);
+            Toast.makeText(this, "User Data Saved", Toast.LENGTH_SHORT).show();
             return true;
         } else if (id == R.id.exitTheApp) {
             finish();
@@ -66,9 +70,9 @@ public class MainActivity extends Activity {
     }
 
     /**
-     * Gets the user entered username
+     * Gets test the user entered username
      *
-     * @return username entered by the user
+     * @return String username entered by the user
      */
     private String getUserInputName() {
         nameEntry = (EditText) findViewById(R.id.nameEntry);
@@ -117,7 +121,6 @@ public class MainActivity extends Activity {
     protected void onDestroy() {
         super.onDestroy();
         saveUserData(user);
-
     }
 
     /**
