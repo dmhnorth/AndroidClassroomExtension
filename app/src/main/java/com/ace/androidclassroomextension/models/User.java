@@ -4,6 +4,8 @@ import android.net.Uri;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import java.io.Serializable;
+
 /**
  * The User class. Contains all persistent data unique to the device for both
  * Student and Teacher mode.

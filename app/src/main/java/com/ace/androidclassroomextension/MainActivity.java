@@ -1,8 +1,10 @@
 package com.ace.androidclassroomextension;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -12,6 +14,12 @@ import android.widget.Toast;
 
 import com.ace.androidclassroomextension.creatorActivities.CreateUser;
 import com.ace.androidclassroomextension.models.User;
+import com.ace.androidclassroomextension.utilities.UriFactory;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 
 
 public class MainActivity extends Activity {
@@ -23,6 +31,15 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
+        //TODO The user name is currently never actually saved, but the user is. first line shouldn't be in there
+        if(savedInstanceState != null){
+//            initialiseUser();
+            nameEntry = (EditText) findViewById(R.id.nameEntry);
+            nameEntry.setText(user.getName());
+            Toast.makeText(this, "User Name:" + user.getName(), Toast.LENGTH_SHORT).show();
+        }
     }
 
     @Override
@@ -71,12 +88,8 @@ public class MainActivity extends Activity {
         if (!(getUserInputName().equals(""))) {
             Intent createUserIntent = new Intent(this, CreateUser.class);
 
-            //Initialise the user if it hasn't been done
-            if (user == null) {
-                user = new User(getUserInputName());
-            } else {
-                user.setName(getUserInputName());
-            }
+        //Initialise the user if it hasn't been done
+            initialiseUser();
 
             createUserIntent.putExtra("user", user);
 
@@ -86,25 +99,33 @@ public class MainActivity extends Activity {
         }
     }
 
-    //TODO Save the persistent user data
+    /**
+     * Creates the User object in memory
+     */
+    private void initialiseUser() {
+        if (user == null) {
+            user = new User(getUserInputName());
+        } else {
+            user.setName(getUserInputName());
+        }
+    }
+
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-//        outState.putParcelable("user", user);
-    }
-
-    @Override
-    protected void onRestoreInstanceState(Bundle savedInstanceState) {
-        super.onRestoreInstanceState(savedInstanceState);
-//        user = savedInstanceState.getParcelable("user");
+        initialiseUser();
+        outState.putParcelable("user", user);
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        //TODO Save the persistent user data
-
+        //TODO persist the user data here
+        saveUserData(user);
     }
 
+    private void saveUserData(User user) {
+        //TODO use Gson
+    }
 }
