@@ -74,9 +74,14 @@ public class DemoData {
             User student3 = new User("Chris Cat");
             User student4 = new User("Dave Dolphin");
             User student5 = new User("Ed Eagle");
+
             User student6 = new User("Fred Fox");
             User student7 = new User("Gary Gorilla");
             User student8 = new User("Harry Hermit Crab");
+
+            student5.setCurrentQuestion("When do we start?");
+            student7.setCurrentQuestion("Where is the course material?");
+
             demoStudentList = new ArrayList<User>(Arrays.asList(student1, student2, student3, student4,
                     student5, student6, student7, student8));
             return demoStudentList;

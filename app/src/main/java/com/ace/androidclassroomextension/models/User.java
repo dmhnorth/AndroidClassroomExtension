@@ -23,6 +23,7 @@ public class User implements Parcelable {
     private boolean allowAudio;
     private boolean allowVideo;
     private boolean handUp;
+    private String currentQuestion = "Silent";
 
     /**
      * standard constructor
@@ -138,7 +139,16 @@ public class User implements Parcelable {
         return handUp;
     }
 
-    public void setHandUp(boolean handUp) {
+    private void setHandUp(boolean handUp) {
         this.handUp = handUp;
+    }
+
+    public String getCurrentQuestion() {
+        return currentQuestion;
+    }
+
+    public void setCurrentQuestion(String currentQuestion) {
+        setHandUp(true);
+        this.currentQuestion = currentQuestion;
     }
 }

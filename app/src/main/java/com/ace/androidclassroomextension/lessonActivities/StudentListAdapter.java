@@ -41,16 +41,16 @@ public class StudentListAdapter extends ArrayAdapter<User> {
 
         //for further information in sections of the custom student row
         TextView textSent = (TextView) studentRowView.findViewById(R.id.textSent);
-        textSent.setText("Currently unused TextView");
+        textSent.setText(student.getCurrentQuestion());
 
         ImageView studentImage = (ImageView) studentRowView.findViewById(R.id.studentImage);
 //        studentImage.setImageResource(R.drawable.silhouette);
 
         ImageView handUp = (ImageView) studentRowView.findViewById(R.id.handUp);
         if(student.isHandUp()){
-            handUp.setColorFilter(Color.parseColor("#B30303"));
+            handUp.setBackgroundColor(Color.parseColor("#b30303"));
         } else{
-            handUp.setColorFilter(Color.parseColor("#BFEA30"));
+            handUp.setBackgroundColor(Color.parseColor("#a8c942"));
         }
         return studentRowView;
     }
