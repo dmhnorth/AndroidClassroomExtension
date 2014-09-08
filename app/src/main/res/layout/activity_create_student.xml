@@ -6,7 +6,7 @@
     android:layout_height="match_parent">
     <fragment
         android:layout_width="fill_parent"
-        android:layout_height="300dp"
+        android:layout_height="wrap_content"
         android:id="@+id/user_details_fragment"
         class="com.ace.androidclassroomextension.fragments.UserDetailsFragment"
         android:layout="@layout/fragment_user_details"
