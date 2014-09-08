@@ -33,12 +33,17 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
 
         //Creating a shared preference file
-//        mPrefs = getSharedPreferences(PrefFile, MODE_PRIVATE);
-        mPrefs = getPreferences(MODE_PRIVATE);
+        mPrefs = getSharedPreferences(PrefFile, MODE_PRIVATE);
+//        mPrefs = getPreferences(MODE_PRIVATE);
 
         loadUserData();
+        updateView();
+    }
 
-        //Update the view if userData already exists on device
+    /**
+     * Update the view if userData already exists on device
+     */
+    private void updateView() {
         if(user != null) {
             nameEntry = (EditText) findViewById(R.id.nameEntry);
             nameEntry.setText(user.getName());
@@ -60,7 +65,6 @@ public class MainActivity extends Activity {
         int id = item.getItemId();
         if (id == R.id.action_settings) {
             saveUserData(user);
-            Toast.makeText(this, "User Data Saved", Toast.LENGTH_SHORT).show();
             return true;
         } else if (id == R.id.exitTheApp) {
             finish();
@@ -92,21 +96,21 @@ public class MainActivity extends Activity {
         if (!(getUserInputName().equals(""))) {
             Intent createUserIntent = new Intent(this, CreateUser.class);
 
-        //Initialise the user if it hasn't been done
-            initialiseUser();
+            //Initialise the user if it hasn't been done
+            initialiseUserWithName();
 
             createUserIntent.putExtra("user", user);
 
             startActivity(createUserIntent);
         } else {
-            Toast.makeText(this, "Enter a name!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.enter_a_name), Toast.LENGTH_SHORT).show();
         }
     }
 
     /**
      * Initialises the User object in memory
      */
-    private void initialiseUser() {
+    private void initialiseUserWithName() {
         if (user == null) {
             user = new User(getUserInputName());
         } else {
@@ -128,14 +132,17 @@ public class MainActivity extends Activity {
      * @param user that was previously used on the system
      */
     private void saveUserData(User user) {
-        initialiseUser();
+        initialiseUserWithName();
 
         SharedPreferences.Editor prefsEditor = mPrefs.edit();
         Gson gson = new Gson();
         String json = gson.toJson(user);
+
         prefsEditor.putString(userData, json);
+        prefsEditor.apply();
+        Toast.makeText(this, getString(R.string.data_saved) + user.getName(), Toast.LENGTH_SHORT).show();
+
         prefsEditor.commit();
-        Toast.makeText(this, "Ace Data Saved: " + user.getName(), Toast.LENGTH_SHORT).show();
     }
 
     /**
@@ -145,6 +152,11 @@ public class MainActivity extends Activity {
         Gson gson = new Gson();
         String json = mPrefs.getString(userData, "");
         user = gson.fromJson(json, User.class);
-        Toast.makeText(this, "Ace Data Loaded: " + user.getName(), Toast.LENGTH_SHORT).show();
+
+        if(user == null){
+            Toast.makeText(this, getString(R.string.no_stored_data), Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(this, getString(R.string.data_loaded) + user.getName(), Toast.LENGTH_SHORT).show();
+        }
     }
 }

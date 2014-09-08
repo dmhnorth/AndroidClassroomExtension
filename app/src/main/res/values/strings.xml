@@ -24,5 +24,9 @@
     <string name="video_stream">Video Stream</string>
     <string name="audio_stream">Audio Stream</string>
     <string name="save_user_data">Save User Data</string>
+    <string name="enter_a_name">Enter a name!</string>
+    <string name="data_saved">Data Saved: </string>
+    <string name="data_loaded">Data Loaded: </string>
+    <string name="no_stored_data">No Stored Data</string>
 
 </resources>
