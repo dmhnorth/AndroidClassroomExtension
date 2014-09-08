@@ -78,7 +78,7 @@ public class CreateTeacher extends Activity {
 
     /**
      * For creating the lesson once the user has entered all the details required
-     * @param view
+     * @param view from the current activity
      */
     public void confirmLessonCreation(View view) {
         //Check user has entered required details
