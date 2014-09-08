@@ -1,6 +1,7 @@
 package com.ace.androidclassroomextension.lessonActivities;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -38,7 +39,7 @@ public class StudentListAdapter extends ArrayAdapter<User> {
         TextView studentNameView = (TextView) studentRowView.findViewById(R.id.studentName);
         studentNameView.setText(student.getName());
 
-        //TODO add the other sections of the custom student row and
+        //for further information in sections of the custom student row
         TextView textSent = (TextView) studentRowView.findViewById(R.id.textSent);
         textSent.setText("Currently unused TextView");
 
@@ -47,9 +48,9 @@ public class StudentListAdapter extends ArrayAdapter<User> {
 
         ImageView handUp = (ImageView) studentRowView.findViewById(R.id.handUp);
         if(student.isHandUp()){
-            //set the colour to red
+            handUp.setColorFilter(Color.parseColor("#B30303"));
         } else{
-            //set the colour to green
+            handUp.setColorFilter(Color.parseColor("#BFEA30"));
         }
         return studentRowView;
     }
