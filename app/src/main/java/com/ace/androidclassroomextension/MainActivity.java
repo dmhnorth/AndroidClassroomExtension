@@ -3,6 +3,7 @@ package com.ace.androidclassroomextension;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.util.Log;
@@ -15,6 +16,7 @@ import android.widget.Toast;
 import com.ace.androidclassroomextension.creatorActivities.CreateUser;
 import com.ace.androidclassroomextension.models.User;
 import com.ace.androidclassroomextension.utilities.UriFactory;
+import com.google.gson.Gson;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -26,20 +28,29 @@ public class MainActivity extends Activity {
 
     private EditText nameEntry;
     private User user;
+    public final String userData = "userData";
+
+    private SharedPreferences mPrefs;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //Creating a shared preference file
+        mPrefs = getPreferences(MODE_PRIVATE);
 
-        //TODO The user name is currently never actually saved, but the user is. first line shouldn't be in there
-        if(savedInstanceState != null){
-//            initialiseUser();
+        loadUserData();
+
+        if(user != null) {
+            Toast.makeText(this, "User Name:" + user.getName(), Toast.LENGTH_SHORT).show();
             nameEntry = (EditText) findViewById(R.id.nameEntry);
             nameEntry.setText(user.getName());
-            Toast.makeText(this, "User Name:" + user.getName(), Toast.LENGTH_SHORT).show();
         }
+
+
+
     }
 
     @Override
@@ -110,13 +121,14 @@ public class MainActivity extends Activity {
         }
     }
 
-
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
         initialiseUser();
         outState.putParcelable("user", user);
     }
+
+
 
     @Override
     protected void onDestroy() {
@@ -125,7 +137,26 @@ public class MainActivity extends Activity {
         saveUserData(user);
     }
 
+    /**
+     * Saves the user data
+     * @param user
+     */
     private void saveUserData(User user) {
-        //TODO use Gson
+        initialiseUser();
+
+        SharedPreferences.Editor prefsEditor = mPrefs.edit();
+        Gson gson = new Gson();
+        String json = gson.toJson(user);
+        prefsEditor.putString(userData, json);
+        prefsEditor.commit();
+    }
+
+    /**
+     * Loads the user data and assigns the user
+     */
+    private void loadUserData() {
+        Gson gson = new Gson();
+        String json = mPrefs.getString(userData, "");
+        user = gson.fromJson(json, User.class);
     }
 }
