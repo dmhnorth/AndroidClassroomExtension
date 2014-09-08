@@ -43,14 +43,11 @@ public class MainActivity extends Activity {
 
         loadUserData();
 
+        //Update the view if user already exists on device
         if(user != null) {
-            Toast.makeText(this, "User Name:" + user.getName(), Toast.LENGTH_SHORT).show();
             nameEntry = (EditText) findViewById(R.id.nameEntry);
             nameEntry.setText(user.getName());
         }
-
-
-
     }
 
     @Override
@@ -111,7 +108,7 @@ public class MainActivity extends Activity {
     }
 
     /**
-     * Creates the User object in memory
+     * Initialises the User object in memory
      */
     private void initialiseUser() {
         if (user == null) {
@@ -121,25 +118,18 @@ public class MainActivity extends Activity {
         }
     }
 
-    @Override
-    protected void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
-        initialiseUser();
-        outState.putParcelable("user", user);
-    }
 
-
+    //Data Persistence Methods
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        //TODO persist the user data here
         saveUserData(user);
     }
 
     /**
      * Saves the user data
-     * @param user
+     * @param user that was previously used on the system
      */
     private void saveUserData(User user) {
         initialiseUser();
@@ -149,6 +139,7 @@ public class MainActivity extends Activity {
         String json = gson.toJson(user);
         prefsEditor.putString(userData, json);
         prefsEditor.commit();
+        Toast.makeText(this, "Ace Data Saved: " + user.getName(), Toast.LENGTH_SHORT).show();
     }
 
     /**
@@ -158,5 +149,6 @@ public class MainActivity extends Activity {
         Gson gson = new Gson();
         String json = mPrefs.getString(userData, "");
         user = gson.fromJson(json, User.class);
+        Toast.makeText(this, "Ace Data Loaded: " + user.getName(), Toast.LENGTH_SHORT).show();
     }
 }
