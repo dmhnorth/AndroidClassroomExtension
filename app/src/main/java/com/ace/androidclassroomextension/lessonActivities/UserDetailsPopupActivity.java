@@ -38,7 +38,7 @@ public class UserDetailsPopupActivity extends Activity {
         userName.setText(user.getName());
 
         ImageView imageView = (ImageView) findViewById(R.id.studentImage);
-        //TODO figure out why this is coming up null, possible error in parcel techniques in class
+        //TODO these are null because they are currently not initiated
 //        imageView.setImageURI(user.getProfilePictureUri());
     }
 

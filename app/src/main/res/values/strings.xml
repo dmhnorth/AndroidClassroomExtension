@@ -33,5 +33,6 @@
     <string name="video_on">Video on</string>
     <string name="video_off">Video off</string>
     <string name="enter_lesson_details">Enter Lesson details</string>
+    <string name="silent">silent</string>
 
 </resources>

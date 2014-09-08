@@ -4,6 +4,8 @@ import android.net.Uri;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import com.ace.androidclassroomextension.R;
+
 import java.io.Serializable;
 
 /**
