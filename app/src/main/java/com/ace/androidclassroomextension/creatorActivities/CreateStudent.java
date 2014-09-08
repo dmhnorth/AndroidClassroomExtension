@@ -48,7 +48,7 @@ public class CreateStudent extends Activity {
         //Set teacher status
         user.setIsTeacher(false);
         userType = (TextView) findViewById(R.id.isTeacher);
-        userType.setText("Student");
+        userType.setText(getString(R.string.student));
 
         //Set checkboxes
         CheckBox audio = (CheckBox) findViewById(R.id.checkBoxAudio);

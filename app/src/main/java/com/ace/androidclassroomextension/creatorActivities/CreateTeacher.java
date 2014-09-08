@@ -38,7 +38,7 @@ public class CreateTeacher extends Activity {
         //Set teacher status and update view
         user.setIsTeacher(true);
         TextView userType = (TextView) findViewById(R.id.isTeacher);
-        userType.setText("Teacher");
+        userType.setText(getString(R.string.teacher));
 
         //Set checkboxes
         CheckBox audio = (CheckBox) findViewById(R.id.checkBoxAudio);
