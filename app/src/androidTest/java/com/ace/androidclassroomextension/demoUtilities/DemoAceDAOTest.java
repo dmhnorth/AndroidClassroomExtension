@@ -9,7 +9,6 @@ import junit.framework.TestCase;
 import java.util.List;
 
 public class DemoAceDAOTest extends TestCase {
-
     private AceDAO aceDAO;
     private int testId;
     private User teacher;
@@ -20,7 +19,7 @@ public class DemoAceDAOTest extends TestCase {
     public void setUp() throws Exception {
         super.setUp();
 
-        aceDAO = new DemoAceDAO();
+        aceDAO = DemoAceDAO.getInstance();
 
         student = new User("Mr.Student");
         student.setIsTeacher(false);
@@ -30,7 +29,6 @@ public class DemoAceDAOTest extends TestCase {
         lessonName = "Test Lesson Name";
         lessonDescription = "Test Lesson Description";
         testId = aceDAO.createNewLessonOnDAO(teacher, lessonName, lessonDescription);
-
     }
 
     public void tearDown() throws Exception {
