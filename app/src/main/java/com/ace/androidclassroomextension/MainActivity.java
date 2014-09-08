@@ -1,11 +1,9 @@
 package com.ace.androidclassroomextension;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -15,13 +13,7 @@ import android.widget.Toast;
 
 import com.ace.androidclassroomextension.creatorActivities.CreateUser;
 import com.ace.androidclassroomextension.models.User;
-import com.ace.androidclassroomextension.utilities.UriFactory;
 import com.google.gson.Gson;
-
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
 
 
 public class MainActivity extends Activity {
@@ -43,7 +35,7 @@ public class MainActivity extends Activity {
 
         loadUserData();
 
-        //Update the view if user already exists on device
+        //Update the view if userData already exists on device
         if(user != null) {
             nameEntry = (EditText) findViewById(R.id.nameEntry);
             nameEntry.setText(user.getName());
@@ -125,6 +117,7 @@ public class MainActivity extends Activity {
     protected void onDestroy() {
         super.onDestroy();
         saveUserData(user);
+
     }
 
     /**
