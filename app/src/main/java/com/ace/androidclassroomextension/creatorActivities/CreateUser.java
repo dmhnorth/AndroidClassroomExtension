@@ -83,7 +83,6 @@ public class CreateUser extends Activity {
         Intent mediaScanIntent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
         mediaScanIntent.setData(userImageUri);
         this.sendBroadcast(mediaScanIntent);
-    //TODO Write the image file to an OutputStream so it shows in other galleries could potentially just wipe the userData for the app each load
     }
 
     @Override

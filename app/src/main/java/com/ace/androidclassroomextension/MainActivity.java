@@ -22,12 +22,6 @@ public class MainActivity extends Activity {
     private User user;
     private DataManager dataManager;
 
-    //Persistence Variables
-    private SharedPreferences mPrefs;
-    public final String userData = "userData";
-    private static final String PrefFile = "PrefFile";
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,7 +35,7 @@ public class MainActivity extends Activity {
     }
 
     /**
-     * Update the view if userData already exists on device
+     * Update the view if Ace Data already exists on device
      */
     private void updateView() {
         if(user != null) {
