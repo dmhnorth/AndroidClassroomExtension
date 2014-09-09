@@ -2,7 +2,6 @@ package com.ace.androidclassroomextension;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -13,7 +12,7 @@ import android.widget.Toast;
 
 import com.ace.androidclassroomextension.creatorActivities.CreateUser;
 import com.ace.androidclassroomextension.models.User;
-import com.google.gson.Gson;
+import com.ace.androidclassroomextension.utilities.DataManager;
 
 
 public class MainActivity extends Activity {

@@ -1,10 +1,11 @@
-package com.ace.androidclassroomextension;
+package com.ace.androidclassroomextension.utilities;
 
 import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.widget.Toast;
 
+import com.ace.androidclassroomextension.R;
 import com.ace.androidclassroomextension.models.User;
 import com.google.gson.Gson;
 

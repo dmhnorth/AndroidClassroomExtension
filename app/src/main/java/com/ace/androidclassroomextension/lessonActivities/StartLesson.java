@@ -63,6 +63,8 @@ public class StartLesson extends Activity {
         //Retrieve the lesson for the View
         if(lessonForView == null){
             lessonForView = aceDAO.getLessonViaId(lessonForViewId);
+            addLocalUserToLesson();
+
             Log.i("LessonForView: ", String.valueOf(lessonForView.getLessonId()));
         }
 
@@ -84,6 +86,15 @@ public class StartLesson extends Activity {
 
         //Show the lesson ID
         Toast.makeText(this, "Lesson ID: "+ lessonForView.getLessonId(), Toast.LENGTH_SHORT).show();
+    }
+
+    /**
+     * Adds the local user to the lesson for the View
+     */
+    private void addLocalUserToLesson() {
+        if(!user.getIsTeacher()){
+            lessonForView.addStudent(user);
+        }
     }
 
     private void updateStudentListView() {
