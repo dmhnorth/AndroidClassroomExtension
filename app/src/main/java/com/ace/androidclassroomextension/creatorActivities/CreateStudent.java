@@ -63,6 +63,8 @@ public class CreateStudent extends Activity {
 
         profilePicture = (ImageView) findViewById(R.id.user_details_photo);
         profilePicture.setImageURI(user.getProfilePictureUri());
+
+        refreshLessonSpinner(findViewById(R.id.lesson_chooser));
     }
 
 
@@ -84,8 +86,6 @@ public class CreateStudent extends Activity {
 
 
     public void refreshLessonSpinner(View view) {
-
-
 
         //Get the available lessons
         AceDAO aceDAO = DemoAceDAO.getInstance();
