@@ -55,7 +55,7 @@ public class StartLesson extends Activity {
         if(user.getIsTeacher()){
             lessonForViewId = aceDAO.createNewLessonOnDAO(user, lessonName, lessonDescription);
         } else {
-        //Retrieve the lesson if a student
+            //Retrieve the lesson if a student
             lessonForViewId = studentLessonId;
         }
 
@@ -89,13 +89,15 @@ public class StartLesson extends Activity {
     }
 
     /**
-     * Adds the local user to the lesson for the View
+     * Adds the local user to the lesson for the View if not already there
      */
     private void addLocalUserToLesson() {
-        if(!user.getIsTeacher()){
+
+        if(!lessonForView.getStudents().contains(user) && !user.getIsTeacher()) {
             lessonForView.addStudent(user);
         }
     }
+
 
     private void updateStudentListView() {
 
