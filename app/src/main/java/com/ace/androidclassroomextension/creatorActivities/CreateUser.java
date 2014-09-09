@@ -2,9 +2,11 @@ package com.ace.androidclassroomextension.creatorActivities;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.hardware.Camera;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.Switch;
@@ -86,6 +88,29 @@ public class CreateUser extends Activity {
 
             }
         }
+    }
+
+    /**
+     * For finding the front facing camera
+     *
+     * Adapted from code provided by Lars Vogal
+     * at http://www.vogella.com/tutorials/AndroidCamera/article.html
+     *
+     * @return the id of the front camera
+     */
+    private int findFrontFacingCamera() {
+        int id = -1;
+        // Search for the front facing camera
+        int camerasOnDevice = Camera.getNumberOfCameras();
+        for (int cameraId1 = 0; cameraId1 < camerasOnDevice; cameraId1++) {
+            Camera.CameraInfo info = new Camera.CameraInfo();
+            Camera.getCameraInfo(cameraId1, info);
+            if (info.facing == Camera.CameraInfo.CAMERA_FACING_FRONT) {
+                id = cameraId1;
+                break;
+            }
+        }
+        return id;
     }
 
     public void createTeacher(View view) {
