@@ -50,7 +50,12 @@ public class DataManager {
 
         prefsEditor.putString(userData, json);
         prefsEditor.apply();
+        try{
+
         Toast.makeText(activityToSaveWithin, activityToSaveWithin.getString(R.string.data_saved) + user.getName(), Toast.LENGTH_SHORT).show();
+        } catch (Exception e){
+            //Do nothing, just a safety
+        }
 
         prefsEditor.commit();
 
