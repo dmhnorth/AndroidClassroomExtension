@@ -20,7 +20,8 @@ import com.ace.androidclassroomextension.models.User;
 /**
  * For creating all the assets necessary to instantiate a classroom
  *
- * Some code adapted from http://developer.android.com/guide/topics/media/camera.html
+ * Some code adapted from Android guides
+ * at http://developer.android.com/guide/topics/media/camera.html
  */
 public class CreateUser extends Activity {
 
