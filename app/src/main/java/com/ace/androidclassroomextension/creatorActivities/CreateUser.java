@@ -6,7 +6,6 @@ import android.hardware.Camera;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.Switch;
@@ -14,14 +13,18 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.ace.androidclassroomextension.R;
-import com.ace.androidclassroomextension.utilities.UriFactory;
 import com.ace.androidclassroomextension.models.User;
+import com.ace.androidclassroomextension.utilities.UriFactory;
 
 /**
  * For creating all the assets necessary to instantiate a classroom
  *
  * Some code adapted from Android guides
  * at http://developer.android.com/guide/topics/media/camera.html
+ *
+ * and Lars Vogel at
+ * http://www.vogella.com/tutorials/AndroidCamera/article.html
+ *
  */
 public class CreateUser extends Activity {
 
