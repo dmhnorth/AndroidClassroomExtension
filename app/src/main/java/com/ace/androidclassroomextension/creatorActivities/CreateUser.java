@@ -15,6 +15,7 @@ import android.widget.Toast;
 import com.ace.androidclassroomextension.R;
 import com.ace.androidclassroomextension.models.User;
 import com.ace.androidclassroomextension.utilities.UriFactory;
+import com.ace.androidclassroomextension.utilities.UriFactoryImpl;
 
 /**
  * For creating all the assets necessary to instantiate a classroom
@@ -66,7 +67,7 @@ public class CreateUser extends Activity {
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
 
         //Get a unique Uri for an image
-        UriFactory uriFactory = new UriFactory();
+        UriFactory uriFactory = new UriFactoryImpl();
 
         // create an Immutable Uri reference. to save the image
         userImageUri = uriFactory.getImageUri();
