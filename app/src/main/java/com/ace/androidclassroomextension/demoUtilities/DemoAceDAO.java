@@ -32,6 +32,10 @@ public class DemoAceDAO implements AceDAO {
         }
     }
 
+    /**
+     * Singleton get method
+     * @return the DemoAceDAO singleton
+     */
     public static DemoAceDAO getInstance() {
         if (!(instance == null)){
         return instance;
@@ -40,7 +44,6 @@ public class DemoAceDAO implements AceDAO {
             return instance;
         }
     }
-
 
     @Override
     public List<Lesson> getLessonsAsList() {
@@ -65,8 +68,6 @@ public class DemoAceDAO implements AceDAO {
             return lessonMap.get(id);
         }
     }
-
-
 
     @Override
     public int createNewLessonOnDAO(User teacher, String lessonName, String lessonDescription) {
