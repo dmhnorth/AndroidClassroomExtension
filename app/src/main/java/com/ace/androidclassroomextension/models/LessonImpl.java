@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 /**
- * The Lesson class, contains all the details about a lesson
+ * Implementation of the Lesson class
  *
  * Created by Dave on 22/08/2014.
  */

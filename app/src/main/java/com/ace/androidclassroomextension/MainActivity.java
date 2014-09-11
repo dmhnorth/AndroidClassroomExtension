@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import com.ace.androidclassroomextension.creatorActivities.CreateUser;
 import com.ace.androidclassroomextension.models.User;
+import com.ace.androidclassroomextension.models.UserImpl;
 import com.ace.androidclassroomextension.utilities.DataManager;
 
 
@@ -108,7 +109,7 @@ public class MainActivity extends Activity {
      */
     private void initialiseUserWithName() {
         if (user == null) {
-            user = new User(getUserInputName());
+            user = new UserImpl(getUserInputName());
         } else {
             user.setName(getUserInputName());
         }

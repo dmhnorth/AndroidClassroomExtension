@@ -1,12 +1,12 @@
 package com.ace.androidclassroomextension.utilities;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.SharedPreferences;
 import android.widget.Toast;
 
 import com.ace.androidclassroomextension.R;
 import com.ace.androidclassroomextension.models.User;
+import com.ace.androidclassroomextension.models.UserImpl;
 import com.google.gson.Gson;
 
 /**
@@ -32,7 +32,7 @@ public class DataManager {
 
         Gson gson = new Gson();
         String json = mPrefs.getString(userData, "");
-        User user = gson.fromJson(json, User.class);
+        User user = gson.fromJson(json, UserImpl.class);
 
 
         if(user == null){

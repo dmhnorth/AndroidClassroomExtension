@@ -1,156 +1,88 @@
 package com.ace.androidclassroomextension.models;
 
 import android.net.Uri;
-import android.os.Parcel;
 import android.os.Parcelable;
 
-import com.ace.androidclassroomextension.R;
-
-import java.io.Serializable;
-
 /**
- * The User class. Contains all persistent data unique to the device for both
- * Student and Teacher mode.
- *
- * Parcelable code adapted from
- * http://shri.blog.kraya.co.uk/2010/04/26/android-parcel-data-to-pass-between-activities-using-parcelable-classes/
- *
- * Created by Dave on 05/08/2014.
+ * Created by Dave on 11/09/2014.
  */
-public class User implements Parcelable {
-
-    private String name;
-    private Uri profilePictureUri;
-    private boolean isTeacher;
-    private boolean allowAudio;
-    private boolean allowVideo;
-    private boolean handUp;
-    private String currentQuestion = "Silent";
+public interface User extends Parcelable {
+    /**
+     * getter for name
+     * @return the User name
+     */
+    String getName();
 
     /**
-     * standard constructor
-     * @param name Chosen name
+     * sets the name
+     * @param name the User name you require
      */
-    public User(String name) {
-        setHandUp(false);
-        setName(name);
-    }
+    void setName(String name);
 
     /**
-     * Constructor for Parcel creation
-     * @param in Parcel generated
+     * get the Android style Uri for the profile picture
+     * @return Android style Uri for the profile picture
      */
-    public User(Parcel in){
-        readFromParcel(in);
-    }
-
-
-    public String getName() throws NullPointerException {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Uri getProfilePictureUri() {
-        return profilePictureUri;
-    }
-
-    public void setProfilePictureUri(Uri profilePictureUri) {
-        this.profilePictureUri = profilePictureUri;
-    }
-
-    //Implemented methods required for all Parcelable objects.
+    Uri getProfilePictureUri();
 
     /**
-     * For reading out Parcels
-     * @param in Parcel generated
+     * sets the profilePictureUri in Android format
+     * @param profilePictureUri the Uri in Android format of the picture file
      */
-    private void readFromParcel(Parcel in) {
-        name = in.readString();
-        profilePictureUri = in.readParcelable(Uri.class.getClassLoader());
-
-        boolean[] options = in.createBooleanArray();
-        isTeacher = options[0];
-        allowAudio = options[1];
-        allowVideo = options [2];
-//        Log.i("readParcel up options: ", Arrays.toString(options));
-
-    }
-
-    /*
-     * Required helper method for Parcelable to work
-     */
-    @Override
-    public int describeContents() {
-        return 0;
-    }
+    void setProfilePictureUri(Uri profilePictureUri);
 
     /**
-     * For writing parcels
-     * @param write destination parcel
-     * @param flags generated and required by Android
+     * getter for the teacher permission property
+     * @return the boolean of the teacher permission property
      */
-    @Override
-    public void writeToParcel(Parcel write, int flags) {
-        write.writeString(name);
-        write.writeParcelable(profilePictureUri, flags);
+    Boolean getIsTeacher();
 
-        boolean[] options = {isTeacher, allowAudio, allowVideo};
-        write.writeBooleanArray(options);
-//        Log.i("current isTeacher", String.valueOf(isTeacher));
-    }
-
-    /*
-     * Required helper method for Parcelable to work
+    /**
+     * sets the teacher permission property
+     * @param isTeacher set to True if the User is a teacher
      */
-    public static final Parcelable.Creator CREATOR = new Parcelable.Creator() {
-        public User createFromParcel(Parcel in) {
-            return new User(in); }
-        public User[] newArray(int size) {
-            return new User[size];
-        }
-    };
+    void setIsTeacher(Boolean isTeacher);
 
-    public Boolean getIsTeacher() {
-        return isTeacher;
-    }
+    /**
+     * get the permission property for allowing audio streaming
+     * @return the permission for allowing audio streaming
+     */
+    Boolean getAllowAudio();
 
-    public void setIsTeacher(Boolean isTeacher) {
-        this.isTeacher = isTeacher;
-    }
+    /**
+     * set the permission property for allowing audio
+     * @param allowAudio whether you wish to allow audio
+     */
+    void setAllowAudio(Boolean allowAudio);
 
-    public Boolean getAllowAudio() {
-        return allowAudio;
-    }
+    /**
+     * get the permission property for allowing video streaming
+     * @return the permission for allowing video streaming
+     */
+    Boolean getAllowVideo();
 
-    public void setAllowAudio(Boolean allowAudio) {
-        this.allowAudio = allowAudio;
-    }
+    /**
+     * set the permission property for allowing video
+     * @param allowVideo whether you wish to allow video
+     */
+    void setAllowVideo(Boolean allowVideo);
 
-    public Boolean getAllowVideo() {
-        return allowVideo;
-    }
+    /**
+     * Boolean for whether a User has their hand up within a lesson
+     * defaults to false
+     * @return whether a User has their hand up to alert the teacher
+     */
+    boolean isHandUp();
 
-    public void setAllowVideo(Boolean allowVideo) {
-        this.allowVideo = allowVideo;
-    }
+    /**
+     * getter for the current question a User is asking
+     * @return the question of a User in a string format
+     */
+    String getCurrentQuestion();
 
-    public boolean isHandUp() {
-        return handUp;
-    }
-
-    private void setHandUp(boolean handUp) {
-        this.handUp = handUp;
-    }
-
-    public String getCurrentQuestion() {
-        return currentQuestion;
-    }
-
-    public void setCurrentQuestion(String currentQuestion) {
-        setHandUp(true);
-        this.currentQuestion = currentQuestion;
-    }
+    /**
+     * setter for the current question
+     * @param currentQuestion the question you wish to present on screen
+     */
+    void setCurrentQuestion(String currentQuestion);
 }

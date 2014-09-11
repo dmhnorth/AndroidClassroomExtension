@@ -4,6 +4,7 @@ import com.ace.androidclassroomextension.dataAccessObject.AceDAO;
 import com.ace.androidclassroomextension.models.Lesson;
 import com.ace.androidclassroomextension.models.LessonImpl;
 import com.ace.androidclassroomextension.models.User;
+import com.ace.androidclassroomextension.models.UserImpl;
 
 import junit.framework.TestCase;
 
@@ -22,9 +23,9 @@ public class DemoAceDAOTest extends TestCase {
 
         aceDAO = DemoAceDAO.getInstance();
 
-        student = new User("Mr.Student");
+        student = new UserImpl("Mr.Student");
         student.setIsTeacher(false);
-        teacher = new User("Mr.Teacher");
+        teacher = new UserImpl("Mr.Teacher");
         teacher.setIsTeacher(true);
 
         lessonName = "Test Lesson Name";

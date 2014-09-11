@@ -5,12 +5,15 @@ import android.util.Log;
 import com.ace.androidclassroomextension.models.Lesson;
 import com.ace.androidclassroomextension.models.LessonImpl;
 import com.ace.androidclassroomextension.models.User;
+import com.ace.androidclassroomextension.models.UserImpl;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import static java.util.Arrays.*;
 
 /**
  * A set of demonstration Lesson and Student Data
@@ -30,13 +33,13 @@ public class DemoData {
             Log.i("getDemoLessonList()", "Lesson list generated");
 
             //Generate Teachers
-            User demoTeacher1 = new User("Mr A.Teach");
+            User demoTeacher1 = new UserImpl("Mr A.Teach");
             demoTeacher1.setIsTeacher(true);
-            User demoTeacher2 = new User("Mr B.Teach");
+            User demoTeacher2 = new UserImpl("Mr B.Teach");
             demoTeacher2.setIsTeacher(true);
-            User demoTeacher3 = new User("Mr C.Teach");
+            User demoTeacher3 = new UserImpl("Mr C.Teach");
             demoTeacher3.setIsTeacher(true);
-            User demoTeacher4 = new User("Mr D.Teach");
+            User demoTeacher4 = new UserImpl("Mr D.Teach");
             demoTeacher4.setIsTeacher(true);
 
             //Generate Lessons
@@ -70,20 +73,20 @@ public class DemoData {
         } else {
             Log.i("getDemoStudentList()", "DemoStudentlist generated");
             //Generate Students
-            User student1 = new User("Andy Ant");
-            User student2 = new User("Barry Bear");
-            User student3 = new User("Chris Cat");
-            User student4 = new User("Dave Dolphin");
-            User student5 = new User("Ed Eagle");
+            User student1 = new UserImpl("Andy Ant");
+            User student2 = new UserImpl("Barry Bear");
+            User student3 = new UserImpl("Chris Cat");
+            User student4 = new UserImpl("Dave Dolphin");
+            User student5 = new UserImpl("Ed Eagle");
 
-            User student6 = new User("Fred Fox");
-            User student7 = new User("Gary Gorilla");
-            User student8 = new User("Harry Hermit Crab");
+            User student6 = new UserImpl("Fred Fox");
+            User student7 = new UserImpl("Gary Gorilla");
+            User student8 = new UserImpl("Harry Hermit Crab");
 
             student5.setCurrentQuestion("When do we start?");
             student7.setCurrentQuestion("Where is the course material?");
 
-            demoStudentList = new ArrayList<User>(Arrays.asList(student1, student2, student3, student4,
+            demoStudentList = new ArrayList<User>(asList(student1, student2, student3, student4,
                     student5, student6, student7, student8));
             return demoStudentList;
         }
