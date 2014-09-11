@@ -2,6 +2,7 @@ package com.ace.androidclassroomextension.demoUtilities;
 
 import com.ace.androidclassroomextension.dataAccessObject.AceDAO;
 import com.ace.androidclassroomextension.models.Lesson;
+import com.ace.androidclassroomextension.models.LessonImpl;
 import com.ace.androidclassroomextension.models.User;
 
 import junit.framework.TestCase;
@@ -54,7 +55,7 @@ public class DemoAceDAOTest extends TestCase {
         List<Lesson> lessonsAsList = aceDAO.getLessonsAsList();
         int oldSize = lessonsAsList.size();
 
-        Lesson lesson = new Lesson(teacher, lessonName, lessonDescription);
+        Lesson lesson = new LessonImpl(teacher, lessonName, lessonDescription);
         aceDAO.addLessonToDAO(lesson);
         int newsSize = aceDAO.getLessonsAsList().size();
         assertEquals(oldSize + 1, newsSize);

@@ -3,6 +3,7 @@ package com.ace.androidclassroomextension.demoUtilities;
 import android.util.Log;
 
 import com.ace.androidclassroomextension.models.Lesson;
+import com.ace.androidclassroomextension.models.LessonImpl;
 import com.ace.androidclassroomextension.models.User;
 
 import java.util.ArrayList;
@@ -39,16 +40,16 @@ public class DemoData {
             demoTeacher4.setIsTeacher(true);
 
             //Generate Lessons
-            Lesson lesson1 = new Lesson(demoTeacher1, "Algebra Demo", "A demo lesson about Algebra");
+            Lesson lesson1 = new LessonImpl(demoTeacher1, "Algebra Demo", "A demo lesson about Algebra");
             populateLessonWithDemoStudents(lesson1);
 
-            Lesson lesson2 = new Lesson(demoTeacher2, "Balloons Demo", "A demo lesson about Balloons");
+            Lesson lesson2 = new LessonImpl(demoTeacher2, "Balloons Demo", "A demo lesson about Balloons");
             populateLessonWithDemoStudents(lesson2);
 
-            Lesson lesson3 = new Lesson(demoTeacher3, "Calligraphy Demo", "A demo lesson about Calligraphy");
+            Lesson lesson3 = new LessonImpl(demoTeacher3, "Calligraphy Demo", "A demo lesson about Calligraphy");
             populateLessonWithDemoStudents(lesson3);
 
-            Lesson lesson4 = new Lesson(demoTeacher4, "Drawing Demo", "A demo lesson about Drawing");
+            Lesson lesson4 = new LessonImpl(demoTeacher4, "Drawing Demo", "A demo lesson about Drawing");
             populateLessonWithDemoStudents(lesson4);
 
             demoLessonList = new HashMap<Integer, Lesson>();

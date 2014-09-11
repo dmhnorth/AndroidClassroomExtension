@@ -4,6 +4,7 @@ import android.util.Log;
 
 import com.ace.androidclassroomextension.dataAccessObject.AceDAO;
 import com.ace.androidclassroomextension.models.Lesson;
+import com.ace.androidclassroomextension.models.LessonImpl;
 import com.ace.androidclassroomextension.models.User;
 
 import java.util.ArrayList;
@@ -69,7 +70,7 @@ public class DemoAceDAO implements AceDAO {
 
     @Override
     public int createNewLessonOnDAO(User teacher, String lessonName, String lessonDescription) {
-        Lesson lesson = new Lesson(teacher, lessonName, lessonDescription);
+        Lesson lesson = new LessonImpl(teacher, lessonName, lessonDescription);
 
         //Add Demo students for this new lesson
         DemoData.populateLessonWithDemoStudents(lesson);
