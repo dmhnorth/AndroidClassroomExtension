@@ -3,6 +3,8 @@ package com.ace.androidclassroomextension.utilities;
 import android.net.Uri;
 
 /**
+ * For creating unique Uri within the ACE for a variety of file formats
+ *
  * Created by Dave on 11/09/2014.
  */
 public interface UriFactory {

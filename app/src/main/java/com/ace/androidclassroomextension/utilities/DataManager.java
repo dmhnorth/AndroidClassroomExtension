@@ -3,6 +3,8 @@ package com.ace.androidclassroomextension.utilities;
 import com.ace.androidclassroomextension.models.User;
 
 /**
+ * For managing handset User data within ACE
+ *
  * Created by Dave on 11/09/2014.
  */
 public interface DataManager {
