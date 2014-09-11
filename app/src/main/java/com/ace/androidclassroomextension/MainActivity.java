@@ -14,6 +14,7 @@ import com.ace.androidclassroomextension.creatorActivities.CreateUser;
 import com.ace.androidclassroomextension.models.User;
 import com.ace.androidclassroomextension.models.UserImpl;
 import com.ace.androidclassroomextension.utilities.DataManager;
+import com.ace.androidclassroomextension.utilities.DataManagerImpl;
 
 
 public class MainActivity extends Activity {
@@ -27,7 +28,7 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        dataManager = new DataManager(this);
+        dataManager = new DataManagerImpl(this);
         user = dataManager.loadUserData();
 
         updateView();
