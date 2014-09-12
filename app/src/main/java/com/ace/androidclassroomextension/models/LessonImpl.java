@@ -3,7 +3,6 @@ package com.ace.androidclassroomextension.models;
 import android.util.Log;
 
 import java.util.ArrayList;
-import java.util.Random;
 
 /**
  * Implementation of the Lesson class
@@ -16,17 +15,13 @@ public class LessonImpl implements Lesson {
     private String lessonName;
     private String lessonDescription;
     private int lessonId;
-    private static int dateId = 0;
 
     public LessonImpl(User teacher, String lessonName, String lessonDescription) {
         setTeacher(teacher);
         setLessonName(lessonName);
         setLessonDescription(lessonDescription);
         students = null;
-
-        dateId++;
-        Random r = new Random();
-        setLessonId(Math.abs(r.nextInt()) + dateId);
+        setLessonId(IDGenerator.getNewId());
         Log.i("lesson Created with id: ", String.valueOf(getLessonId()));
     }
 
