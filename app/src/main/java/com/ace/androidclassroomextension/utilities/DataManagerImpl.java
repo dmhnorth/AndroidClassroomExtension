@@ -53,15 +53,14 @@ public class DataManagerImpl implements DataManager {
         prefsEditor.apply();
         try{
 
-        Toast.makeText(activityToSaveWithin, activityToSaveWithin.getString(R.string.data_saved) + user.getName(), Toast.LENGTH_SHORT).show();
+        Toast.makeText(activityToSaveWithin, activityToSaveWithin.getString(R.string.data_saved) + user.getName(),
+                Toast.LENGTH_SHORT).show();
         } catch (Exception e){
-            //Do nothing, just a safety
+            //Do nothing
+            //Required in case Activity is shutdown before
+            //TOAST popup can be presented to User on exit.
         }
-
         prefsEditor.commit();
-
-
-
     }
 
 }

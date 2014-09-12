@@ -71,7 +71,7 @@ public class CreateStudent extends Activity {
     public void joinLesson(View view) {
 
         if(chosenLessonId == 0){
-            Toast.makeText(this, "Select a lesson", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.select_a_lesson), Toast.LENGTH_SHORT).show();
         } else {
 
             startLessonIntent = new Intent(this, StartLesson.class);

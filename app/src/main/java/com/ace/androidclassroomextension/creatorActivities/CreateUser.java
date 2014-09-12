@@ -97,6 +97,9 @@ public class CreateUser extends Activity {
 
     /**
      * For finding the front facing camera
+     * Currently Unused within project, but should
+     * be implemented later for defaulting to the
+     * front side camera
      *
      * Adapted from code provided by Lars Vogal
      * at http://www.vogella.com/tutorials/AndroidCamera/article.html

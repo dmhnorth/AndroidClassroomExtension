@@ -25,11 +25,9 @@ public class DemoData {
     private static ArrayList<User> demoStudentList;
 
     public static Map<Integer, Lesson> getDemoLessonList() {
-
         if (!(demoLessonList == null)){
             return demoLessonList;
         } else {
-
             Log.i("getDemoLessonList()", "Lesson list generated");
 
             //Generate Teachers
@@ -43,16 +41,20 @@ public class DemoData {
             demoTeacher4.setIsTeacher(true);
 
             //Generate Lessons
-            Lesson lesson1 = new LessonImpl(demoTeacher1, "Algebra Demo", "A demo lesson about Algebra");
+            Lesson lesson1 = new LessonImpl(demoTeacher1,
+                    "Algebra Demo", "A demo lesson about Algebra");
             populateLessonWithDemoStudents(lesson1);
 
-            Lesson lesson2 = new LessonImpl(demoTeacher2, "Balloons Demo", "A demo lesson about Balloons");
+            Lesson lesson2 = new LessonImpl(demoTeacher2,
+                    "Balloons Demo", "A demo lesson about Balloons");
             populateLessonWithDemoStudents(lesson2);
 
-            Lesson lesson3 = new LessonImpl(demoTeacher3, "Calligraphy Demo", "A demo lesson about Calligraphy");
+            Lesson lesson3 = new LessonImpl(demoTeacher3,
+                    "Calligraphy Demo", "A demo lesson about Calligraphy");
             populateLessonWithDemoStudents(lesson3);
 
-            Lesson lesson4 = new LessonImpl(demoTeacher4, "Drawing Demo", "A demo lesson about Drawing");
+            Lesson lesson4 = new LessonImpl(demoTeacher4,
+                    "Drawing Demo", "A demo lesson about Drawing");
             populateLessonWithDemoStudents(lesson4);
 
             demoLessonList = new HashMap<Integer, Lesson>();
@@ -78,7 +80,6 @@ public class DemoData {
             User student3 = new UserImpl("Chris Cat");
             User student4 = new UserImpl("Dave Dolphin");
             User student5 = new UserImpl("Ed Eagle");
-
             User student6 = new UserImpl("Fred Fox");
             User student7 = new UserImpl("Gary Gorilla");
             User student8 = new UserImpl("Harry Hermit Crab");

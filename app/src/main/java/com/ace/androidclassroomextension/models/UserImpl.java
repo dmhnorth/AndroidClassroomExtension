@@ -79,9 +79,6 @@ public class UserImpl implements User {
 
     }
 
-    /*
-     * Required helper method for Parcelable to work
-     */
     @Override
     public int describeContents() {
         return 0;
