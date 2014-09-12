@@ -24,7 +24,6 @@ public class LessonImpl implements Lesson {
         setLessonDescription(lessonDescription);
         students = null;
 
-        //TODO very basic ID generation, extract this to a method, Add the time to this
         dateId++;
         Random r = new Random();
         setLessonId(Math.abs(r.nextInt()) + dateId);

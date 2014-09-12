@@ -106,7 +106,6 @@ public class CreateStudent extends Activity {
         lessonSpinner.setAdapter(adapter);
 
 
-        //TODO make something happen when a lesson is selected
         lessonSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int position, long id) {
