@@ -2,7 +2,6 @@ package com.ace.androidclassroomextension.models;
 
 import android.util.Log;
 
-import com.ace.androidclassroomextension.utilities.IDGenerator;
 import com.ace.androidclassroomextension.utilities.IDGeneratorImpl;
 
 import java.util.ArrayList;
@@ -25,8 +24,7 @@ public class LessonImpl implements Lesson {
         setLessonDescription(lessonDescription);
         students = null;
 
-        IDGenerator idGenerator = new IDGeneratorImpl();
-        setLessonId(idGenerator.getNewId());
+        setLessonId(IDGeneratorImpl.getInstance().getNewId());
 
         Log.i("lesson Created with id: ", String.valueOf(getLessonId()));
     }
