@@ -23,7 +23,7 @@ import com.ace.androidclassroomextension.utilities.UriFactoryImpl;
  * Some code adapted from Android guides
  * at http://developer.android.com/guide/topics/media/camera.html
  *
- * and Lars Vogel at
+ * and some currently unused code from Lars Vogel at
  * http://www.vogella.com/tutorials/AndroidCamera/article.html
  *
  */

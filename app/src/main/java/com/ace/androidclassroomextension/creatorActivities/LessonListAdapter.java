@@ -10,7 +10,6 @@ import android.widget.TextView;
 import com.ace.androidclassroomextension.R;
 import com.ace.androidclassroomextension.models.Lesson;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -31,7 +30,7 @@ public class LessonListAdapter extends ArrayAdapter<Lesson> {
 
         View lessonRowView = theInflater.inflate(R.layout.lesson_row, parent, false);
 
-        Lesson lesson = (Lesson) getItem(position);
+        Lesson lesson = getItem(position);
 
         //Set the Lesson name section of the view
         TextView lessonNameView = (TextView) lessonRowView.findViewById(R.id.lesson_row_name);
