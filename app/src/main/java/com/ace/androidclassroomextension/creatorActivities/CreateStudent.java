@@ -29,9 +29,7 @@ import java.util.List;
 public class CreateStudent extends Activity {
 
     private User user;
-
     private int chosenLessonId;
-
     Intent startLessonIntent;
 
     @Override
@@ -65,7 +63,11 @@ public class CreateStudent extends Activity {
         refreshLessonSpinner(findViewById(R.id.lesson_chooser));
     }
 
-
+    /**
+     * Called when user chooses to start a lesson
+     *
+     * @param view the current view
+     */
     public void joinLesson(View view) {
 
         if(chosenLessonId == 0){
@@ -81,8 +83,10 @@ public class CreateStudent extends Activity {
         }
     }
 
-
-
+    /**
+     * Refreshes the Lesson spinner in order to display Lessons on the DAO
+     * @param view the current view
+     */
     public void refreshLessonSpinner(View view) {
 
         //Get the available lessons
@@ -102,7 +106,6 @@ public class CreateStudent extends Activity {
 
         //Apply the adapter to the spinner
         lessonSpinner.setAdapter(adapter);
-
 
         lessonSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
