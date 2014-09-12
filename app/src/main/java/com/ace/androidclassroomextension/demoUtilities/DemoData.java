@@ -74,7 +74,7 @@ public class DemoData {
         if(!(demoStudentList == null)){
             return demoStudentList;
         } else {
-            Log.i("getDemoStudentList()", "DemoStudentlist generated");
+            Log.i("getDemoStudentList()", "DemoStudentList generated");
             //Generate Students
             User student1 = new UserImpl("Andy Ant");
             User student2 = new UserImpl("Barry Bear");
