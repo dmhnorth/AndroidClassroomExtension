@@ -34,7 +34,7 @@
             android:id="@+id/studentName"
             android:textSize="20sp"
             android:textStyle="bold"
-            android:text="NAME"/>
+            android:text="@string/name"/>
 
         <TextView
             android:layout_width="match_parent"
@@ -42,7 +42,7 @@
             android:textSize="15sp"
             android:textStyle="italic"
             android:id="@+id/textSent"
-            android:text="TEXT SENT" />
+            android:text="@string/text_sent" />
 
         <ImageView
             android:layout_width="match_parent"

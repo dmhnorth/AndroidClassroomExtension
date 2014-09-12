@@ -34,7 +34,7 @@
         android:layout_gravity="center"
         android:layout_margin="@dimen/activity_horizontal_margin"
         android:onClick="returnToLesson"
-        android:text="Return To Lesson"/>
+        android:text="@string/return_to_lesson"/>
 
     </LinearLayout>
 

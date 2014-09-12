@@ -37,5 +37,9 @@
     <string name="question">Question</string>
     <string name="select_a_lesson">Select a lesson</string>
     <string name="lesson_id">Lesson ID: </string>
+    <string name="user_image">User image</string>
+    <string name="return_to_lesson">Return To Lesson</string>
+    <string name="text_sent">TEXT SENT</string>
+    <string name="name">NAME</string>
 
 </resources>
