@@ -29,8 +29,6 @@ import java.util.List;
 public class CreateStudent extends Activity {
 
     private User user;
-    private TextView userType, userName;
-    private ImageView profilePicture;
 
     private int chosenLessonId;
 
@@ -47,7 +45,7 @@ public class CreateStudent extends Activity {
 
         //Set teacher status
         user.setIsTeacher(false);
-        userType = (TextView) findViewById(R.id.isTeacher);
+        TextView userType = (TextView) findViewById(R.id.isTeacher);
         userType.setText(getString(R.string.student));
 
         //Set checkboxes
@@ -58,10 +56,10 @@ public class CreateStudent extends Activity {
 
         Log.i("Student Creator||isTeacher|audio|video|: ", Arrays.toString(new Boolean[]{user.getIsTeacher(), user.getAllowAudio(), user.getAllowVideo()}));
 
-        userName = (TextView) findViewById(R.id.userName);
+        TextView userName = (TextView) findViewById(R.id.userName);
         userName.setText(user.getName());
 
-        profilePicture = (ImageView) findViewById(R.id.user_details_photo);
+        ImageView profilePicture = (ImageView) findViewById(R.id.user_details_photo);
         profilePicture.setImageURI(user.getProfilePictureUri());
 
         refreshLessonSpinner(findViewById(R.id.lesson_chooser));
@@ -114,14 +112,13 @@ public class CreateStudent extends Activity {
                 //Place the lesson id for the chosen lesson in the Intent
                 chosenLessonId = lesson.getLessonId();
                 Log.i("Chosen Lesson", String.valueOf(lesson.getLessonId()));
-
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
                 chosenLessonId = Integer.parseInt(null);
                 Log.i("Chosen No Lesson so id is", String.valueOf(chosenLessonId));
-            };
+            }
         });
     }
 }

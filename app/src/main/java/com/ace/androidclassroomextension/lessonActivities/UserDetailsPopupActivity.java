@@ -11,6 +11,8 @@ import com.ace.androidclassroomextension.R;
 import com.ace.androidclassroomextension.models.User;
 
 /**
+ * Activity for pop up information on a user
+ *
  * Created by Dave on 25/08/2014.
  */
 public class UserDetailsPopupActivity extends Activity {
@@ -41,13 +43,13 @@ public class UserDetailsPopupActivity extends Activity {
         question.setText(user.getCurrentQuestion());
 
         ImageView imageView = (ImageView) findViewById(R.id.studentImage);
-        //TODO these are null because they are currently not initiated
+        // Required in Version 2 of ACE
 //        imageView.setImageURI(user.getProfilePictureUri());
     }
 
     /**
      * closes the user information viewer and returns to the current lesson
-     * @param view
+     * @param view the current view
      */
     public void returnToLesson(View view) {
         this.finish();
