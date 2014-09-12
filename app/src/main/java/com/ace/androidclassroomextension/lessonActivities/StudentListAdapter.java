@@ -12,7 +12,6 @@ import android.widget.TextView;
 import com.ace.androidclassroomextension.R;
 import com.ace.androidclassroomextension.models.User;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -26,31 +25,51 @@ public class StudentListAdapter extends ArrayAdapter<User> {
         super(context, R.layout.student_row, students);
     }
 
+    //Inner class for use with the ViewHolder Pattern
+    private class ViewHolder{
+        TextView studentNameView;
+        TextView textSent;
+        ImageView studentImage;
+        ImageView handUp;
+        ViewHolder(View v){
+            studentNameView = (TextView) v.findViewById(R.id.studentName);
+            textSent = (TextView) v.findViewById(R.id.textSent);
+            studentImage = (ImageView) v.findViewById(R.id.studentImage);
+            handUp = (ImageView) v.findViewById(R.id.handUp);
+
+        }
+    }
+
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
-        LayoutInflater theInflater = LayoutInflater.from(getContext());
+        View studentRowView = convertView;
+        ViewHolder holder;
 
-        View studentRowView = theInflater.inflate(R.layout.student_row, parent, false);
+        if (studentRowView == null){
+            LayoutInflater theInflater = LayoutInflater.from(getContext());
+            studentRowView = theInflater.inflate(R.layout.student_row, parent, false);
+            holder = new ViewHolder(studentRowView);
+            studentRowView.setTag(holder);
 
-        User student = (User) getItem(position);
+        } else {
+            holder = (ViewHolder) studentRowView.getTag();
+        }
+
+        User student = getItem(position);
 
         //Set the studentName section of the view
-        TextView studentNameView = (TextView) studentRowView.findViewById(R.id.studentName);
-        studentNameView.setText(student.getName());
+        holder.studentNameView.setText(student.getName());
 
         //for further information in sections of the custom student row
-        TextView textSent = (TextView) studentRowView.findViewById(R.id.textSent);
-        textSent.setText(student.getCurrentQuestion());
+        holder.textSent.setText(student.getCurrentQuestion());
 
-        ImageView studentImage = (ImageView) studentRowView.findViewById(R.id.studentImage);
-//        studentImage.setImageResource(R.drawable.silhouette);
+//        holder.studentImage.setImageResource(R.drawable.silhouette);
 
-        ImageView handUp = (ImageView) studentRowView.findViewById(R.id.handUp);
         if(student.isHandUp()){
-            handUp.setBackgroundColor(Color.parseColor("#b30303"));
+            holder.handUp.setBackgroundColor(Color.parseColor("#b30303"));
         } else{
-            handUp.setBackgroundColor(Color.parseColor("#a8c942"));
+            holder.handUp.setBackgroundColor(Color.parseColor("#a8c942"));
         }
         return studentRowView;
     }

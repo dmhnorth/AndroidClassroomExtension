@@ -23,14 +23,13 @@ public class LessonListAdapter extends ArrayAdapter<Lesson> {
         super(context, R.layout.lesson_row, lessons);
     }
 
-    //For use within the ViewHolder Pattern
+    //Inner class for use with the ViewHolder Pattern
     private class ViewHolder {
         TextView lessonNameView;
         TextView lessonTeacherNameView;
         ViewHolder(View v){
             lessonNameView = (TextView) v.findViewById(R.id.lesson_row_name);
             lessonTeacherNameView = (TextView) v.findViewById(R.id.lesson_row_teacher_name);
-
         }
     }
 
@@ -38,7 +37,7 @@ public class LessonListAdapter extends ArrayAdapter<Lesson> {
     public View getView(int position, View convertView, ViewGroup parent) {
 
         View lessonRowView = convertView;
-        ViewHolder holder = null;
+        ViewHolder holder;
 
         if (lessonRowView == null){
             LayoutInflater theInflater = LayoutInflater.from(getContext());
