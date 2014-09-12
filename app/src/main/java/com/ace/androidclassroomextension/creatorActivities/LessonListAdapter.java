@@ -23,22 +23,40 @@ public class LessonListAdapter extends ArrayAdapter<Lesson> {
         super(context, R.layout.lesson_row, lessons);
     }
 
+    //For use within the ViewHolder Pattern
+    private class ViewHolder {
+        TextView lessonNameView;
+        TextView lessonTeacherNameView;
+        ViewHolder(View v){
+            lessonNameView = (TextView) v.findViewById(R.id.lesson_row_name);
+            lessonTeacherNameView = (TextView) v.findViewById(R.id.lesson_row_teacher_name);
+
+        }
+    }
+
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
-        LayoutInflater theInflater = LayoutInflater.from(getContext());
+        View lessonRowView = convertView;
+        ViewHolder holder = null;
 
-        View lessonRowView = theInflater.inflate(R.layout.lesson_row, parent, false);
+        if (lessonRowView == null){
+            LayoutInflater theInflater = LayoutInflater.from(getContext());
+            lessonRowView = theInflater.inflate(R.layout.lesson_row, parent, false);
+            holder = new ViewHolder(lessonRowView);
+            lessonRowView.setTag(holder);
+        } else {
+            holder = (ViewHolder) lessonRowView.getTag();
+        }
+
 
         Lesson lesson = getItem(position);
 
         //Set the Lesson name section of the view
-        TextView lessonNameView = (TextView) lessonRowView.findViewById(R.id.lesson_row_name);
-        lessonNameView.setText(lesson.getLessonName());
+        holder.lessonNameView.setText(lesson.getLessonName());
 
         //Set the Teacher name section of the view
-        TextView lessonTeacherNameView = (TextView) lessonRowView.findViewById(R.id.lesson_row_teacher_name);
-        lessonTeacherNameView.setText(lesson.getTeacher().getName());
+        holder.lessonTeacherNameView.setText(lesson.getTeacher().getName());
 
         return lessonRowView;
     }
