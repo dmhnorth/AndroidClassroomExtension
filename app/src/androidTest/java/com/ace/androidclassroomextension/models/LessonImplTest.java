@@ -3,8 +3,10 @@ package com.ace.androidclassroomextension.models;
 import junit.framework.Assert;
 import junit.framework.TestCase;
 
-import org.junit.Test;
 
+/**
+ * JUnit 3 tests for LessonImpl
+ */
 public class LessonImplTest extends TestCase {
 
     private User teacher;
@@ -13,7 +15,7 @@ public class LessonImplTest extends TestCase {
     private String teacherName = "Mr.Teach";
     private String lessonName = "Lesson";
     private String lessonDescription = "A lesson";
-    private String studentName;
+    private String studentName = "Student";
     private Lesson lesson;
 
     public void setUp() throws Exception {
@@ -37,7 +39,6 @@ public class LessonImplTest extends TestCase {
         assertEquals(lesson.getTeacher(), teacher);
     }
 
-
     public void testSetTeacherNotTeacher() {
         try {
         Lesson lesson = new LessonImpl(student, lessonName, lessonDescription);
@@ -49,9 +50,20 @@ public class LessonImplTest extends TestCase {
 
 
     }
+
     public void testAddStudent() throws Exception {
+        lesson.addStudent(student);
+        assertTrue(lesson.getStudents().contains(student));
+    }
 
-
+    public void testAddTeacherToStudents() throws Exception {
+        try {
+            lesson.addStudent(teacher);
+            Assert.fail("IllegalArgumentException Thrown");
+        }
+        catch (IllegalArgumentException i){
+            //Success
+        }
     }
 
     public void testToString() throws Exception {

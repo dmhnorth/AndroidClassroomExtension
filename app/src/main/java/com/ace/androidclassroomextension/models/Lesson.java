@@ -25,8 +25,9 @@ public interface Lesson {
      * add a student to a lesson
      *
      * @param student to add
+     * @throws java.lang.IllegalArgumentException if the user is a teacher
      */
-    void addStudent(User student);
+    void addStudent(User student) throws IllegalArgumentException;
 
     /**
      * getter for the lesson name

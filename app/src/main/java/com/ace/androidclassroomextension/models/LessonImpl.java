@@ -45,7 +45,11 @@ public class LessonImpl implements Lesson {
     }
 
     @Override
-    public void addStudent(User student) {
+    public void addStudent(User student) throws IllegalArgumentException {
+        if(student.getIsTeacher()){
+            throw new IllegalArgumentException();
+        }
+
         if (students == null) {
             students = new ArrayList<User>();
             students.add(student);
