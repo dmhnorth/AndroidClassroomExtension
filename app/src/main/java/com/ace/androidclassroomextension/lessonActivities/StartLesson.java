@@ -13,6 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.ace.androidclassroomextension.R;
+import com.ace.androidclassroomextension.dataAccessObject.AceDAO;
 import com.ace.androidclassroomextension.models.Lesson;
 import com.ace.androidclassroomextension.models.User;
 import com.ace.androidclassroomextension.demoUtilities.DemoAceDAO;
@@ -35,7 +36,7 @@ public class StartLesson extends Activity {
     private TextView userName, lessonNameTV, lessonDescriptionTV;
     private ImageView profilePicture;
 
-    private DemoAceDAO aceDAO = DemoAceDAO.getInstance();
+    private AceDAO aceDAO = DemoAceDAO.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

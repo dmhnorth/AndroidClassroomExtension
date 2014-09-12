@@ -23,7 +23,7 @@ public class DemoAceDAO implements AceDAO {
 
     private List<User> studentList = DemoData.getDemoStudentList();
     private Map<Integer, Lesson> lessonMap = new HashMap<Integer, Lesson>();
-    private static DemoAceDAO instance;
+    private static AceDAO instance;
 
     private DemoAceDAO(){
 
@@ -36,7 +36,7 @@ public class DemoAceDAO implements AceDAO {
      * Singleton get method
      * @return the DemoAceDAO singleton
      */
-    public static DemoAceDAO getInstance() {
+    public static AceDAO getInstance() {
         if (!(instance == null)){
         return instance;
         } else {
