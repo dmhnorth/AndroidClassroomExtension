@@ -36,5 +36,6 @@
     <string name="silent">silent</string>
     <string name="question">Question</string>
     <string name="select_a_lesson">Select a lesson</string>
+    <string name="lesson_id">Lesson ID: </string>
 
 </resources>

@@ -16,7 +16,8 @@ import java.util.Map;
 import static java.util.Arrays.*;
 
 /**
- * A set of demonstration Lesson and Student Data
+ * A set of demonstration Lesson and Student Data in English language
+ *
  *
  * Created by Dave on 27/08/2014.
  */

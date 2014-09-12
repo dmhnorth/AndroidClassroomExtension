@@ -85,7 +85,7 @@ public class StartLesson extends Activity {
         updateStudentListView();
 
         //Show the lesson ID
-        Toast.makeText(this, "Lesson ID: "+ lessonForView.getLessonId(), Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, getString(R.string.lesson_id)+ lessonForView.getLessonId(), Toast.LENGTH_SHORT).show();
     }
 
     /**

@@ -4,6 +4,8 @@ import android.net.Uri;
 import android.os.Parcelable;
 
 /**
+ * Interface for the User class
+ *
  * Created by Dave on 11/09/2014.
  */
 public interface User extends Parcelable {

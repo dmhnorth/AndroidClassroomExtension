@@ -3,6 +3,8 @@ package com.ace.androidclassroomextension.models;
 import java.util.ArrayList;
 
 /**
+ * Interface for the Lesson class
+ *
  * Created by Dave on 11/09/2014.
  */
 public interface Lesson {
