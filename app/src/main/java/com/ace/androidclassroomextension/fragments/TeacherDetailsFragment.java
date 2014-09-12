@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 import com.ace.androidclassroomextension.R;
 
 /**
- * Simply shows just the Teacher Details
+ * Shows just the Teacher Details
  *
  * Created by Dave on 22/08/2014.
  */

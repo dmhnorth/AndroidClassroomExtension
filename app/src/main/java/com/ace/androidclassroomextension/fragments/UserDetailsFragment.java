@@ -11,6 +11,7 @@ import com.ace.androidclassroomextension.R;
 /**
  * A fragment for the User details already entered before a user decides
  * which type of user they're going to be
+ *
  * Created by Dave on 05/08/2014.
  */
 public class UserDetailsFragment extends Fragment {
