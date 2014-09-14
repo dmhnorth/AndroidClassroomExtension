@@ -23,7 +23,9 @@ public class LessonListAdapter extends ArrayAdapter<Lesson> {
         super(context, R.layout.lesson_row, lessons);
     }
 
-    //Inner class for use with the ViewHolder Pattern
+    /**
+     * Inner class for use with the ViewHolder Pattern
+     */
     private class ViewHolder {
         TextView lessonNameView;
         TextView lessonTeacherNameView;
