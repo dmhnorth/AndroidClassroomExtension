@@ -111,9 +111,11 @@ public class MainActivity extends Activity {
      */
     private void initialiseUserWithName() {
         if (user == null) {
+            Log.i("initialise", "A new user created");
             user = new UserImpl(getUserInputName());
         } else {
             user.setName(getUserInputName());
+            Log.i("initialise", "user name updated");
         }
     }
 

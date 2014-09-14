@@ -3,6 +3,7 @@ package com.ace.androidclassroomextension.models;
 import android.net.Uri;
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.util.Log;
 
 /**
  * The User class. Contains all persistent data unique to the device for both
@@ -30,6 +31,8 @@ public class UserImpl implements User {
     public UserImpl(String name) {
         setHandUp(false);
         setName(name);
+
+        Log.i("User Created", getName());
     }
 
     /**
@@ -70,11 +73,14 @@ public class UserImpl implements User {
     private void readFromParcel(Parcel in) {
         name = in.readString();
         profilePictureUri = in.readParcelable(Uri.class.getClassLoader());
+        currentQuestion = in.readString();
 
         boolean[] options = in.createBooleanArray();
         isTeacher = options[0];
         allowAudio = options[1];
         allowVideo = options [2];
+
+
 //        Log.i("readParcel up options: ", Arrays.toString(options));
 
     }
@@ -93,6 +99,7 @@ public class UserImpl implements User {
     public void writeToParcel(Parcel write, int flags) {
         write.writeString(name);
         write.writeParcelable(profilePictureUri, flags);
+        write.writeString(currentQuestion);
 
         boolean[] options = {isTeacher, allowAudio, allowVideo};
         write.writeBooleanArray(options);
