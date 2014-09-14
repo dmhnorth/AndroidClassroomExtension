@@ -1,6 +1,7 @@
 package com.ace.androidclassroomextension.utilities;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.widget.Toast;
 
@@ -24,7 +25,7 @@ public class DataManagerImpl implements DataManager {
 
     public DataManagerImpl(Activity activity) {
         activityToSaveWithin = activity;
-        mPrefs = activityToSaveWithin.getSharedPreferences(PREF_FILE, activityToSaveWithin.MODE_PRIVATE);
+        mPrefs = activityToSaveWithin.getSharedPreferences(PREF_FILE, Context.MODE_PRIVATE);
     }
 
 
@@ -35,6 +36,7 @@ public class DataManagerImpl implements DataManager {
         String json = mPrefs.getString(userData, "");
         User user = gson.fromJson(json, UserImpl.class);
 
+        //Checks if User data already exists on the handset
         if(user == null){
             Toast.makeText(activityToSaveWithin, activityToSaveWithin.getString(R.string.no_stored_data), Toast.LENGTH_SHORT).show();
         } else {

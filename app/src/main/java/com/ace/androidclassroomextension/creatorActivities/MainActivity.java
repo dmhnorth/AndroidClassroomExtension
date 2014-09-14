@@ -1,4 +1,4 @@
-package com.ace.androidclassroomextension;
+package com.ace.androidclassroomextension.creatorActivities;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.ace.androidclassroomextension.R;
 import com.ace.androidclassroomextension.creatorActivities.CreateUser;
 import com.ace.androidclassroomextension.models.User;
 import com.ace.androidclassroomextension.models.UserImpl;
