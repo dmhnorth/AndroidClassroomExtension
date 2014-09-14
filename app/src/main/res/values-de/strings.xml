@@ -1,0 +1,39 @@
+<resources>
+
+    <string name="Start">beginnen</string>
+    <string name="action_settings">" die Einstellungen"</string>
+    <string name="audio_stream">Das Audiostreaming</string>
+    <string name="choose_a_lesson">eine Unterricht auswählen:</string>
+    <string name="create_lesson">Unterricht anlegen:</string>
+    <string name="data_loaded">Daten war eingespielten:</string>
+    <string name="data_saved">Daten war gespeicherten:</string>
+    <string name="describeYourLesson">Seine Unterricht beschrieben</string>
+    <string name="enterYourName">seinen Name eingeben</string>
+    <string name="enter_a_name">Einen Name eingeben!</string>
+    <string name="enter_lesson_details">Einzelheiten der Unterricht eingeben</string>
+    <string name="enter_lesson_name">Die Unterrichtsname</string>
+    <string name="enter_your_name_hint">seinen Name eingeben</string>
+    <string name="exit">beenden</string>
+    <string name="lessonDescription">Die Unterrichtbeschreibung:</string>
+    <string name="lesson_id">Identität der Unterricht:</string>
+    <string name="lesson_name">Die Unterrichtsname:</string>
+    <string name="name">Die Name</string>
+    <string name="no_stored_data">Keine gespeicherten Daten</string>
+    <string name="question">Die Frage</string>
+    <string name="refresh_lesson_list">Unterrichtliste aktualisieren</string>
+    <string name="return_to_lesson">Nach die Unterricht zurückkehren</string>
+    <string name="save_user_data">Benutzerdaten speichern</string>
+    <string name="select_a_lesson">eine Unterricht auswählen</string>
+    <string name="send_audio">Audio schicken</string>
+    <string name="send_video">Video schicken</string>
+    <string name="silent">tonlos</string>
+    <string name="student">der Student</string>
+    <string name="students_in_this_lesson">Studenten in diesen Unterricht:</string>
+    <string name="teacher">der Lehrer</string>
+    <string name="text_sent">Text war geschickt</string>
+    <string name="title_activity_create_user">neue Benutzerkonten anlegen</string>
+    <string name="user_image">Das Userprofilbild</string>
+    <string name="user_type">Die Benützergruppe</string>
+    <string name="video_stream">Das Videostreaming</string>
+
+</resources>
