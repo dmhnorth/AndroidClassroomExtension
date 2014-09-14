@@ -17,8 +17,6 @@ import com.ace.androidclassroomextension.models.User;
  */
 public class UserDetailsPopupActivity extends Activity {
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

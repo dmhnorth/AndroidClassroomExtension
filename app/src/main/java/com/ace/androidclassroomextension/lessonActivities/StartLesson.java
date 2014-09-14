@@ -66,9 +66,6 @@ public class StartLesson extends Activity {
             lessonForViewId = studentLessonId;
         }
 
-
-
-
         //Retrieve the lesson for the View
         if(lessonForView == null){
             lessonForView = aceDAO.getLessonViaId(lessonForViewId);
@@ -77,7 +74,7 @@ public class StartLesson extends Activity {
             Log.i("LessonForView: ", String.valueOf(lessonForView.getLessonId()));
         }
 
-        //Update the View only using lessonForView Object
+        //Update the View with lessonForView Object
         userName = (TextView) findViewById(R.id.userName);
         userName.setText(lessonForView.getTeacher().getName());
 
