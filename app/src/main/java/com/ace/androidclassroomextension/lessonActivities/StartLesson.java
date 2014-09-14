@@ -49,7 +49,10 @@ public class StartLesson extends Activity {
         user = intent.getParcelableExtra("user");
         String lessonName = intent.getStringExtra("lessonName");
         String lessonDescription = intent.getStringExtra("lessonDescription");
-        int studentLessonId = intent.getIntExtra("lessonId", 0);
+
+        int unassigned = 0;
+        int studentLessonId = intent.getIntExtra("lessonId", unassigned);
+
 
 
         //Create the lesson on the server if a teacher
@@ -59,6 +62,8 @@ public class StartLesson extends Activity {
             //Retrieve the lesson if a student
             lessonForViewId = studentLessonId;
         }
+
+
 
 
         //Retrieve the lesson for the View
