@@ -87,23 +87,34 @@ public class CreateUser extends Activity {
                 //set the user image and replace in ImageView in activity
                 user.setProfilePictureUri(userImageUri);
                 profilePicture.setImageURI(userImageUri);
-
             }
         }
     }
 
+    /**
+     * Start the Teacher Activity path
+     * @param view the current view
+     */
     public void createTeacher(View view) {
         Intent createUserIntent = new Intent(this, CreateTeacher.class);
         createUserIntent.putExtra("user", user);
         startActivity(createUserIntent);
     }
 
+    /**
+     * Start the Student Activity path
+     * @param view the current view
+     */
     public void createStudent(View view) {
         Intent createUserIntent = new Intent(this, CreateStudent.class);
         createUserIntent.putExtra("user", user);
         startActivity(createUserIntent);
     }
 
+    /**
+     * Receives the permission choice whether to stream Audio
+     * @param view the current view
+     */
     public void sendAudioToggle(View view) {
         boolean on = ((Switch) view).isChecked();
 
@@ -116,6 +127,10 @@ public class CreateUser extends Activity {
         }
     }
 
+    /**
+     * Receives the permission choice whether to stream Audio
+     * @param view the current view
+     */
     public void sendVideoToggle(View view) {
         boolean on = ((Switch) view).isChecked();
 
