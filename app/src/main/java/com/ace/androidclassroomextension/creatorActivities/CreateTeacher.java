@@ -13,7 +13,6 @@ import android.widget.Toast;
 
 import com.ace.androidclassroomextension.R;
 import com.ace.androidclassroomextension.lessonActivities.StartLesson;
-import com.ace.androidclassroomextension.models.Lesson;
 import com.ace.androidclassroomextension.models.User;
 
 import java.util.Arrays;
@@ -49,6 +48,7 @@ public class CreateTeacher extends Activity {
 
         Log.i("Teacher Creator||isTeacher|audio|video|: ", Arrays.toString(new Boolean[]{user.getIsTeacher(), user.getAllowAudio(), user.getAllowVideo()}));
 
+        //Update the View
         TextView userName = (TextView) findViewById(R.id.userName);
         userName.setText(user.getName());
 

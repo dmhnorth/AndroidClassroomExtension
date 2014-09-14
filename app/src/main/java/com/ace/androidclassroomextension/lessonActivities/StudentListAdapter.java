@@ -27,10 +27,14 @@ public class StudentListAdapter extends ArrayAdapter<User> {
 
     //Inner class for use with the ViewHolder Pattern
     private class ViewHolder{
+
+        //Define Views
         TextView studentNameView;
         TextView textSent;
         ImageView studentImage;
         ImageView handUp;
+
+        //Constructor searches resources for View Objects
         ViewHolder(View v){
             studentNameView = (TextView) v.findViewById(R.id.studentName);
             textSent = (TextView) v.findViewById(R.id.textSent);
@@ -43,6 +47,7 @@ public class StudentListAdapter extends ArrayAdapter<User> {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
+        //View Holder Pattern
         View studentRowView = convertView;
         ViewHolder holder;
 
@@ -51,7 +56,6 @@ public class StudentListAdapter extends ArrayAdapter<User> {
             studentRowView = theInflater.inflate(R.layout.student_row, parent, false);
             holder = new ViewHolder(studentRowView);
             studentRowView.setTag(holder);
-
         } else {
             holder = (ViewHolder) studentRowView.getTag();
         }
@@ -61,11 +65,13 @@ public class StudentListAdapter extends ArrayAdapter<User> {
         //Set the studentName section of the view
         holder.studentNameView.setText(student.getName());
 
-        //for further information in sections of the custom student row
+        //Set the user currentQuestion
         holder.textSent.setText(student.getCurrentQuestion());
 
+        //Set the Image
 //        holder.studentImage.setImageResource(R.drawable.silhouette);
 
+        //Display User handUp Boolean value
         if(student.isHandUp()){
             holder.handUp.setBackgroundColor(Color.parseColor("#b30303"));
         } else{

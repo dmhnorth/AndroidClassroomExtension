@@ -27,8 +27,11 @@ public class LessonListAdapter extends ArrayAdapter<Lesson> {
      * Inner class for use with the ViewHolder Pattern
      */
     private class ViewHolder {
+        //Define Views
         TextView lessonNameView;
         TextView lessonTeacherNameView;
+
+        //Constructor searches resources for View Objects
         ViewHolder(View v){
             lessonNameView = (TextView) v.findViewById(R.id.lesson_row_name);
             lessonTeacherNameView = (TextView) v.findViewById(R.id.lesson_row_teacher_name);
@@ -38,6 +41,7 @@ public class LessonListAdapter extends ArrayAdapter<Lesson> {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
+        //View Holder Pattern
         View lessonRowView = convertView;
         ViewHolder holder;
 
