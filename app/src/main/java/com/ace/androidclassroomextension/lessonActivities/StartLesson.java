@@ -10,14 +10,12 @@ import android.widget.ImageView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.ace.androidclassroomextension.R;
 import com.ace.androidclassroomextension.dataAccessObject.AceDAO;
+import com.ace.androidclassroomextension.demoUtilities.DemoAceDAO;
 import com.ace.androidclassroomextension.models.Lesson;
 import com.ace.androidclassroomextension.models.User;
-import com.ace.androidclassroomextension.demoUtilities.DemoAceDAO;
-
 
 /**
  *
@@ -95,8 +93,6 @@ public class StartLesson extends Activity {
         //Populate the ListView
         updateStudentListView();
 
-        //Show the lesson ID
-        Toast.makeText(this, getString(R.string.lesson_id)+ lessonForView.getLessonId(), Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -104,7 +100,6 @@ public class StartLesson extends Activity {
         super.onSaveInstanceState(outState);
         outState.putInt("lessonForViewId", lessonForViewId);
     }
-
 
     @Override
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
