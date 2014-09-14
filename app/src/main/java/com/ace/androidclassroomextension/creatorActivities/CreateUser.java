@@ -30,6 +30,7 @@ public class CreateUser extends Activity {
     private Uri userImageUri;
     private ImageView profilePicture;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,7 +40,9 @@ public class CreateUser extends Activity {
         Intent intent = getIntent();
 
         //Set User using intent data
-        user = intent.getParcelableExtra("user");
+        if(user == null) {
+            user = intent.getParcelableExtra("user");
+        }
 
         TextView userName = (TextView) findViewById(R.id.nameOfUser);
         userName.setText(user.getName());
@@ -142,6 +145,5 @@ public class CreateUser extends Activity {
             Toast.makeText(this, getString(R.string.video_off), Toast.LENGTH_SHORT).show();
         }
     }
-
 }
 
