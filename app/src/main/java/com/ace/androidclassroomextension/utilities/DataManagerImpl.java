@@ -59,8 +59,8 @@ public class DataManagerImpl implements DataManager {
                 Toast.LENGTH_SHORT).show();
         } catch (Exception e){
             //Do nothing
-            //Required in case Activity is shutdown before
-            //TOAST popup can be presented to User on exit.
+            //Required in case Activity is removed from memory before
+            //Toast popup can be presented to User on exit.
         }
         prefsEditor.commit();
     }
