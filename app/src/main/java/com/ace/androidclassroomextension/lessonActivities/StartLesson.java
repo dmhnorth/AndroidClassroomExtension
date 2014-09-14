@@ -53,10 +53,15 @@ public class StartLesson extends Activity {
         int unassigned = 0;
         int studentLessonId = intent.getIntExtra("lessonId", unassigned);
 
+        //Restore any lesson details for Activity restart
+        if (savedInstanceState != null){
+            lessonForViewId = savedInstanceState.getInt("lessonForViewId");
+            lessonForView = aceDAO.getLessonViaId(lessonForViewId);
+        }
 
 
         //Create the lesson on the server if a teacher
-        if(user.getIsTeacher()){
+        if(user.getIsTeacher() && lessonForViewId == 0){
             lessonForViewId = aceDAO.createNewLessonOnDAO(user, lessonName, lessonDescription);
         } else {
             //Retrieve the lesson if a student
@@ -93,6 +98,21 @@ public class StartLesson extends Activity {
         //Show the lesson ID
         Toast.makeText(this, getString(R.string.lesson_id)+ lessonForView.getLessonId(), Toast.LENGTH_SHORT).show();
     }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putInt("lessonForViewId", lessonForViewId);
+    }
+
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        lessonForViewId = savedInstanceState.getInt("lessonForViewId");
+        lessonForView = aceDAO.getLessonViaId(lessonForViewId);
+    }
+
 
     /**
      * Adds the local user to the lesson for the View if not already there
